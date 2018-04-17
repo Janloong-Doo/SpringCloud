@@ -10,7 +10,7 @@ Author : **<a href ="mailto: janloongdoo@gmail.com">Janloong Do_O</a>**
 
 |模块|描述|
 |:---|:---| 
-|admin-client|admin客户端 - 官方配置方式|
+|admin-client|admin客户端 - 官方配置方式 |
 |admin-server|admin服务端|
 |config-server |配置中心服务端|
 |config-client |配置中心客户端|

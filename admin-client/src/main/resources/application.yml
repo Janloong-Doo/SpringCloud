@@ -1,0 +1,28 @@
+spring:
+  boot:
+    admin:
+      client:
+        prefer-ip: true # 解决windows下运行时无法识别主机名的问题
+      url: http://localhost:8889 # 向服务端注册的地址
+#management:
+#  port: 8890
+#  security:
+#    enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false
+info: #定义各种额外的详情给服务端显示
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+management:
+  port: 8890
+  security:
+    enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false
+#  2.0.0配置
+#management:
+#  server:
+#    port: 8890
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health,info,mappings,env

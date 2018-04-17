@@ -1,0 +1,35 @@
+
+spring:
+  application:
+    name: provide-1
+  profiles:
+    active: provide1
+info: #定义各种额外的详情给服务端显示
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+management:
+  endpoints:
+      web:
+        exposure:
+          include: "*"
+management:
+  endpoints:
+    enabled-by-default: true
+
+# 2.0之前鉴权相关配置
+#endpoints:
+#  actuator:
+#    sensitive: false
+#manaagement:
+#  endpoint:
+#    mappings:
+#      enabled: true
+#endpoints:
+#  env:
+#    sensitive: false
+#management:
+#  security:
+#    enabled: false

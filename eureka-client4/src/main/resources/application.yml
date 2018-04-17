@@ -1,0 +1,35 @@
+info: #定义各种额外的详情给服务端显示
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+
+
+eureka:
+  client:
+#  客户端多久从server端抓取一次服务注册信息
+#    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+spring:
+  application:
+    name: custom-3
+server:
+  port: 8891
+
+management:
+# 2.0以下
+#  endpoints:
+#    web:
+#      base-path: /
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+
+#  endpoint:
+#    shutdown:
+#      enabled: true
+#    management.endpoint.shutdown.enabled=true
