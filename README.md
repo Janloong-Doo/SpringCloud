@@ -1,6 +1,6 @@
 # Spring Cloud 
 
-Author : **<a href ="mailto: janloongdoo@gmail.com">Janloong Do_O</a>**
+Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="mailto: janloongdoo@gmail.com">Email</a>**
 
 > 个人微服务框架学习,持续学习中……
 
@@ -8,18 +8,18 @@ Author : **<a href ="mailto: janloongdoo@gmail.com">Janloong Do_O</a>**
 
 ## 模块描述
 
-|模块|描述|
-|:---|:---| 
-|admin-client|admin客户端 - 官方配置方式 |
-|admin-server|admin服务端|
-|config-server |配置中心服务端|
-|config-client |配置中心客户端|
-|eureka-server |注册中心 - 默认提供server1,server2两个环境|
-|eureka-provide |服务提供者 - 默认提供provide1，provide2|
-|eureka-client2 |Ribbon+rest方式的客户端|
-|eureka-client3 |Feign方式的客户端|
-|eureka-client4 |普通客户端为了配合admin低版本的测试，独立pom依赖|
-|eureka-zuul |网关路由|
+|模块|描述|端口|多配置|
+|:---|:---|:---|:---|
+|admin-client|admin客户端 - 官方配置方式 |8890|-|
+|admin-server|admin服务端|8889|-|
+|config-server |高可用配置中心服务端|8888,8892|server1,server2|
+|config-client |高可用配置中心客户端|8773,8893|client1,client2|
+|eureka-server |高可用注册中心|8761,8762|server1,server2|
+|eureka-provide |服务提供者|8763,8764|provide1,provide2|
+|eureka-client2 |Ribbon+rest方式的客户端|8765|-|
+|eureka-client3 |Feign方式的客户端|8766,8821(独立management端口)|-|
+|eureka-client4 |普通客户端为了配合admin低版本的测试，独立pom依赖|8891|-|
+|eureka-zuul |网关路由|8767|-|
 
 ## 其它描述
 
