@@ -6,6 +6,19 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 
 > 项目中除了基础的spring cloud 组件之外,集成了第三方 **[spring boot admin](https://github.com/codecentric/spring-boot-admin)** 可视化管理组件
 
+    
+    相关环境： 
+    idea 2018.1
+    springboot 2.0.1
+    springcloud Finchley.BUILD-SNAPSHOT
+    springbootadmin 2.0.0.spnashot
+    
+## update 
+    
+    2018.04.18 rabbitmq代理的消息总线接入
+    2018.04.18 高可用config-server,服务隔离测试
+   
+
 ## 模块描述
 
 |模块|描述|端口|多配置|
@@ -33,8 +46,21 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 
 1. config-server 中git的Uri连接本地 git@xxx:/repo 读取不到配置文件，未知协议原因或本地原因
 2. 经部分测试，混合版本的时候依旧可以使用，但在actuator检测的时候因为1.x,2.x的默认访问路径不同在这里需要配置management的basepath,部分endpoints正常，其余的可能需要单独配置路径
-    
+3. eureka1.x服务集群与eureka2.x的放在部署至同一台服务器时出现服务的交叉注册问题。 
+4. 使用rabbitmq作为代理的SpringCloud消息总线的时候。(该项仅仅为小规模测试记录,概率性)
 
+   一是关于@RefreshScope的作用域问题，不能在启动类MainApplication使用，首先要满足的是在使用动态配置的地方使用该注解，该注解在bean相关的作用域依然可能会有其它问题。
+   
+   二是关于remote远程更新的时候，在向confingClient集群发送/bus-refresh时会出现两个主要问题：
+   
+    （1）在config-server集群的前提下，rabbitmq在通知整个服务更新时，config-server只从其中任意一个server开始fetch,
+    另一个server静默。client是同时refresh,在访问client的时候会出现，相应属性值版本交叉的情况，测试中最多出现过3个版本的跨度问题。 
+    
+    （2）在/bus-refresh 未结束时,访问其中一个client, 会造成一个client成功 add property from server , 但是另一个client 会出现 cannot connect to rabbitmq 导致属性配置更新失败（可能并非必然联系，偶然出现）  
+
+## 待办
+    
+    了解springcloudstream与springcloudbus的结合应用
 
 ## Tips:
 > 为方便测试，快速建立如下效果

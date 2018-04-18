@@ -25,8 +25,7 @@ spring:
       discovery:
         enabled: true
 #      uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
-    discovery:
-      serviceId: config-server
+        serviceId: config-server
 
 #server:
 #  port: 8773
