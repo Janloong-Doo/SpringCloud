@@ -9,6 +9,7 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
     
     相关环境： 
     idea 2018.1
+    jdk 1.8
     springboot 2.0.1
     springcloud Finchley.BUILD-SNAPSHOT
     springbootadmin 2.0.0.spnashot
