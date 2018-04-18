@@ -6,6 +6,8 @@
 #spring:
 #  config:
 #    name: configClient
-spring:
-  profiles:
-    active: client1
+#spring:
+#  profiles:
+#    active: dev
+server:
+  port: 8893
