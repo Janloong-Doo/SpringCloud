@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @date 2018-04-13 10:31
  */
 @Component
-public class CustomFallBackHandler implements FeignInterface {
+public class FeignFallBackHandler implements FeignInterface {
 
     @Override
     public String feign(String name) {

@@ -14,15 +14,12 @@ server:
 feign:
   hystrix:
     enabled: true
-
-
-#Unable to connect to Command Metric Stream
 management:
   endpoints:
       web:
         exposure:
-          include: hystrix.stream
-  server:
-    port: 8821
+          include: "*"
+#  server:
+#    port: 8821
 #  security:
 #    enabled: false
