@@ -2,7 +2,7 @@
 
 Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="mailto: janloongdoo@gmail.com">Email</a>**
 
-> 个人微服务框架学习,持续学习中……
+> 个人微服务框架学习,持续学习中(现阶段功能以模块化测试学习接入为主,后期针对生产环境测试改造)……
 
 > 项目中除了基础的spring cloud 组件之外,集成了第三方 **[spring boot admin](https://github.com/codecentric/spring-boot-admin)** 可视化管理组件
 
@@ -10,37 +10,32 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
     相关环境： 
     idea 2018.1
     jdk 1.8
-    springboot 2.0.1
+    springboot 2.0.1.release
     springcloud Finchley.BUILD-SNAPSHOT
     springbootadmin 2.0.0.spnashot
     
 ## update 
-    
+    2018.04.19 分布式服务追踪zipkin(web,rabbitmq)接入
     2018.04.18 rabbitmq代理的消息总线接入
     2018.04.18 高可用config-server,服务隔离测试
    
 
 ## 模块描述
 
-|模块|描述|端口|多配置|
-|:---|:---|:---|:---|
-|admin-client|admin客户端 - 官方配置方式 |8890|-|
-|admin-server|admin服务端|8889|-|
-|config-server |高可用配置中心服务端|8888,8892|server1,server2|
-|config-client |高可用配置中心客户端|8773,8893|client1,client2|
-|eureka-server |高可用注册中心|8761,8762|server1,server2|
-|eureka-provide |服务提供者|8763,8764|provide1,provide2|
-|eureka-client2 |Ribbon+rest方式的客户端|8765|-|
-|eureka-client3 |Feign方式的客户端|8766,8821(独立management端口)|-|
-|eureka-client4 |普通客户端为了配合admin低版本的测试，独立pom依赖|8891|-|
-|eureka-zuul |网关路由|8767|-|
+|模块|描述|端口|多配置|集成|
+|:---|:---|:---|:---|:---|
+|admin-client|admin客户端 - 官方配置方式 |8890|-|这个是admin官方给出的一个客户端配置方式之一，里面会有比较完备的actuator实现效果，在通过discovery方式配置客户端方式的时候可以作参考|
+|admin-server|admin服务端|8889|-|admin官方最高RELEASE版本为1.5.7，对应的springboot相关依赖为1.5.9版本，官方新的2.0.0（对应springboot 2.0.1 ，spring官方应该在2.x阶段更推荐2.0.1）版本暂未发布release版本，需要访问国外镜像去拿到snapshot版本 |
+|config-server |高可用配置中心服务端|8888,8892|server1,server2||
+|config-client |高可用配置中心客户端|8773,8893|client1,client2||
+|eureka-server |高可用注册中心|8761,8762|server1,server2||
+|eureka-provide |服务提供者|8763,8764|provide1,provide2||
+|eureka-client2 |Ribbon+rest方式的客户端|8765|-|集成hystrix,ribbon,zipkin,rabbitmq|
+|eureka-client3 |Feign方式的客户端|8766,8821(独立management端口)|-|集成hystrix,openfeign,hystrix dashboard|
+|eureka-client4 |普通客户端为了配合admin低版本的测试，独立pom依赖|8891|-||
+|eureka-zuul |网关路由|8767|-||
+|zipkin-server |服务追踪中心|9411|-|因版本为题采用的独立pom依赖|
 
-## 其它描述
-
-|模块|描述|    
-|:---|:---|
-|admin-server|admin官方最高RELEASE版本为1.5.7，对应的springboot相关依赖为1.5.9版本，官方新的2.0.0（对应springboot 2.0.1 ，spring官方应该在2.x阶段更推荐2.0.1）版本暂未发布release版本，需要访问国外镜像去拿到snapshot版本 |
-|admin-client|这个是admin官方给出的一个客户端配置方式之一，里面会有比较完备的actuator实现效果，在通过discovery方式配置客户端方式的时候可以作参考|
 
 ## 问题记录
 > 望相互学习，多多指教
@@ -58,10 +53,19 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
     另一个server静默。client是同时refresh,在访问client的时候会出现，相应属性值版本交叉的情况，测试中最多出现过3个版本的跨度问题。 
     
     （2）在/bus-refresh 未结束时,访问其中一个client, 会造成一个client成功 add property from server , 但是另一个client 会出现 cannot connect to rabbitmq 导致属性配置更新失败（可能并非必然联系，偶然出现）  
+5. 从Edgware开始，Sleuth基于MQ整合Zipkin更加的简化！Spring Cloud Edgware之前的版本使用 Zipkin1.x ，要想MQ方式收集数据，需整合 spring-cloud-sleuth-stream 。而在Edgware及更高版本中，使用 Zipkin2.x。 Zipkin2.x 本身已支持基于MQ的数据收集方式，故而 spring-cloud-sleuth-stream 将被废弃
 
 ## 待办
     
     了解springcloudstream与springcloudbus的结合应用
+    
+## 测试访问
+
+|功能|url|
+|:---|:---|
+|sba| http://localhost:8889/admin |
+|rabbitmq| http://localhost:15672 |
+|zipkin| http://localhost:9411 |
 
 ## Tips:
 > 为方便测试，快速建立如下效果
