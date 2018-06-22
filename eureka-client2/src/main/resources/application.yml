@@ -41,4 +41,4 @@ info: #定义各种额外的详情给服务端显示
 #自定义规则配置方式二
 provide-1:
   ribbon:
-    NFLoadBalancerRuleClassName: com.janloong.eurekaclient2.config.CustomRule
+    NFLoadBalancerRuleClassName: com.rzt.eurekaclient2.config.CustomRule

@@ -24,4 +24,4 @@
 /nbdist/
 /.nb-gradle/
 **/.mvn
-**/test
+### **/test

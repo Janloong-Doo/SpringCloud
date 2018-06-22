@@ -291,7 +291,7 @@
       <recent name="E:\Projects\cloud\config-server\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.janloong.eurekaclient2" />
+      <recent name="com.rzt.eurekaclient2" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\cloud\other" />
@@ -301,12 +301,12 @@
       <recent name="E:\Projects\cloud\configCenter" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.janloong.client3.controller" />
-      <recent name="com.janloong.eurekaclient.controller" />
+      <recent name="com.rzt.client3.controller" />
+      <recent name="com.rzt.eurekaclient.controller" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.janloong.client3.controller.feign" />
-      <recent name="com.janloong.eurekaclient2.controller" />
+      <recent name="com.rzt.client3.controller.feign" />
+      <recent name="com.rzt.eurekaclient2.controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -346,27 +346,27 @@
     </configuration>
     <configuration name="AdminClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="admin-client" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.adminclient.AdminClientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.adminclient.AdminClientApplication" />
     </configuration>
     <configuration name="Adminserver" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="admin-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.admin.AdminApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.admin.AdminApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="Client3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-client3" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.client3.Client3Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.client3.Client3Application" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="ConfigClient1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="config-client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.janloong.configclient.*" />
+          <option name="PATTERN" value="com.rzt.configclient.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.configclient.ConfigClientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.configclient.ConfigClientApplication" />
       <option name="ACTIVE_PROFILES" value="client1" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
@@ -374,11 +374,11 @@
       <module name="config-client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.janloong.configclient.*" />
+          <option name="PATTERN" value="com.rzt.configclient.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.configclient.ConfigClientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.configclient.ConfigClientApplication" />
       <option name="ACTIVE_PROFILES" value="client2" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
@@ -386,11 +386,11 @@
       <module name="config-server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.janloong.configserver.*" />
+          <option name="PATTERN" value="com.rzt.configserver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.configserver.ConfigServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.configserver.ConfigServerApplication" />
       <option name="ACTIVE_PROFILES" value="server1" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
@@ -398,56 +398,56 @@
       <module name="config-server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.janloong.configserver.*" />
+          <option name="PATTERN" value="com.rzt.configserver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.configserver.ConfigServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.configserver.ConfigServerApplication" />
       <option name="ACTIVE_PROFILES" value="server2" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="EurekaClient2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-client2" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaclient2.EurekaClient2Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaclient2.EurekaClient2Application" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="EurekaClient4Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-client4" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaclient4.EurekaClient4Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaclient4.EurekaClient4Application" />
     </configuration>
     <configuration name="EurekaServer-1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaserver.EurekaServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaserver.EurekaServerApplication" />
       <option name="ACTIVE_PROFILES" value="server1" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="EurekaServer-2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaserver.EurekaServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaserver.EurekaServerApplication" />
       <option name="ACTIVE_PROFILES" value="server2" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="EurekaServer-3" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaserver.EurekaServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaserver.EurekaServerApplication" />
       <option name="ACTIVE_PROFILES" value="server3" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="Eurekaprovide1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-provide" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaclient.EurekaClientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaclient.EurekaClientApplication" />
       <option name="ACTIVE_PROFILES" value="provide1" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="Eurekaprovide2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-provide" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaclient.EurekaClientApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.eurekaclient.EurekaClientApplication" />
       <option name="ACTIVE_PROFILES" value="provide2" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="ZuulApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-zuul" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.zuul.ZuulApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rzt.zuul.ZuulApplication" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />

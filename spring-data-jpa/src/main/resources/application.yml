@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url:  jdbc:mysql://127.0.0.1:3306/jpa?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+#    open-in-view: false
+    database: mysql
+  application:
+    name: jpa-doo
+  redis:
+    database: 0
+    host: 192.168.211.135
+    port: 6379
+#    password: janloongdoo
+    jedis:
+#    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+        max-wait: -1ms
+#      shutdown-timeout: 100ms
+#    timeout: 0
+logging:
+  level:
+     io.swagger: debug
+#    root: debug
+management:
+  endpoints:
+      web:
+        exposure:
+          include: "*"
+server:
+  port: 8888
+#  ssl:
+#    enabled: true
+#    key-password:
+#    key-store:
+#    key-store-type:
+#    key-store-password:
+#    key-store-provider:
+#  health:
+#    redis:
+#      enabled: true
+
