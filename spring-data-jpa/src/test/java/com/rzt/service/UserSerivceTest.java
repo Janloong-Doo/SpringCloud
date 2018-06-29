@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -197,5 +198,15 @@ public class UserSerivceTest {
         System.out.println("4: ");
         //user.ofNullable(user).map()
 
+    }
+
+    @Test
+    public void testasd() {
+        User test3 = userRepository.findTest3();
+        Stream<User> test4 = userRepository.findTest4();
+        //User user = test3.get();
+        System.out.println("==============");
+        System.out.println(test3.getName());
+        System.out.println(test3.getUserId());
     }
 }

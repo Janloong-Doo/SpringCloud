@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * jpa demo示例
@@ -34,4 +35,7 @@ public interface UserRepository extends JpaRepository<User, String>, JpaSpecific
 
     Optional<User> findByUserId(String userId);
 
+    @Query(value = "select u from #{#entityName} u where u.userId='001'")
+    User findTest3();
+    Stream<User> findTest4();
 }
