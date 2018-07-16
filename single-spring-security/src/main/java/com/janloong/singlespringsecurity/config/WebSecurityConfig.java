@@ -13,13 +13,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2018-07-12 16:04
  */
+
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        //super.configure(http);
+        http.csrf().disable();
+        //.authorizeRequests()
+        //.
     }
+
 
     /**
      * 配置用户认证方式和密码加密方式
@@ -41,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 });
     }
 
-    
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
