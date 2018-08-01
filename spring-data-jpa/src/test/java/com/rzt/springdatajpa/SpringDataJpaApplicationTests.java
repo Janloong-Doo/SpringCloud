@@ -3,6 +3,7 @@ package com.rzt.springdatajpa;
 import com.rzt.entity.User;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Optional;
 
 //@RunWith(SpringRunner.class)
@@ -36,4 +37,12 @@ public class SpringDataJpaApplicationTests {
         System.out.println(none);
     }
 
+    public static void main(String[] args) {
+        String url = "upload/bbeceee1-0cb5-4953-84b0-d9da62aec66f/9074b0e2-6131-4ea7-ac2c-161f998811c0/test.zip";
+        //String[] split = url.split("/");
+        //url.lastIndexOf("/");
+        int i = url.lastIndexOf("/");
+        String a = url.substring(0, url.lastIndexOf("/")).replace("upload", "prod") + File.separator + "index.html";
+        System.out.println(a);
+    }
 }

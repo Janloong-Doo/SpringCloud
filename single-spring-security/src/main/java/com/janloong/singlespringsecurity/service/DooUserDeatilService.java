@@ -1,15 +1,13 @@
 package com.janloong.singlespringsecurity.service;
 
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import com.janloong.singlespringsecurity.entity.User;
+import com.janloong.singlespringsecurity.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -17,14 +15,17 @@ import java.util.List;
  */
 @Service
 public class DooUserDeatilService implements UserDetailsService {
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        User user = userRepository.findOneByUsername(s);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户名不存在");
+        }
 
-        SimpleGrantedAuthority user = new SimpleGrantedAuthority("USER");
-        authorities.add(user);
-
-        return new User("janloong", "doo+", authorities);
+        return user;
     }
 }
