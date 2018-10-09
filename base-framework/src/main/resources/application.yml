@@ -1,0 +1,16 @@
+spring:
+  profiles:
+#    active: dev
+    active: prod
+
+#  http:
+#    encoding:
+#      charset: UTF-8
+#      force: true
+#      enabled: true
+#  messages:
+#    encoding: UTF-8
+#server:
+#  tomcat:
+#    uri-encoding: UTF-8
+#    active: prod

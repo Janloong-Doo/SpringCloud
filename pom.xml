@@ -13,15 +13,16 @@
 
     <modules>
         <module>eureka-server</module>
-        <module>eureka-provide</module>
-        <module>eureka-client2</module>
-        <module>eureka-client3</module>
-        <module>eureka-zuul</module>
-        <module>config-client</module>
-        <module>config-server</module>
-        <module>admin-server</module>
-        <module>admin-client</module>
-        <module>zipkin-server</module>
+        <!--<module>eureka-provide</module>-->
+        <!--<module>eureka-client2</module>-->
+        <!--<module>eureka-client3</module>-->
+        <!--<module>eureka-zuul</module>-->
+        <!--<module>config-client</module>-->
+        <!--<module>config-server</module>-->
+        <!--<module>admin-server</module>-->
+        <!--<module>admin-client</module>-->
+        <!--<module>zipkin-server</module>-->
+        <module>ss-zuul</module>
         <module>spring-data-jpa</module>
         <module>single-spring-security</module>
     </modules>
@@ -30,7 +31,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <!--<version>1.5.9.RELEASE</version>-->
-        <version>2.0.1.RELEASE</version>
+        <version>2.0.3.RELEASE</version>
         <!--<version>2.0.0.RELEASE</version>-->
     </parent>
 

@@ -9,15 +9,17 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2018-07-12 16:04
  */
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
+//@Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -38,17 +40,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
         http.csrf().disable()
-                //.authorizeRequests()
-                //.antMatchers("/logindoo")
-                //.permitAll()
-                //.anyRequest().authenticated()
-                //.and()
+                .authorizeRequests()
+                .antMatchers("/login/**"
+                        , "/oauth/**"
+                        , "/user"
+                        //, "/webjars/**"
+                        //, "/error/**"
+                        //, "/**"
+                        //, "/oauth/**"
+                        //, "/before"
+                        //,"/before2"
+                        //,"/oauth/authorize"
+                        //,"/oauth/confirm_access"
+                )
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
                 .formLogin()
-                //.loginProcessingUrl("logindoo")
+                //.loginProcessingUrl("doo")
                 .permitAll()
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/")
-                .and().authorizeRequests().anyRequest().authenticated()
+        //.and().authorizeRequests().anyRequest().authenticated()
         ;
     }
 
@@ -60,17 +74,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(dooUserDeatilService)
-                .passwordEncoder(new PasswordEncoder() {
-                    @Override
-                    public String encode(CharSequence charSequence) {
-                        return charSequence.toString() + "+";
-                    }
-
-                    @Override
-                    public boolean matches(CharSequence charSequence, String s) {
-                        return s.equals(charSequence.toString() + "+");
-                    }
-                });
+                .passwordEncoder(passwordEncoder())
+        //.passwordEncoder(new PasswordEncoder() {
+        //    @Override
+        //    public String encode(CharSequence charSequence) {
+        //        return charSequence.toString() + "+";
+        //    }
+        //
+        //    @Override
+        //    public boolean matches(CharSequence charSequence, String s) {
+        //        return s.equals(charSequence.toString() + "+");
+        //    }
+        //})
+        ;
     }
 
 
@@ -78,5 +94,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 }

@@ -3,7 +3,6 @@ package com.janloong.singlespringsecurity.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -18,27 +17,21 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
- * AuthorizationServerConfigurer
- * 需要配置三个配置-重写几个方法：
+ * AuthorizationServerConfigurer 需要配置三个配置-重写几个方法：
  * <p>
- * ClientDetailsServiceConfigurer：
- * 用来配置客户端详情服务（ClientDetailsService），客户端详情信息在这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息
+ * ClientDetailsServiceConfigurer： 用来配置客户端详情服务（ClientDetailsService），客户端详情信息在这里进行初始化，你能够把客户端详情信息写死在这里或者是通过数据库来存储调取详情信息
  * <p>
- * AuthorizationServerSecurityConfigurer：
- * 用来配置令牌端点(Token Endpoint)的安全约束.
+ * AuthorizationServerSecurityConfigurer： 用来配置令牌端点(Token Endpoint)的安全约束.
  * <p>
- * AuthorizationServerEndpointsConfigurer：
- * 用来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)。
+ * AuthorizationServerEndpointsConfigurer： 用来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)。
  * <p>
- * Created by xw on 2017/3/16.
- * 2017-03-16 22:28
+ * Created by xw on 2017/3/16. 2017-03-16 22:28
  */
 @EnableAuthorizationServer
 @Configuration
@@ -46,30 +39,80 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Autowired
     private DataSource dataSource;
-    // 注入认证管理器
     @Autowired
     private AuthenticationManager authenticationManager;
-//	private Base64UrlCodec base64UrlCodec = new Base64UrlCodec();
+    // 注入认证管理器
+    //	private Base64UrlCodec base64UrlCodec = new Base64UrlCodec();
 
+    /**
+     * 配置OAuth2的客户端相关信息
+     *
+     * @param clients
+     * @throws Exception
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // 使用特定的方式存储client detail
-        clients.withClientDetails(clientDetails());
+        //clients.withClientDetails(clientDetails())
+        clients.jdbc(dataSource)
+                // 使用内存存储clientId,secret
+                //clients.inMemory()
+                //client1   密码模式
+                //.withClient("doo-pass")
+                //.resourceIds("doo-pass")
+                //.secret("secret")
+                //.authorizedGrantTypes("password", "refresh_token")
+                ////.authorizedGrantTypes("password", "authorization_code", "refresh_token")
+                //.scopes("bar", "read", "write")
+                //.accessTokenValiditySeconds(3600) // 1 hour
+                //.refreshTokenValiditySeconds(2592000) // 30 days
+                //.redirectUris("127.0.0.1")
+                //.additionalInformation("janloong001")
+                ////client2  客户端模式
+                //.and()
+                //.withClient("doo-credentials")
+                //.redirectUris("127.0.0.1")
+                //.additionalInformation("janloong001")
+                //.resourceIds("doo-credentials")
+                //.secret("secret")
+                //.authorizedGrantTypes("client_credentials", "refresh_token")
+                //.scopes("bar", "read", "write")
+                ////.authorities("")
+                //.accessTokenValiditySeconds(3600) // 1 hour
+                //.refreshTokenValiditySeconds(2592000) // 30 days
+                ////
+                //.and()
+                //.withClient("doo-code")
+                //.redirectUris("127.0.0.1")
+                //.additionalInformation("loong")
+                //.resourceIds("doo-code")
+                //.secret("secret")
+                //.authorizedGrantTypes("authorization_code", "refresh_token")
+                //.scopes("bar", "read", "write")
+                ////.authorities("")
+                //.accessTokenValiditySeconds(3600) // 1 hour
+                //.refreshTokenValiditySeconds(2592000) // 30 days
+        ;
     }
 
-
+    /**
+     * 配置AuthorizationServerEndpointsConfigurer众多相关类，包括配置身份认证器， 配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory
+     *
+     * @param endpoints
+     * @throws Exception
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         //指定认证管理器
-        endpoints.authenticationManager(authenticationManager);
-        //指定token存储位置
-        endpoints.tokenStore(tokenStore());
+        endpoints.authenticationManager(authenticationManager)
+                //指定token存储位置
+                .tokenStore(tokenStore());
         // 自定义token生成方式
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(customerEnhancer(), accessTokenConverter()));
         endpoints.tokenEnhancer(tokenEnhancerChain);
 
-        // 配置TokenServices参数
+        //配置TokenServices参数
         DefaultTokenServices tokenServices = (DefaultTokenServices) endpoints.getDefaultAuthorizationServerTokenServices();
         tokenServices.setTokenStore(endpoints.getTokenStore());
         tokenServices.setSupportRefreshToken(true);
@@ -84,8 +127,14 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("permitAll()");
-        security.allowFormAuthenticationForClients();
+        //配置AuthorizationServer安全认证的相关信息，
+        //创建ClientCredentialsTokenEndpointFilter核心过滤器
+        security
+                .tokenKeyAccess("permitAll()")
+                //.tokenKeyAccess("isAuthenticated()")
+                //.checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients();
     }
 
 
@@ -125,10 +174,15 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Bean
     public TokenEnhancer accessTokenConverter() {
         final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        KeyStoreKeyFactory keyStoreKeyFactory =
-                new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
-        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));
-
+        //KeyStoreKeyFactory keyStoreKeyFactory =
+        //        new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());
+        //converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mytest"));
+        //非对称加密
+        //new RSAKeyValueResolver().engineGetProperty();
+        //KeyPair keyPair = new KeyPair();
+        //converter.setKeyPair();
+        //对称加密
+        converter.setSigningKey("janloongdoo");
         converter.setAccessTokenConverter(new CustomerAccessTokenConverter());
         return converter;
     }

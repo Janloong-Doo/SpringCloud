@@ -25,6 +25,12 @@ public class DooUserDeatilService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("用户名不存在");
         }
+        //User user = new User();
+        //user.setId(1001);
+        //user.setUsername("admin");
+        //user.setPassword("admin+");
+        //user.setName("janloongdoo");
+        //user.setCreateAt(new Date());
 
         return user;
     }

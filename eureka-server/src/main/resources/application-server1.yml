@@ -1,9 +1,9 @@
 eureka:
   client:
-#    fetch-registry: false
-#    register-with-eureka: false
-    service-url:
-      defaultZone: http://server2:8762/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://server2:8762/eureka/
 server:
   port: 8761
 

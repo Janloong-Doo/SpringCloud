@@ -22,7 +22,6 @@ import java.util.Map;
  */
 public class CustomerAccessTokenConverter extends DefaultAccessTokenConverter {
 
-
     public CustomerAccessTokenConverter() {
         super.setUserTokenConverter(new CustomerUserAuthenticationConverter());
     }
