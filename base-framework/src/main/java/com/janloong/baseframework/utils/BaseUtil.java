@@ -2,9 +2,9 @@ package com.janloong.baseframework.utils;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.rzt.zdhconsume.enums.RequestEnum;
-import com.rzt.zdhconsume.enums.ResultEnum;
-import com.rzt.zdhconsume.exception.BusinessException;
+import com.janloong.zdhconsume.enums.RequestEnum;
+import com.janloong.zdhconsume.enums.ResultEnum;
+import com.janloong.zdhconsume.exception.BusinessException;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>

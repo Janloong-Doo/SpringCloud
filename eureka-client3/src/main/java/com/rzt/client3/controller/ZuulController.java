@@ -1,4 +1,4 @@
-package com.rzt.client3.controller;
+package com.janloong.client3.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

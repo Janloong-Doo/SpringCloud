@@ -1,4 +1,4 @@
-package com.rzt.admin;
+package com.janloong.admin;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

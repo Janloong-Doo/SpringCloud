@@ -1,0 +1,19 @@
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Copyright (c) 2018  All Rights Reserved.
+# ProjectName: SpringCloud
+# FileName: configClient-dev.properties
+# Author: janloongdoo@gmail.com
+# Date: 18-10-12 \u4E0B\u53482:22
+# LastModify: 18-4-15 \u4E0B\u53488:42
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+doo: janloong-dev
+janloong:
+  eureka:
+    ip: 127.0.0.1
+    port:
+    urls:
+  database:
+    ip:
+    port:
+    url:

@@ -1,4 +1,4 @@
-package com.rzt.zipkinserver;
+package com.janloong.zipkinserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

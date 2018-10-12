@@ -1,4 +1,4 @@
-package com.rzt.zipkinserver;
+package com.janloong.zipkinserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

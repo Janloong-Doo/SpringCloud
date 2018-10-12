@@ -1,0 +1,8 @@
+FROM java:latest
+MAINTAINER janloongdoo@gmail.com
+ADD ss-user/target/ss-user-0.0.1-SNAPSHOT.jar /root
+WORKDIR /root
+EXPOSE 8082
+CMD ["java","-jar","ss-user-0.0.1-SNAPSHOT.jar"]
+#CMD ["nohup","java","-jar","ss-user-0.0.1-SNAPSHOT.jar","&"]
+#CMD ["java","-version"]

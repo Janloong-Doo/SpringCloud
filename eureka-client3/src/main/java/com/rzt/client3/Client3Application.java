@@ -1,4 +1,4 @@
-package com.rzt.client3;
+package com.janloong.client3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

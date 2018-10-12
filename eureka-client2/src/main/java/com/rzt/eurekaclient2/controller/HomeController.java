@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient2.controller;
+package com.janloong.eurekaclient2.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

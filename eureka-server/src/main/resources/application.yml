@@ -3,9 +3,9 @@
 #    service-url:
 #      defaultZone: http://localhost:8761/eureka/
 
-     # 单server时设置为false,禁止抓去注册信息
+# 单server时设置为false,禁止抓去注册信息
 #    fetch-registry: false
-     # 默认是否注册到eureka
+# 默认是否注册到eureka
 #    register-with-eureka: false
 
 #  server:
@@ -30,6 +30,6 @@ info: #定义各种额外的详情给服务端显示
 
 management:
   endpoints:
-      web:
-        exposure:
-          include: "*"
+    web:
+      exposure:
+        include: "*"

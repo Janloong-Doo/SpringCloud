@@ -1,22 +1,16 @@
-#spring.application.name=config-client
-#spring.cloud.config.label=master
-#spring.cloud.config.profile=dev
-#spring.cloud.config.uri= http://localhost:8888/
-#server.port=8772
-#spring:
-#  config:
-#    name: configClient
 spring:
   profiles:
     active: client1
-  rabbitmq:
-    port: 5672
-    host: 127.0.0.1
-    username: guest
-    password: guest
+#  rabbitmq:
+#    port: 5672
+#    host: 127.0.0.1
+#    username: guest
+#    password: guest
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+from:
+  config-server: ${janloong.eureka.ip}

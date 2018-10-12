@@ -1,4 +1,4 @@
-package com.rzt.admin;
+package com.janloong.admin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

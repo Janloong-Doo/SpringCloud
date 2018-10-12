@@ -1,0 +1,65 @@
+server:
+  #  port: 11001
+  port: 8081
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    #    active: dev
+    active: prod
+  http:
+    encoding:
+      charset: utf-8
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          authorization-uri: http://127.0.0.1:8080/authcenter/oauth/authorize
+#          token-uri: http://127.0.0.1:8080/authcenter/oauth/check_token
+#          user-info-uri: http://127.0.0.1:8080/authcenter/user
+#          jwk-set-uri:
+#          user-name-attribute:
+
+#security:
+#  auth:
+#    server: http://localhost:8080
+#oauth2
+security:
+  oauth2:
+    #    authorization:
+    #      check-token-access:
+    #      token-key-access:
+    resource:
+      #      id: zuul-doo
+      #      service-id: authcenter
+      #      token-info-uri: http://localhost:${server.port}/authcenter/oauth/check_token #网关地址负载认证中心服务
+      token-info-uri: http://${custom.server}:${server.port}/authcenter/oauth/check_token #网关地址负载认证中心服务
+      #      prefer-token-info: true
+      #      user-info-uri: http://localhost:${server.port}/authcenter/user
+      prefer-token-info: true
+    #      id: doo-credentials
+    client:
+      #      id: doo-zuul
+      clientId: doo-zuul-id
+      client-secret: secret-zuul
+      user-authorization-uri: http://${custom.server}:${server.port}/authcenter/oauth/authorize #网关地址负载认证中心服务
+      access-token-uri: http://${custom.server}:${server.port}/authcenter/oauth/token #网关地址负载认证中心服务
+#  sessions: always
+#proxy
+
+management:
+  endpoints:
+    web:
+      #      base-path: /
+      exposure:
+        include: "*"
+
+info: #定义各种额外的详情给服务端显示
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+    
+custom:
+  server: 192.168.211.135

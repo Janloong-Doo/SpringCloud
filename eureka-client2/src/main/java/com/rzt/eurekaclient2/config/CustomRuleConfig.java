@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient2.config;
+package com.janloong.eurekaclient2.config;
 
 
 import com.netflix.loadbalancer.IRule;

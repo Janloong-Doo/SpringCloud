@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient.controller;
+package com.janloong.eurekaclient.controller;
 
 
 import org.springframework.beans.factory.annotation.Value;

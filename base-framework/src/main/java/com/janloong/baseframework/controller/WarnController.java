@@ -2,9 +2,9 @@ package com.janloong.baseframework.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.rzt.zdhconsume.utils.BaseUtil;
-import com.rzt.zdhconsume.utils.HttpsUtils;
-import com.rzt.zdhconsume.utils.WebApiResponse;
+import com.janloong.zdhconsume.utils.BaseUtil;
+import com.janloong.zdhconsume.utils.HttpsUtils;
+import com.janloong.zdhconsume.utils.WebApiResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

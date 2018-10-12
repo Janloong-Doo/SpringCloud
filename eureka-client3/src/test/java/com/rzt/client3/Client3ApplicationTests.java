@@ -1,4 +1,4 @@
-package com.rzt.client3;
+package com.janloong.client3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

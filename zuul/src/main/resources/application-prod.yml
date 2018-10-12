@@ -1,0 +1,98 @@
+
+spring:
+  application:
+    name: api-gateway
+  datasource:
+    #        type: com.alibaba.druid.pool.DruidDataSource
+#    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://192.168.211.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: doo
+    password: doo
+#    username: root
+#    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 50Mb
+      max-request-size: 50Mb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+eureka:
+  #  instance:
+  #    preferIpAddress: true
+  #    instance-id: 168.130.6.55:8081
+  client:
+    serviceUrl:
+      #      defaultZone: http://10.33.1.160:8082/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://192.168.211.135:8761/eureka/
+    #服务消费者 发现服务
+    fetch-registry: true
+    #服务消费者 刷新服务清单的缓存时间 默认为30秒
+    registry-fetch-interval-seconds: 10
+
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 15000
+  ConnectTimeout: 3000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+zuul:
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+    max-total-connections: 5000
+    max-per-route-connections: 500
+  #  routes:
+  #    authcenter:
+  #      path: /authcenter/**
+  #      serviceId: authcenter
+  #    usercenter:
+  #      path: /usercenter/**
+  #      serviceId: usercenter
+  #    datasync:
+  #      path: /datasync/**
+  #      serviceId: datasync
+  #    img:
+  #      path: /img/**
+  #      url: http://localhost:9090/img
+  #    upload:
+  #      path: /upload/**
+  #      url: http://localhost:9090/upload
+  #    prod:
+  #      path: /prod/**
+  #      url: http://localhost:9090/prod
+  #    qt:
+  #      path: /qt/**
+  #      url: http://localhost:9090/qt
+  #    hangzhoubaogongdian:
+  #      path: /hangzhoubaogongdian/**
+  #      url: http://10.33.1.187:11001/hangzhoubaogongdian
+
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+  add-proxy-headers: true
+
+#    h5:
+#      path: /
+#      url: http://168.130.1.33:9090
+#management:
+#logging:
+#  level:
+#    com.netflix.zuul.*: debug
+#  port: 8821
+#debug: true

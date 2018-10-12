@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>base-framework</name>
-    <description>Demo project for Spring Boot</description>
+    <description>基础spring boot 脚手架</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

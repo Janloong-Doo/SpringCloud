@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient.health;
+package com.janloong.eurekaclient.health;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Status;

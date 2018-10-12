@@ -1,4 +1,4 @@
-package com.rzt.client3.controller.feign;
+package com.janloong.client3.controller.feign;
 
 
 import org.springframework.stereotype.Component;

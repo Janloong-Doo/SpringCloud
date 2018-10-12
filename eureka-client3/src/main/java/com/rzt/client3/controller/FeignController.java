@@ -1,8 +1,8 @@
-package com.rzt.client3.controller;
+package com.janloong.client3.controller;
 
 
-import com.rzt.client3.controller.feign.FeignInterface;
-import com.rzt.client3.controller.feign.HomeInterface;
+import com.janloong.client3.controller.feign.FeignInterface;
+import com.janloong.client3.controller.feign.HomeInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

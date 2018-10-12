@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: usercenter
+  #  profiles:
+  #    active: dev
+  cloud:
+    config:
+      label: master
+      #      这个配置才是调用服务中心的多环境配置文件的选择项，不同于spring.profiles.active 。
+      profile: test
+      #      uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
+      discovery:
+        enabled: true
+        serviceId: config-server
+
+#server:
+#  port: 8773
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
+      defaultZone: http://localhost:8761/eureka
+      #      defaultZone: http://${janloong.eureka.ip}:8761/eureka

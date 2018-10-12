@@ -1,6 +1,6 @@
-package com.rzt.eurekaclient.health;
+package com.janloong.eurekaclient.health;
 
-import com.rzt.eurekaclient.controller.HomeController;
+import com.janloong.eurekaclient.controller.HomeController;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.actuate.health.Status;

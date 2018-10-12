@@ -13,7 +13,7 @@ spring:
 server:
   port: 8081
   servlet:
-    context-path: /rzt
+    context-path: /janloong
 mybatis:
   check-config-location: true
   mapper-locations: classpath:mybatis/mapper/*.xml

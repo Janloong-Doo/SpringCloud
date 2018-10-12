@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient;
+package com.janloong.eurekaclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

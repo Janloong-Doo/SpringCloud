@@ -1,30 +1,16 @@
-#spring.application.name=config-client
-#spring.cloud.config.label=master
-#spring.cloud.config.profile=dev
-#spring.cloud.config.uri= http://localhost:8888/
-#server.port=8772
-
-#eureka.client.serviceUrl.defaultZone=http://localhost:8889/eureka/
-#spring.cloud.config.discovery.enabled=true
-#spring.cloud.config.discovery.serviceId=config-server
-#spring.application.name=configClient
-#spring.cloud.config.label=master
-#spring.cloud.config.profile=dev
-#spring.cloud.config.uri= http://localhost:8888/
-#server.port=8772
 spring:
   application:
     name: configClient
-#  profiles:
-#    active: dev
+  #  profiles:
+  #    active: dev
   cloud:
     config:
       label: master
-#      这个配置才是调用服务中心的多环境配置文件的选择项，不同于spring.profiles.active 。
+      #      这个配置才是调用服务中心的多环境配置文件的选择项，不同于spring.profiles.active 。
       profile: test
+      #      uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
       discovery:
         enabled: true
-#      uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
         serviceId: config-server
 
 #server:
@@ -32,4 +18,5 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
+      #      defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
+      defaultZone: http://localhost:8761/eureka

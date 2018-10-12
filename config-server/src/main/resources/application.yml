@@ -2,33 +2,45 @@ spring:
   application:
     name: config-server
   profiles:
-    active: server1
+    active: native
   cloud:
     config:
-#         name: configClient
+      #         name: configClient
       server:
-         git:
-#           uri:  git@192.168.211.129:configCenter.git
-           uri:  https://gitlab.com/Janloong-Doo/config-repo.git
-           default-label: master
-           username: xxx
-           password: xxx
-#           username: git
-#           password: git
-#           search-paths: config-repo
-#           clone-on-start: true
-#           native:
-#             search-locations: E:\Projects\cloud\configCenter
-#             default-label: asd
-#
-#  profiles:
-#    active: dev
+        #        git:
+        #          uri:  file:///E://Projects//config-repo//{application}
+        #          uri:  git@192.168.211.129:configCenter.git
+        #          uri:  https://gitlab.com/Janloong-Doo/config-repo.git
+        #          default-label: master
+        #          username: git
+        #          password: git
+        #          search-paths: config-repo
+        #          clone-on-start: true
+
+        #        本地策略时需要激活profile native
+        native:
+          search-locations: file:///${doo.home}/config-repo
+        #          default-label: master
+        #          自定义多仓库匹配
+#        repos:
+#          simple: https://github.com/simple/config-repo
+#          special:
+#            pattern: special*/dev*,*special*/dev*
+#            uri: https://github.com/special/config-repo
+#          local:
+#            pattern: local*
+#            uri: file:/home/configsvc/config-repo
 
 #actuator
 #endpoints.mappings.sensitive=false  关闭单个的
 #management.security.enabled=false  关闭所有鉴权
 
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+#eureka:
+#  client:
+#    service-url:
+      #      default-zone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+#      default-zone: http://localhost:8761/eureka/
+doo:
+  home: E:/Projects/SpringCloud
+server:
+  port: 8888

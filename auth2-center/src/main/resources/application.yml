@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: authcenter
+  datasource:
+    #    url: jdbc:mysql://192.168.211.135:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    #    username: doo
+    #    password: doo
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: 192.168.211.135
+    port: 6379
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: 192.168.211.1:${server.port}
+  client:
+    serviceUrl:
+      #      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://192.168.211.135:8761/eureka/
+logging:
+  level:
+    org.springframework.security: DEBUG
+#
+#security:
+#  oauth2:
+#    resource:
+#      filter-order: 3

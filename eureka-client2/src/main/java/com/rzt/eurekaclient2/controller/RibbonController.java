@@ -1,4 +1,4 @@
-package com.rzt.eurekaclient2.controller;
+package com.janloong.eurekaclient2.controller;
 
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
