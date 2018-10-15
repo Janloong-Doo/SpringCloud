@@ -9,17 +9,17 @@
     <packaging>pom</packaging>
 
     <name>cloud</name>
-    <description>Demo project for Spring Cloud</description>
+    <description>spring cloud 个人学习项目</description>
 
     <modules>
         <module>eureka-server</module>
-        <!--<module>eureka-provide</module>-->
-        <!--<module>eureka-client2</module>-->
-        <!--<module>eureka-client3</module>-->
+        <module>eureka-provide</module>
+        <module>eureka-client2</module>
+        <module>eureka-client3</module>
         <module>config-client</module>
         <module>config-server</module>
-        <!--<module>admin-server</module>-->
-        <!--<module>admin-client</module>-->
+        <module>admin-server</module>
+        <module>admin-client</module>
         <!--<module>zipkin-server</module>-->
         <module>zuul</module>
         <module>spring-data-jpa</module>

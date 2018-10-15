@@ -17,8 +17,10 @@ public class HomeController {
     //@Value("${doo}")
     private String test;
 
-    @Value("${dooo.custom}")
+    @Value("${from.config-server}")
     private String ss;
+    @Value("${eurekaUrl}")
+    private String sss;
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -26,7 +28,7 @@ public class HomeController {
      **/
     @RequestMapping("/home")
     public String home() {
-        return "请求成功: " + ss;
+        return "请求成功: " + ss + ":" + sss;
     }
 
     @RequestMapping("/home2")

@@ -1,18 +1,18 @@
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka/
+eureka:
+  server:
+#    默认跟新节点变化信息时间
+    PeerEurekaNodesUpdateIntervalMs: 5000
 
 # 单server时设置为false,禁止抓去注册信息
 #    fetch-registry: false
 # 默认是否注册到eureka
 #    register-with-eureka: false
 
-#  server:
+#server:
 #  自我保护模式关闭
-#    enable-self-preservation: false
+    enable-self-preservation: false
 #
-#    eviction-interval-timer-in-ms: 5000
+    eviction-interval-timer-in-ms: 5000
 #server:
 #  port: 8761
 spring:

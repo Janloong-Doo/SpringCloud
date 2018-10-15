@@ -1,11 +1,11 @@
 spring:
   profiles:
     active: client1
-#  rabbitmq:
-#    port: 5672
-#    host: 127.0.0.1
-#    username: guest
-#    password: guest
+  rabbitmq:
+    port: ${janloong.rabbitmq.port}
+    host: ${janloong.rabbitmq.ip}
+    username: ${janloong.rabbitmq.username}
+    password: ${janloong.rabbitmq.password}
 
 management:
   endpoints:

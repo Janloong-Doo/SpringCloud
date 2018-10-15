@@ -1,24 +1,45 @@
-#spring:
-#  application:
-#    name: usercenter
-#eureka:
-#  instance:
-#    preferIpAddress: true
-#    instance-id: 168.130.6.55:8081
-#  client:
-#    serviceUrl:
-#      defaultZone: http://10.33.1.160:8082/eureka/
-#      defaultZone: http://localhost:8761/eureka/
-#      defaultZone: http://192.168.211.1:8761/eureka/
-#      defaultZone: http://${janloong.eureka.ip}:8761/eureka
 server:
   port: 8082
+spring:
+  application:
+    name: usercenter
+  profiles:
+    active: dev
+  cloud:
+    config:
+      label: master
+      profile: test
+      #   uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
+      discovery:
+        enabled: true
+        serviceId: config-server
+      name: ${spring.application.name},common
+  rabbitmq:
+    port: ${janloong.rabbitmq.port}
+    host: ${janloong.rabbitmq.ip}
+    username: ${janloong.rabbitmq.username}
+    password: ${janloong.rabbitmq.password}
+  zipkin:
+    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}
+eureka:
+  instance:
+    preferIpAddress: true
+    #      instance-id: ${janloong.eureka.ip}:${server.port}
+    instance-id: 127.0.0.1:8761
+  client:
+    service-url:
+      #      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
+      defaultZone: http://127.0.0.1:8761/eureka
+#info: #定义各种额外的详情给服务端显示
+#  app:
+#    name: "@project.name@" #从pom.xml中获取
+#    description: "@project.description@"
+#    version: "@project.version@"
+#    spring-boot-version: "@project.parent.version@"
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-dooo:
-  #    custom: asd
-  custom: ${janloong.eureka.ip}
+from:
+  config-server: ${janloong.eureka.ip}

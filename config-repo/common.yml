@@ -1,0 +1,20 @@
+eurekaUrl: 123445534
+janloong:
+  eureka:
+    ip: 127.0.0.1
+    port: 8761
+    other-urls:
+  database:
+    ip:
+    port:
+    url:
+  authcenter:
+    ip: 192.168.211.135
+  rabbitmq:
+    ip: 192.168.211.135
+    port: 5672
+    username: guest
+    password: guest
+  zipkin:
+    ip: 192.168.211.135
+    port: 9411

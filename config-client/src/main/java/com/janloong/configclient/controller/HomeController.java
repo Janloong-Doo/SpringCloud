@@ -24,6 +24,11 @@ public class HomeController {
      */
     @Value("${from.config-server}")
     private String cus;
+    /**
+     * 公共配置文件
+     */
+    @Value("${eurekaUrl}")
+    private String eurekaUrl;
 
 
     /**
@@ -32,6 +37,6 @@ public class HomeController {
      **/
     @RequestMapping("/test")
     public String test(String name) {
-        return test + "=" + cus;
+        return test + "=" + cus + "=" + eurekaUrl;
     }
 }

@@ -1,15 +1,14 @@
-
 spring:
   application:
     name: api-gateway
   datasource:
     #        type: com.alibaba.druid.pool.DruidDataSource
-#    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    #    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     url: jdbc:mysql://192.168.211.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: doo
     password: doo
-#    username: root
-#    password: root
+    #    username: root
+    #    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
@@ -20,20 +19,18 @@ spring:
       ddl-auto: update
     database: mysql
 eureka:
-  #  instance:
-  #    preferIpAddress: true
-  #    instance-id: 168.130.6.55:8081
+  instance:
+    preferIpAddress: true
+    instance-id: ${janloong.eureka.ip}:${server.port}
   client:
     serviceUrl:
       #      defaultZone: http://10.33.1.160:8082/eureka/
-#      defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://192.168.211.135:8761/eureka/
+      #      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
     #服务消费者 发现服务
     fetch-registry: true
     #服务消费者 刷新服务清单的缓存时间 默认为30秒
     registry-fetch-interval-seconds: 10
-
-
 
 hystrix:
   command:
@@ -73,15 +70,6 @@ zuul:
   #    upload:
   #      path: /upload/**
   #      url: http://localhost:9090/upload
-  #    prod:
-  #      path: /prod/**
-  #      url: http://localhost:9090/prod
-  #    qt:
-  #      path: /qt/**
-  #      url: http://localhost:9090/qt
-  #    hangzhoubaogongdian:
-  #      path: /hangzhoubaogongdian/**
-  #      url: http://10.33.1.187:11001/hangzhoubaogongdian
 
   sensitive-headers: Access-Control-Allow-Origin
   ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken

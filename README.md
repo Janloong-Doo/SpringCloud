@@ -8,24 +8,21 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 
     
     相关环境： 
-    idea 2018.1
+    idea 2018.2.4
     jdk 1.8
-    springboot 2.0.1.release
-    springcloud Finchley.BUILD-SNAPSHOT
-    springbootadmin 2.0.0.spnashot
+    springboot 2.0.5.release
+    springcloud Finchley.SR1
+    springbootadmin 2.0.3
     
 ## update 
-    2018.04.19 分布式服务追踪zipkin(web,rabbitmq)接入
-    2018.04.18 rabbitmq代理的消息总线接入
-    2018.04.18 高可用config-server,服务隔离测试
-   
+    升级版本，并以测试状态整合入spring cloud security oauth2 ...
 
 ## 模块描述
 
 |模块|描述|端口|多配置|集成|
 |:---|:---|:---|:---|:---|
 |admin-client|admin客户端 - 官方配置方式 |8890|-|这个是admin官方给出的一个客户端配置方式之一，里面会有比较完备的actuator实现效果，在通过discovery方式配置客户端方式的时候可以作参考|
-|admin-server|admin服务端|8889|-|admin官方最高RELEASE版本为1.5.7，对应的springboot相关依赖为1.5.9版本，官方新的2.0.0（对应springboot 2.0.1 ，spring官方应该在2.x阶段更推荐2.0.1）版本暂未发布release版本，需要访问国外镜像去拿到snapshot版本 |
+|admin-server|admin服务端|8889|-|使用的最新版本2.0.3|
 |config-server |高可用配置中心服务端|8888,8892|server1,server2||
 |config-client |高可用配置中心客户端|8773,8893|client1,client2||
 |eureka-server |高可用注册中心|8761,8762|server1,server2||
@@ -33,16 +30,16 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 |eureka-client2 |Ribbon+rest方式的客户端|8765|-|集成hystrix,ribbon,zipkin,rabbitmq|
 |eureka-client3 |Feign方式的客户端|8766,8821(独立management端口)|-|集成hystrix,openfeign,hystrix dashboard|
 |eureka-client4 |普通客户端为了配合admin低版本的测试，独立pom依赖|8891|-||
-|eureka-zuul |网关路由|8767|-||
-|zipkin-server |服务追踪中心|9411|-|因版本为题采用的独立pom依赖|
+|spring-data-jpa|spring data jpa 的相关知识点汇总与应用|8891|-||
+|auth2-center|oauth2授权鉴权中心|8891|-||
+|zuul|网关路由|8767|-||
+|confg-repo|配置中心引用的本地文件|-|-|-|
+|zipkin-server |服务追踪中心|9411|-|独立模块,官方提供的jar包直接运行即可访问，无需开发。|
 
 
 ## 问题记录
 > 望相互学习，多多指教
 
-1. config-server 中git的Uri连接本地 git@xxx:/repo 读取不到配置文件，未知协议原因或本地原因
-2. 经部分测试，混合版本的时候依旧可以使用，但在actuator检测的时候因为1.x,2.x的默认访问路径不同在这里需要配置management的basepath,部分endpoints正常，其余的可能需要单独配置路径
-3. eureka1.x服务集群与eureka2.x的放在部署至同一台服务器时出现服务的交叉注册问题。 
 4. 使用rabbitmq作为代理的SpringCloud消息总线的时候。(该项仅仅为小规模测试记录,概率性)
 
    一是关于@RefreshScope的作用域问题，不能在启动类MainApplication使用，首先要满足的是在使用动态配置的地方使用该注解，该注解在bean相关的作用域依然可能会有其它问题。
