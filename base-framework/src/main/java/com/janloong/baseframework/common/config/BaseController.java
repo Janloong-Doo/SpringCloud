@@ -1,4 +1,4 @@
-package com.janloong.baseframework.config;
+package com.janloong.baseframework.common.config;
 
 
 import javax.annotation.Resource;

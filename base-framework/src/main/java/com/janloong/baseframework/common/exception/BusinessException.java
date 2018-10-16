@@ -1,7 +1,7 @@
-package com.janloong.baseframework.exception;
+package com.janloong.baseframework.common.exception;
 
 
-import com.janloong.baseframework.enums.ResultEnum;
+import com.janloong.baseframework.common.enums.ResultEnum;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>

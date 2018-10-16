@@ -1,4 +1,4 @@
-package com.janloong.baseframework.enums;
+package com.janloong.baseframework.common.enums;
 
 /**
  * 处理结果类型管理

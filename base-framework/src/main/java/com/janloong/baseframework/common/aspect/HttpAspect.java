@@ -1,4 +1,4 @@
-package com.janloong.baseframework.aspect;
+package com.janloong.baseframework.common.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;

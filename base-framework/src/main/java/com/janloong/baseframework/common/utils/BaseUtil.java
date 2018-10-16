@@ -1,4 +1,4 @@
-package com.janloong.baseframework.utils;
+package com.janloong.baseframework.common.utils;
 
 
 import com.alibaba.fastjson.JSONObject;

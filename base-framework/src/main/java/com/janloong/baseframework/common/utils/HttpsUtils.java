@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.janloong.baseframework.utils;
+package com.janloong.baseframework.common.utils;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

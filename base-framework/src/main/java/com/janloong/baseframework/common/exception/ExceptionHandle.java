@@ -1,6 +1,6 @@
-package com.janloong.baseframework.exception;
+package com.janloong.baseframework.common.exception;
 
-import com.janloong.baseframework.utils.WebApiResponse;
+import com.janloong.baseframework.common.utils.WebApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;

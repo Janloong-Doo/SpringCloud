@@ -1,4 +1,4 @@
-package com.janloong.baseframework.enums;
+package com.janloong.baseframework.common.enums;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>

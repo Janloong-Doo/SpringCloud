@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.janloong.baseframework.utils;
+package com.janloong.baseframework.common.utils;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
