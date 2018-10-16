@@ -37,7 +37,7 @@ management:
         exposure:
           include: "*"
 server:
-  port: 8888
+  port: 8767
 #  ssl:
 #    enabled: true
 #    key-password:
