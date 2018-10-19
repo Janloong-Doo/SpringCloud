@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class HomeController {
 
-    //@Value("${doo}")
-    private String test;
+    @Value("${janloong.eureka.port}")
+    private String eurekaPort;
 
-    @Value("${from.config-server}")
-    private String ss;
-    @Value("${eurekaUrl}")
-    private String sss;
+    @Value("${janloong.eureka.ip}")
+    private String eurekaUrl;
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -28,11 +26,11 @@ public class HomeController {
      **/
     @RequestMapping("/home")
     public String home() {
-        return "请求成功: " + ss + ":" + sss;
+        return "请求成功: " + ":" + eurekaPort;
     }
 
     @RequestMapping("/home2")
     public String home2() {
-        return "请求成功: " + test;
+        return "请求成功: " + eurekaUrl;
     }
 }

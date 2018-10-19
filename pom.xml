@@ -20,13 +20,15 @@
         <module>config-server</module>
         <module>admin-server</module>
         <module>admin-client</module>
-        <!--<module>zipkin-server</module>-->
         <module>zuul</module>
         <module>spring-data-jpa</module>
         <module>auth2-center</module>
         <module>user</module>
+        <!--spring cloud Finchley版本后，zipkin可以直接使用官方提供的可执行jar包，无需再开发-->
+        <!--<module>zipkin-server</module>-->
     </modules>
 
+    <!--spring boot 基础依赖-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -38,7 +40,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
+        <spring.boot.version>2.0.6.RELEASE</spring.boot.version>
 
     </properties>
     <dependencies>
@@ -57,6 +59,7 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+            <!--spring cloud 基础依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

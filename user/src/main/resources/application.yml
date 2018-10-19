@@ -30,16 +30,14 @@ eureka:
     service-url:
       #      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
       defaultZone: http://127.0.0.1:8761/eureka
-#info: #定义各种额外的详情给服务端显示
-#  app:
-#    name: "@project.name@" #从pom.xml中获取
-#    description: "@project.description@"
-#    version: "@project.version@"
-#    spring-boot-version: "@project.parent.version@"
+info: #定义各种额外的详情给服务端显示
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-from:
-  config-server: ${janloong.eureka.ip}
