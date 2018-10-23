@@ -18,8 +18,8 @@ spring:
 eureka:
   instance:
     appname: ${spring.application.name}
-#    preferIpAddress: true
-#    instance-id: ${janloong.eureka.ip}:${server.port}
+  #    preferIpAddress: true
+  #    instance-id: ${janloong.eureka.ip}:${server.port}
   client:
     service-url:
       defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}

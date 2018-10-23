@@ -8,12 +8,3 @@
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 doo: janloong-test v 1.9
-janloong:
-  eureka:
-    ip: 127.0.0.1
-    port:
-    urls:
-  database:
-    ip:
-    port:
-    url:

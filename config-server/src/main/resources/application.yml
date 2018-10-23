@@ -22,25 +22,35 @@ spring:
           search-locations: file:///${doo.home}/config-repo
         #          default-label: master
         #          自定义多仓库匹配
-#        repos:
-#          simple: https://github.com/simple/config-repo
-#          special:
-#            pattern: special*/dev*,*special*/dev*
-#            uri: https://github.com/special/config-repo
-#          local:
-#            pattern: local*
-#            uri: file:/home/configsvc/config-repo
+      #        repos:
+      #          simple: https://github.com/simple/config-repo
+      #          special:
+      #            pattern: special*/dev*,*special*/dev*
+      #            uri: https://github.com/special/config-repo
+      #          local:
+      #            pattern: local*
+      #            uri: file:/home/configsvc/config-repo
 
-#actuator
-#endpoints.mappings.sensitive=false  关闭单个的
-#management.security.enabled=false  关闭所有鉴权
+      #actuator
+      #endpoints.mappings.sensitive=false  关闭单个的
+      #management.security.enabled=false  关闭所有鉴权
 
-#eureka:
-#  client:
-#    service-url:
+      #eureka:
+      #  client:
+      #    service-url:
       #      default-zone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
 #      default-zone: http://localhost:8761/eureka/
 doo:
   home: E:/Projects/SpringCloud
 server:
   port: 8888
+eureka:
+  instance:
+    appname: ${spring.application.name}
+  #    preferIpAddress: true
+  #    instance-id: localhost:${server.port}
+  #    instance-id: ${janloong.eureka.ip}:${server.port}
+  client:
+    service-url:
+      #      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
+      defaultZone: http://localhost:8762/eureka

@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #是否与服务发现组件相结合,通过serviceId转发到服务实例. true即为自动根据service-id进行路由转发
+#      routes:
+#      - id: baidu #转发路由到百度
+#        uri: http://www.baidu.com
+#        predicates:
+#        - path: /doo
+#        - weigth: provide,90
+#      - id: provide2
+#        uri: http://localhost:8082
+#        predicates:
+#        - path: /test
+#        - weigth: provide,10
+#    config:
+#      label: master
+#      profile: test
+#      #   uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
+#      discovery:
+#        enabled: true
+#        serviceId: config-server
+#      name: ${spring.application.name},common
+#分割线
+#  rabbitmq:
+#    port: ${janloong.rabbitmq.port}
+#    host: ${janloong.rabbitmq.ip}
+#    username: ${janloong.rabbitmq.username}
+#    password: ${janloong.rabbitmq.password}
+#  zipkin:
+#    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}

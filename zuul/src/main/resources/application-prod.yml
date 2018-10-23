@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: api-gateway
   datasource:
     #        type: com.alibaba.druid.pool.DruidDataSource
     #    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC

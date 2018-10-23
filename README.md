@@ -32,6 +32,8 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 |spring-data-jpa|spring data jpa 的相关知识点汇总与应用|8767|-|持久层使用的jpa,包含相关方式的使用，实体的映射初步使用等9|
 |auth2-center|oauth2授权鉴权中心|8080|-|集成spring cloud security oauth2|
 |zuul|网关路由|8081|-|自定义动态路由，oauth2资源服务控制|
+|user|用户测试|8083|-|普通微服务|
+|gateway|网关路由|8082|-|spring 的网关路由|
 |confg-repo|配置中心引用的本地文件|-|-|本地文件配置，配置中心支持多种文件配置格式,目录结构|
 |base-framework|基础单服务脚手架|-|-|集成常用工具类，异常处理，结果集封装,common下可提取为基础依赖供多服务使用|
 |zipkin-server |服务追踪中心|9411|-|独立模块,官方提供的jar包直接运行即可访问，已无需开发。|

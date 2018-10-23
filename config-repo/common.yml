@@ -1,8 +1,8 @@
 eurekaUrl: 123445534
 janloong:
   eureka:
-    ip: 127.0.0.1
-    port: 8761
+    ip: janloongdoo
+    port: 8762
     other-urls:
   database:
     ip:

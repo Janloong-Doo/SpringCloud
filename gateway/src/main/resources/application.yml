@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: dev
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#    instance-id: ${janloong.eureka.ip}:${server.port}
+##    instance-id: 127.0.0.1:8761
+#  client:
+#    service-url:
+#      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
+#      defaultZone: http://127.0.0.1:8761/eureka
