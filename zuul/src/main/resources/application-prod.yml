@@ -16,20 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
     database: mysql
-eureka:
-  instance:
-    preferIpAddress: true
-    instance-id: ${janloong.eureka.ip}:${server.port}
-  client:
-    serviceUrl:
-      #      defaultZone: http://10.33.1.160:8082/eureka/
-      #      defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
-    #服务消费者 发现服务
-    fetch-registry: true
-    #服务消费者 刷新服务清单的缓存时间 默认为30秒
-    registry-fetch-interval-seconds: 10
-
 hystrix:
   command:
     default:

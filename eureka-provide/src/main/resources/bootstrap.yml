@@ -20,11 +20,9 @@ spring:
     username: ${janloong.rabbitmq.username}
     password: ${janloong.rabbitmq.password}
   zipkin:
+    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}
     sender:
       type: rabbit
-    #    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}
-    base-url: http://192.168.211.1:9411/
-#    base-url: http://192.168.211.135:9411
   sleuth:
     sampler:
       probability: 0.5

@@ -47,7 +47,7 @@ server:
 eureka:
   instance:
     appname: ${spring.application.name}
-  #    preferIpAddress: true
+    preferIpAddress: true
   #    instance-id: localhost:${server.port}
   #    instance-id: ${janloong.eureka.ip}:${server.port}
   client:

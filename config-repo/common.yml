@@ -1,7 +1,7 @@
 eurekaUrl: 123445534
 janloong:
   eureka:
-    ip: janloongdoo
+    ip: localhost
     port: 8762
     other-urls:
   database:

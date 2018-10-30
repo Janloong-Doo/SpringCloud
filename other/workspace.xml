@@ -355,7 +355,7 @@
     </configuration>
     <configuration name="Client3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-client3" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.client3.Client3Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Client3Application" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="ConfigClient1" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -408,7 +408,7 @@
     </configuration>
     <configuration name="EurekaClient2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-client2" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.janloong.eurekaclient2.EurekaClient2Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="EurekaClient2Application" />
       <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <configuration name="EurekaClient4Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
