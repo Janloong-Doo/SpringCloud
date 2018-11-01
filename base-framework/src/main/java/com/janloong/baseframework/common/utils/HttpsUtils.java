@@ -5,6 +5,7 @@
 
 package com.janloong.baseframework.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -21,8 +22,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.CharsetUtils;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -38,8 +37,8 @@ import java.util.Map;
  * @author Janloong
  * @create 2017-12-19 11:26
  **/
+@Slf4j
 public class HttpsUtils {
-    private static final Logger logger = LoggerFactory.getLogger(HttpsUtils.class);
 
     public HttpsUtils() {
     }
@@ -117,7 +116,7 @@ public class HttpsUtils {
             String result = EntityUtils.toString(entity);
             return result;
         } catch (Exception var7) {
-            logger.error("https post error," + var7.getMessage());
+            log.error("https post error," + var7.getMessage());
             var7.printStackTrace();
             return null;
         }
@@ -138,7 +137,7 @@ public class HttpsUtils {
             String result = EntityUtils.toString(entity);
             return result;
         } catch (Exception var7) {
-            logger.error("https post error," + var7.getMessage());
+            log.error("https post error," + var7.getMessage());
             var7.printStackTrace();
             return null;
         }
@@ -153,7 +152,7 @@ public class HttpsUtils {
             String result = EntityUtils.toString(entity);
             return result;
         } catch (Exception var6) {
-            logger.error("https get error," + var6.getMessage());
+            log.error("https get error," + var6.getMessage());
             var6.printStackTrace();
             return null;
         }
@@ -196,7 +195,7 @@ public class HttpsUtils {
             HttpEntity entity = response.getEntity();
             return entity != null ? EntityUtils.toString(entity) : null;
         } catch (Exception var7) {
-            logger.error("post请求异常，" + var7.getMessage() + "\n post url:" + url);
+            log.error("post请求异常，" + var7.getMessage() + "\n post url:" + url);
             var7.printStackTrace();
             return null;
         }
@@ -216,7 +215,7 @@ public class HttpsUtils {
             HttpEntity resEntity = response.getEntity();
             return EntityUtils.toByteArray(resEntity);
         } catch (Exception var5) {
-            logger.error("postFile请求异常，" + var5.getMessage() + "\n post url:" + url);
+            log.error("postFile请求异常，" + var5.getMessage() + "\n post url:" + url);
             var5.printStackTrace();
             return null;
         }

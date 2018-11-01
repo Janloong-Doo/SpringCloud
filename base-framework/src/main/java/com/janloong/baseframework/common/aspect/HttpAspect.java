@@ -1,5 +1,6 @@
 package com.janloong.baseframework.common.aspect;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -25,8 +26,8 @@ import java.util.Arrays;
  **/
 @Aspect
 @Component
+@Slf4j
 public class HttpAspect {
-    private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
     @AfterReturning(
             returning = "object",
@@ -36,7 +37,7 @@ public class HttpAspect {
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
-        logger.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
+        log.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
                 + "object:" + object + "\n"
         );
 
@@ -58,7 +59,7 @@ public class HttpAspect {
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
-        logger.error("\n请求前 - : " + "\n"
+        log.error("\n请求前 - : " + "\n"
                 + "remoteUser:" + remoteUser + "\n"
                 + "remotePort:" + remotePort + "\n"
                 + "remoteAddr:" + remoteAddr + "\n"

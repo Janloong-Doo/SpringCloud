@@ -23,20 +23,20 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 |:---|:---|:---|:---|:---|
 |admin-client|admin客户端 - 官方配置方式 |8890|-|这个是admin官方给出的一个客户端配置方式之一，里面会有比较完备的actuator实现效果，在通过discovery方式配置客户端方式的时候可以作参考|
 |admin-server|admin服务端|8889|-|使用的最新版本2.0.3|
-|config-server |高可用配置中心服务端|8888,8892|server1,server2|支持测试环境读取本地文件，生产环境支持git,svn等|
-|config-client |高可用配置中心客户端|8773,8893|client1,client2|配置客户端集成演示demo，生产环境已集成入各个服务之中|
-|eureka-server |高可用注册中心|8761,8762|server1,server2|服务注册中心，用于注册与发现其他服务|
-|eureka-provide |服务提供者|8763,8764|provide1,provide2|普通的服务，主要用于配合测试feign,ribbon的远程调用|
-|eureka-client2 |Ribbon+rest方式的客户端|8765|-|集成hystrix,ribbon,zipkin,rabbitmq|
-|eureka-client3 |Feign方式的客户端|8766,8821(独立management端口)|-|集成hystrix,openfeign,hystrix dashboard|
-|spring-data-jpa|spring data jpa 的相关知识点汇总与应用|8767|-|持久层使用的jpa,包含相关方式的使用，实体的映射初步使用等9|
 |auth2-center|oauth2授权鉴权中心|8080|-|集成spring cloud security oauth2|
-|zuul|网关路由|8081|-|自定义动态路由，oauth2资源服务控制|
-|user|用户测试|8083|-|普通微服务|
-|gateway|网关路由|8082|-|spring 的网关路由|
-|confg-repo|配置中心引用的本地文件|-|-|本地文件配置，配置中心支持多种文件配置格式,目录结构|
 |base-framework|基础单服务脚手架|-|-|集成常用工具类，异常处理，结果集封装,common下可提取为基础依赖供多服务使用|
+|config-client |高可用配置中心客户端|8773,8893|client1,client2|配置客户端集成演示demo，生产环境已集成入各个服务之中|
+|confg-repo|配置中心引用的本地文件|-|-|本地文件配置，配置中心支持多种文件配置格式,目录结构|
+|config-server |高可用配置中心服务端|8888,8892|server1,server2|支持测试环境读取本地文件，生产环境支持git,svn等|
+|eureka-feign |Feign方式的客户端|8766,8821(独立management端口)|-|集成hystrix,openfeign,hystrix dashboard|
+|eureka-provide |服务提供者|8763,8764|provide1,provide2|普通的服务，主要用于配合测试feign,ribbon的远程调用|
+|eureka-ribbon |Ribbon+rest方式的客户端|8765|-|集成hystrix,ribbon,zipkin,rabbitmq|
+|eureka-server |高可用注册中心|8761,8762|server1,server2|服务注册中心，用于注册与发现其他服务|
+|gateway|网关路由|8082|-|spring 的网关路由|
+|spring-data-jpa|spring data jpa 的相关知识点汇总与应用|8767|-|持久层使用的jpa,包含相关方式的使用，实体的映射初步使用等9|
+|zuul|网关路由|8081|-|自定义动态路由，oauth2资源服务控制|
 |zipkin-server |服务追踪中心|9411|-|独立模块,官方提供的jar包直接运行即可访问，已无需开发。|
+|user|用户测试|8083|-|普通微服务|
 
 
 ## 问题记录
