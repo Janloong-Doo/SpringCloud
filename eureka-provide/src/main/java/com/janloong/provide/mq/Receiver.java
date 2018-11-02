@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Receiver {
 
-    @RabbitListener(queues = "doo-queue")
+    @RabbitListener(queues = "doo-queue1")
     public void receiver1(String msg) {
         log.info("provide-queue1: " + msg);
     }

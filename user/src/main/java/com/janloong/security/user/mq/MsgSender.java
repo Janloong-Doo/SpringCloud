@@ -10,27 +10,24 @@
 package com.janloong.security.user.mq;
 
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * rabbitmq sender
+ *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2018-10-31 10:44
  */
 @Configuration
 public class MsgSender {
-    public static final String QUEUE_NAME = "doo-queue";
+    public static final String QUEUE_NAME = "doo-queue1";
     public static final String QUEUE_NAME2 = "doo-queue2";
     public static final String QUEUE_NAME3 = "doo-queue3";
-    public static final String TOPIC_EXCHANGE_NAME = "doo-exchange";
+    public static final String TOPIC_EXCHANGE_NAME = "topic-exchange";
+    public static final String FANOUT_EXCHANGE_NAME = "fanout-exchange";
 
     @Bean(name = "queue1")
     Queue queue() {
@@ -48,28 +45,51 @@ public class MsgSender {
     }
 
     @Bean
-    Binding binding(@Qualifier("queue1") Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+    FanoutExchange exchange2() {
+        return new FanoutExchange(FANOUT_EXCHANGE_NAME);
     }
 
     @Bean
-    Binding binding2(@Qualifier("queue2") Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+    Binding topicBinding(@Qualifier("queue1") Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with("A.B.#");
     }
 
     @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-                                             MessageListenerAdapter listenerAdapter) {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(QUEUE_NAME, QUEUE_NAME2);
-        container.setMessageListener(listenerAdapter);
-        return container;
+    Binding topicBinding2(@Qualifier("queue2") Queue queue, TopicExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with("A.#.#");
     }
 
     @Bean
-    MessageListenerAdapter listenerAdapter(Receiver receiver) {
-        return new MessageListenerAdapter(receiver, "receiveMessage2");
+    Binding fanoutBinding(@Qualifier("queue1") Queue queue, FanoutExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange);
     }
 
+    @Bean
+    Binding fanoutBinding2(@Qualifier("queue2") Queue queue, FanoutExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange);
+    }
+
+
+    //@Bean
+    //SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+    //                                         MessageListenerAdapter listenerAdapter) {
+    //    SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+    //    container.setConnectionFactory(connectionFactory);
+    //    container.setQueueNames(QUEUE_NAME, QUEUE_NAME2);
+    //    container.setMessageListener(listenerAdapter);
+    //    return container;
+    //}
+    ////
+    //@Bean
+    //MessageListenerAdapter listenerAdapter(Receiver receiver) {
+    //    return new MessageListenerAdapter(receiver, "receiveMessage2");
+    //}
+
+
+    //@Bean
+    //DirectMessageListenerContainer directContainer(ConnectionFactory connectionFactory) {
+    //    DirectMessageListenerContainer directMessageListenerContainer = new DirectMessageListenerContainer(connectionFactory);
+    //    directMessageListenerContainer.addQueues(queue(), queue2());
+    //    return directMessageListenerContainer;
+    //}
 }
