@@ -10,6 +10,7 @@
 package com.janloong.baseframework.controller;
 
 
+import com.janloong.baseframework.common.annotation.CustomDoo;
 import com.janloong.baseframework.common.config.BaseController;
 import com.janloong.baseframework.common.utils.WebApiResponse;
 import com.janloong.baseframework.service.HomeService;
@@ -28,6 +29,7 @@ public class HomeController extends BaseController<HomeService> {
      * @date 2018/10/16 9:36
      **/
     @RequestMapping("/home")
+    @CustomDoo(value = "janloong", doo = "doo")
     public WebApiResponse home(String name) {
         return WebApiResponse.success("Hello , " + name);
     }

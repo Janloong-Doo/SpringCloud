@@ -20,14 +20,21 @@ spring:
     username: ${janloong.rabbitmq.username}
     password: ${janloong.rabbitmq.password}
   zipkin:
+    rabbitmq:
+      queue: zipkindoo
     sender:
       type: rabbit
     #    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}
-    base-url: http://192.168.211.1:9411/
-#    base-url: http://192.168.211.135:9411
+#    baseUrl: http://192.168.211.135:9411
+    baseUrl: http://localhost:9411
+#    discovery-client-enabled: true
+#    locator:
+#      discovery:
+#        enabled: true
+  #    base-url: http://192.168.211.135:9411
   sleuth:
     sampler:
-      probability: 0.5
+      probability: 1
 eureka:
   instance:
     appname: ${spring.application.name}

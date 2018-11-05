@@ -32,7 +32,7 @@ public class HomeEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "name")
+    @Column(name = "age")
     private String age;
 
     @Column(name = "address")

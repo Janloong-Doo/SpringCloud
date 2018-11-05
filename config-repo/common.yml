@@ -11,10 +11,12 @@ janloong:
   authcenter:
     ip: 192.168.211.135
   rabbitmq:
-    ip: 192.168.211.135
+    ip: localhost
+#    ip: 192.168.211.135
     port: 5672
     username: guest
     password: guest
   zipkin:
-    ip: 192.168.211.135
+    ip: localhost
+#    ip: 192.168.211.135
     port: 9411

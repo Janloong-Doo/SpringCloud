@@ -1,6 +1,6 @@
 spring:
   application:
-    name: adh-consume
+    name: baseframework
   datasource:
     url:  jdbc:mysql://127.0.0.1:3306/sg_datacenter?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
     username: root
