@@ -1,5 +1,6 @@
 package com.janloong.baseframework.common.aspect;
 
+import com.janloong.baseframework.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -7,14 +8,15 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * http请求AOP
@@ -29,6 +31,11 @@ import java.util.Arrays;
 @Slf4j
 public class HttpAspect {
 
+    @Value("${doo.jsonAble}")
+    private Boolean jsonAble;
+    @Value("${doo.jsonFile}")
+    private String jsonFile;
+
     @AfterReturning(
             returning = "object",
             pointcut = "log()"
@@ -37,9 +44,26 @@ public class HttpAspect {
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
+
+
+        Object[] args = joinPoint.getArgs();
         log.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
                 + "object:" + object + "\n"
         );
+        log.info("jsonAble: " + jsonAble);
+        if (jsonAble) {
+            String name = methodName;
+            String s = Arrays.toString(args);
+            String replace = s.substring(1, s.length() - 1).replace(",", "-");
+            if (replace.length() > 0 && !Objects.equals(replace, "null")) {
+                name = name + "-" + replace;
+            }
+            String fileName = jsonFile + File.separator + name;
+            log.info("\n - : " + "\n"
+                    + "fileName:" + fileName + "\n"
+            );
+            JsonUtil.writeToFIle(fileName, object);
+        }
 
     }
 

@@ -14,3 +14,7 @@ spring:
 #  tomcat:
 #    uri-encoding: UTF-8
 #    active: prod
+doo:
+  jsonAble: true
+  #  jsonAble: false
+  jsonFile: D://json
