@@ -1,0 +1,15 @@
+spring:
+  redis:
+    database: 0
+    host: 192.168.211.135
+    port: 6379
+    #    password: janloongdoo
+    jedis:
+      #    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+        max-wait: -1ms
+  #      shutdown-timeout: 100ms
+  #    timeout: 0

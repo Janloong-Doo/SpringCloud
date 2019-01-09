@@ -1,0 +1,6 @@
+doo:
+  jsonAble: false
+  jsonFile: D://
+spring:
+  profiles:
+    active: redis
