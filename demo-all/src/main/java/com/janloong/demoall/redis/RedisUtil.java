@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtil {
 
     @Autowired
-    public  RedisTemplate<String, String> template;
+    public RedisTemplate<String, String> template;
 
     //@Resource(name = "redisTemplate")
     //private ListOperations<String, String> listOps;
@@ -316,6 +316,7 @@ public class RedisUtil {
                 expire(key, time);
             }
             return true;
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;

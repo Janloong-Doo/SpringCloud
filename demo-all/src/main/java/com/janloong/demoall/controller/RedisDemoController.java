@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -82,6 +85,7 @@ public class RedisDemoController {
         long decr = redisUtil.decr(key, delta);
         return WebApiResponse.success(decr);
     }
+    //==================================================
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -124,6 +128,8 @@ public class RedisDemoController {
     }
 
     /**
+     * 获取hashkey对应的所有键值
+     *
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/1/9 15:51
      **/
@@ -138,8 +144,16 @@ public class RedisDemoController {
      * @date 2019/1/9 15:53
      **/
     @RequestMapping("/hmset")
-    public WebApiResponse hmset(String name) {
-
+    public WebApiResponse hmset(String key, long time, String[] item, String[] value) {
+        HashMap<String, Object> map = new HashMap<>();
+        List<String> item1 = List.of(item);
+        List<String> value1 = List.of(value);
+        AtomicReference<Integer> i = new AtomicReference<>(0);
+        item1.stream().forEach(s -> {
+            map.put(s, value1.get(i.get()));
+            i.getAndSet(i.get() + 1);
+        });
+        redisUtil.hmset(key, map, time);
         return WebApiResponse.success(null);
     }
 
