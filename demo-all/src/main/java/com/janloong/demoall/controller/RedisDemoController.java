@@ -157,14 +157,14 @@ public class RedisDemoController {
         return WebApiResponse.success(null);
     }
 
-    /**
+    /**111
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/1/9 15:13
      **/
     @RequestMapping("/hgetall")
-    public WebApiResponse hgetall(String name) {
-
-        return WebApiResponse.success(null);
+    public WebApiResponse hgetall(String key) {
+        Map<Object, Object> hmget = redisUtil.hmget(key);
+        return WebApiResponse.success(hmget);
     }
 
 

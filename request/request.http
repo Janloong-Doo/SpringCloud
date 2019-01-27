@@ -1,0 +1,40 @@
+### String
+#获取key对应的value
+GET http://localhost:6666/redis/get?key=a
+Accept: */*
+Cache-Control: no-cache
+
+
+###
+GET http://localhost:6666/redis/incr?key=a&delta=2
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://localhost:6666/redis/decr?key=a&delta=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-18T024116.200.json
+
+###
+
+GET http://localhost:6666/redis/set?key=b&value=doo&time=10
+Accept: */*
+Cache-Control: no-cache
+
+
+###
+
+
+GET http://localhost:6666/redis/hget?key=doo&item=name
+Accept: */*
+Cache-Control: no-cache
+
+
+###
+GET http://localhost:6666/redis/hset?key=doo&item=name&value=doo1
+Accept: */*
+Cache-Control: no-cache
+
+###

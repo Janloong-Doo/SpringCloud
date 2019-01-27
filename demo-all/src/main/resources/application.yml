@@ -1,6 +1,8 @@
-doo:
-  jsonAble: false
-  jsonFile: D://
 spring:
   profiles:
     active: redis
+server:
+  port: 6666
+doo:
+  jsonAble: false
+  jsonFile: D://
