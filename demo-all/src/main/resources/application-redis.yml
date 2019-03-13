@@ -13,3 +13,8 @@ spring:
         max-wait: -1ms
   #      shutdown-timeout: 100ms
   #    timeout: 0
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+
+#  mongondb

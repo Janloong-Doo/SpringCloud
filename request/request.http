@@ -38,3 +38,8 @@ Accept: */*
 Cache-Control: no-cache
 
 ###
+
+GET http://localhost:6666/mongodb/save?id=1002&userName=doo2&passWord=123
+
+
+###
