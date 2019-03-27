@@ -1,0 +1,22 @@
+# ---------------- spring oatuh2  start ---------------
+###
+GET  http://{{JanloongDoo}}/oauth/token
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+
+###
+POST  http://localhost:8080/oauth/token
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "as": "asd",
+  "as2": "asd"
+}
+
+###
+
+# ---------------- spring oatuh2  end ---------------
