@@ -8,10 +8,10 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 
     
     相关环境： 
-    idea 2018.2.4
-    jdk 1.8
-    springboot 2.0.6.release
-    springcloud Finchley.SR1
+    idea 2018.3.6
+    jdk 11
+    springboot 2.1.3.release
+    springcloud Greenwich.RELEASE
     springbootadmin 2.0.3
     
 ## update 
