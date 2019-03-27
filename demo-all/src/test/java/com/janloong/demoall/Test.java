@@ -10,7 +10,7 @@
 package com.janloong.demoall;
 
 
-import java.util.*;
+import java.util.Comparator;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -73,18 +73,38 @@ public class Test {
         //    boolean b = new Random().nextBoolean();
         //    System.out.println(b);
         //}
-        Map<String, Integer> map = new HashMap<>();
-        map.put("d", 4);
-        map.put("a", 5);
-        map.put("b", 2);
-        map.put("c", 3);
-        List<Map.Entry<String, Integer>> ll = new ArrayList<>(map.entrySet());
-        Collections.sort(ll, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        //Map<String, Integer> map = new HashMap<>();
+        //map.put("d", 4);
+        //map.put("a", 5);
+        //map.put("b", 2);
+        //map.put("c", 3);
+        //List<Map.Entry<String, Integer>> ll = new ArrayList<>(map.entrySet());
+        //Collections.sort(ll, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        //HashMap<String, Integer> mm = new HashMap<>();
+        //mm.put("total", 1);
+        //Set<Map.Entry<String, Integer>> entries1 = mm.entrySet();
+        //ll.add(0, entries1.iterator().next());
+        //
+        //System.out.println(map);
+        //
+        //System.out.println(ll);
+        //List<Map.Entry<String, Integer>> entries = ll.subList(0, ll.size() - 2);
+        //System.out.println(entries);
+        //Integer i = 11;
+        //Integer i2 = 3;
+        //Double a = i.doubleValue()/i2.doubleValue();
+        ////BigDecimal bigDecimal = BigDecimal.valueOf(a, 2);
+        //DecimalFormat d = new DecimalFormat("0.00");
+        //String format = d.format(a);
+        //System.out.println(a);
+        //System.out.println(format);
+        ////System.out.println(bigDecimal);
 
-        System.out.println(map);
+        Comparator<Integer> tComparator = (x, y) -> (x + y) * y;
+        int compare = tComparator.compare(1, 2);
+        System.out.println(compare);
 
-        System.out.println(ll);
-        List<Map.Entry<String, Integer>> entries = ll.subList(0, ll.size() - 2);
-        System.out.println(entries);
+        System.out.println();
+
     }
 }

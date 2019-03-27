@@ -11,7 +11,10 @@ package com.janloong.demoall.controller;
 
 
 import com.janloong.base.utils.WebApiResponse;
+import com.janloong.demoall.entity.Account;
+import com.janloong.demoall.entity.Customer;
 import com.janloong.demoall.redis.RedisUtil;
+import com.janloong.demoall.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -157,7 +161,7 @@ public class RedisDemoController {
         return WebApiResponse.success(null);
     }
 
-    /**111
+    /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/1/9 15:13
      **/
@@ -168,4 +172,42 @@ public class RedisDemoController {
     }
 
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/3/25 15:17
+     **/
+    @RequestMapping("/readCustomer")
+    public WebApiResponse readCustomer(String name) {
+        Iterable<Customer> all = customerRepository.findAll();
+        List<Object> objects = new LinkedList<>();
+        all.forEach(customer -> objects.add(customer));
+
+        return WebApiResponse.success(objects);
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/3/25 15:2544
+     **/
+    @RequestMapping("/saveCustomer")
+    public WebApiResponse saveCustomer(String name) {
+        Customer janloong = new Customer(102L, "10002", "janloongdoo");
+        janloong.addAccount(new Account(201L, "20002", 2000));
+        janloong.addAccount(new Account(202L, "20003", 3000));
+        janloong.addAccount(new Account(203L, "20004", 4000));
+        customerRepository.save(janloong);
+        return WebApiResponse.success(null);
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/3/25 16:22
+     **/
+    @RequestMapping("/readAccount")
+    public WebApiResponse readAccount(@RequestParam String name) {
+        return WebApiResponse.success(null);
+    }
 }

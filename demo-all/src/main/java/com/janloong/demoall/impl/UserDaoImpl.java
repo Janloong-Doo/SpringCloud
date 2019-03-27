@@ -29,6 +29,7 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * 创建对象
+     *
      * @param user
      */
     @Override
@@ -38,43 +39,48 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * 根据用户名查询对象
+     *
      * @param userName
      * @return
      */
     @Override
     public UserEntity findUserByUserName(String userName) {
-        Query query=new Query(Criteria.where("userName").is(userName));
-        UserEntity user =  mongoTemplate.findOne(query , UserEntity.class);
+        Query query = new Query(Criteria.where("userName").is(userName));
+        UserEntity user = mongoTemplate.findOne(query, UserEntity.class);
         return user;
     }
 
     /**
      * 更新对象
+     *
      * @param user
      */
     @Override
     public int updateUser(UserEntity user) {
-        Query query=new Query(Criteria.where("id").is(user.getId()));
-        Update update= new Update().set("userName", user.getUserName()).set("passWord", user.getPassWord());
+        Query query = new Query(Criteria.where("id").is(user.getId()));
+        Update update = new Update().set("userName", user.getUserName()).set("passWord", user.getPassWord());
         //更新查询返回结果集的第一条
-        UpdateResult result =mongoTemplate.updateFirst(query,update,UserEntity.class);
+        UpdateResult result = mongoTemplate.updateFirst(query, update, UserEntity.class);
         //WriteResult result =mongoTemplate.updateFirst(query,update,UserEntity.class);
         //更新查询返回结果集的所有
         // mongoTemplate.updateMulti(query,update,UserEntity.class);
-        if(result!=null)
+        if (result != null) {
             return Math.toIntExact(result.getModifiedCount());
-            //return result.getN();
-        else
+        }
+        //return result.getN();
+        else {
             return 0;
+        }
     }
 
     /**
      * 删除对象
+     *
      * @param id
      */
     @Override
     public void deleteUserById(Long id) {
-        Query query=new Query(Criteria.where("id").is(id));
-        mongoTemplate.remove(query,UserEntity.class);
+        Query query = new Query(Criteria.where("id").is(id));
+        mongoTemplate.remove(query, UserEntity.class);
     }
 }
