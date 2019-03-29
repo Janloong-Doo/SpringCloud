@@ -9,7 +9,8 @@ janloong:
     port:
     url:
   authcenter:
-    ip: 192.168.211.135
+#    ip: 192.168.211.135
+    ip: localhost
   rabbitmq:
     ip: localhost
 #    ip: 192.168.211.135

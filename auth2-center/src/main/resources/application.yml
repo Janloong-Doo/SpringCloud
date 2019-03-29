@@ -4,10 +4,7 @@ spring:
   application:
     name: authcenter
   datasource:
-    #    url: jdbc:mysql://192.168.211.135:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-    #    username: doo
-    #    password: doo
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,16 +12,17 @@ spring:
     hibernate:
       ddl-auto: update
   redis:
-    host: 192.168.211.135
+    host: localhost
     port: 6379
 eureka:
   instance:
     preferIpAddress: true
-    instance-id: 192.168.211.1:${server.port}
+    #    instance-id: 192.168.211.1:${server.port}
+    instance-id: localhost:${server.port}
   client:
     serviceUrl:
-      #      defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://192.168.211.135:8761/eureka/
+      defaultZone: http://localhost:8762/eureka/
+#      defaultZone: http://192.168.211.135:8761/eureka/
 logging:
   level:
     org.springframework.security: DEBUG

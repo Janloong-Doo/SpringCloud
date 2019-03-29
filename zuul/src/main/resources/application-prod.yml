@@ -1,17 +1,17 @@
 spring:
   datasource:
     #        type: com.alibaba.druid.pool.DruidDataSource
-    #    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-    url: jdbc:mysql://192.168.211.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    #    url: jdbc:mysql://192.168.211.1:3306/spring-sec?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: doo
     password: doo
     #    username: root
     #    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-  servlet:
-    multipart:
-      max-file-size: 50Mb
-      max-request-size: 50Mb
+  #  servlet:
+  #    multipart:
+  #      max-file-size: 50Mb
+  #      max-request-size: 50Mb
   jpa:
     hibernate:
       ddl-auto: update

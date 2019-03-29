@@ -1,10 +1,26 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+
 # ---------------- spring oatuh2  start ---------------
 ###
-GET  http://{{JanloongDoo}}/oauth/token
+POST  http://{{JanloongDoo}}/oauth/token
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
+{
+  "client_secret": "secret",
+  "client_id": "janloongdoo",
+  "grant_type": "password",
+  "username": "ddd",
+  "password": "ddd"
+//  "scop": "read"
+}
 
 ###
 POST  http://localhost:8080/oauth/token
@@ -13,9 +29,15 @@ Cache-Control: no-cache
 Content-Type: application/json
 
 {
-  "as": "asd",
-  "as2": "asd"
+  "username": {{username}},
+  "password": {{password}}
 }
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
 
 ###
 

@@ -9,11 +9,7 @@ import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * 李成阳
- * 2018/2/5
- * 路由过滤器
- */
+
 public class AuthTokenFilter extends ZuulFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthTokenFilter.class);

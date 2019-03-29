@@ -12,7 +12,7 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
     jdk 11
     springboot 2.1.3.release
     springcloud Greenwich.RELEASE
-    springbootadmin 2.0.3
+    springbootadmin 2.1.3
     
 ## update 
     升级版本，并以测试状态整合入spring cloud security oauth2 ...
@@ -22,7 +22,7 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 |模块|描述|端口|多配置|集成说明|
 |:---|:---|:---|:---|:---|
 |admin-client|admin客户端 - 官方配置方式 |8890|-|这个是admin官方给出的一个客户端配置方式之一，里面会有比较完备的actuator实现效果，在通过discovery方式配置客户端方式的时候可以作参考|
-|admin-server|admin服务端|8889|-|使用的最新版本2.0.3|
+|admin-server|admin服务端|8889|-|使用的版本2.1.3|
 |auth2-center|oauth2授权鉴权中心|8080|-|集成spring cloud security oauth2|
 |base-framework|基础单服务脚手架|-|-|集成常用工具类，异常处理，结果集封装,common下可提取为基础依赖供多服务使用|
 |config-client |高可用配置中心客户端|8773,8893|client1,client2|配置客户端集成演示demo，生产环境已集成入各个服务之中|
