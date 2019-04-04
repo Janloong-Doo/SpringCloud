@@ -9,7 +9,7 @@
 
 package com.janloong.springsecurity.common.exception;
 
-import com.janloong.baseframework.common.utils.WebApiResponse;
+import com.janloong.springsecurity.common.utils.WebApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

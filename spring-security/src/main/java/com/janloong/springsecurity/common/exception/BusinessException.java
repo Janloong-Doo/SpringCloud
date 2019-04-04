@@ -10,7 +10,7 @@
 package com.janloong.springsecurity.common.exception;
 
 
-import com.janloong.baseframework.common.enums.ResultEnum;
+import com.janloong.springsecurity.common.enums.ResultEnum;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>

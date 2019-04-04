@@ -12,8 +12,8 @@ package com.janloong.springsecurity.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.janloong.baseframework.common.enums.ResultEnum;
-import com.janloong.baseframework.common.exception.BusinessException;
+import com.janloong.springsecurity.common.enums.ResultEnum;
+import com.janloong.springsecurity.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;

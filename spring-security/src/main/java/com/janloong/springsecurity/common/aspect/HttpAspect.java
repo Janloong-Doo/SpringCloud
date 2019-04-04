@@ -9,7 +9,7 @@
 
 package com.janloong.springsecurity.common.aspect;
 
-import com.janloong.baseframework.common.utils.JsonUtil;
+import com.janloong.springsecurity.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;

@@ -10,6 +10,7 @@
 package com.janloong.springsecurity.controller;
 
 
+import com.janloong.springsecurity.common.utils.WebApiResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +26,8 @@ public class LoginController {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/3/29 17:36
      **/
-    @RequestMapping("/userLogin")
-    public WebApiResponse userLogin(@RequestParam String name) {
+    @RequestMapping("/dooLogin")
+    public WebApiResponse dooLogin(@RequestParam String name) {
 
         return WebApiResponse.success(null);
     }

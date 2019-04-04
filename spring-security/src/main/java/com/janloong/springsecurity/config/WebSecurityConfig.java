@@ -48,9 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //super.configure(http);
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login/**"
-                        , "/oauth/**"
-                        , "/user"
+                .antMatchers(
+                        //"/login/**"
+                        "/templates/**"
+                        //, "/oauth/**"
+                        //, "/user"
                         //, "/webjars/**"
                         //, "/error/**"
                         //, "/**"
@@ -65,7 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-        //.loginProcessingUrl("doo")
+                //.loginProcessingUrl("doo")
+                .loginProcessingUrl("/dooLogin")
         //.permitAll()
         //.and()
         //.logout().logoutUrl("/logout").logoutSuccessUrl("/")

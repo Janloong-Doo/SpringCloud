@@ -11,9 +11,9 @@ package com.janloong.springsecurity.common.utils;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.janloong.baseframework.common.enums.RequestEnum;
-import com.janloong.baseframework.common.enums.ResultEnum;
-import com.janloong.baseframework.common.exception.BusinessException;
+import com.janloong.springsecurity.common.enums.RequestEnum;
+import com.janloong.springsecurity.common.enums.ResultEnum;
+import com.janloong.springsecurity.common.exception.BusinessException;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
