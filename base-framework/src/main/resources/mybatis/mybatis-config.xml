@@ -45,7 +45,7 @@
         <!--<property name="pageSizeZero" value="true"/>-->
         <!--&lt;!&ndash;<property name="supportMethodsArguments" value="true"/>&ndash;&gt;-->
         <!--&lt;!&ndash;<property name=" params=count" value="countSql"/>&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="params" value="pageNum=page;pageSize=rows;"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="params" value="pageNum=pages;pageSize=rows;"/>&ndash;&gt;-->
         <!--&lt;!&ndash;<property name="autoRuntimeDialect" value="true"/>&ndash;&gt;-->
         <!--</plugin>-->
     <!--</plugins>-->

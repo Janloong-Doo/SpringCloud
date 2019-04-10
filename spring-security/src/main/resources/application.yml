@@ -3,11 +3,19 @@ server:
 spring:
   application:
     name: spring-security
-  datasource:
-    url:  "jdbc:mysql://168.130.1.32:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false"
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
+#  datasource:
+#    url:  "jdbc:mysql://168.130.1.32:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false"
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: root
+  thymeleaf:
+    check-template-location: true
+    check-template: true
+    cache: false
+    mode: LEGACYHTML5
+    prefix: classpath:/static/
+    suffix: .html
+    enabled: true
 debug: true
 doo:
   jsonAble: false

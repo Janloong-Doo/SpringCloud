@@ -17,13 +17,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
+import javax.annotation.Resource;
+
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-03-29 15:35
  */
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    //
+
+    @Resource
+    private UserAuthService userAuthService;
     //@Override
     //protected UserDetailsService userDetailsService() {
     //    //return super.userDetailsService();
@@ -47,10 +51,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
         http.csrf().disable()
+                .formLogin()
+                //.loginProcessingUrl("doo")
+                .loginPage("/doo")
+                .loginProcessingUrl("dooLogin")
+                .and()
                 .authorizeRequests()
                 .antMatchers(
                         //"/login/**"
-                        "/templates/**"
+                        "/doo"
+                        , "/dooLogin"
+                        , "/static/**"
+                        //, "/doo.html"
                         //, "/oauth/**"
                         //, "/user"
                         //, "/webjars/**"
@@ -58,17 +70,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         //, "/**"
                         //, "/oauth/**"
                         //, "/before"
-                        //,"/before2"
-                        //,"/oauth/authorize"
-                        //,"/oauth/confirm_access"
+                        //, "/before2"
+                        //, "/oauth/authorize"
+                        //, "/oauth/confirm_access"
                 )
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-                .and()
-                .formLogin()
-                //.loginProcessingUrl("doo")
-                .loginProcessingUrl("/dooLogin")
+
+        //.failureForwardUrl("/doo.html?error")
         //.permitAll()
         //.and()
         //.logout().logoutUrl("/logout").logoutSuccessUrl("/")
