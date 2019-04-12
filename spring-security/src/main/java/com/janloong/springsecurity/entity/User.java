@@ -36,16 +36,16 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
-
     private String username;
 
     private String password;
 
     private LocalDateTime localDateTime;
 
-    public User(String name, String username, String password, LocalDateTime localDateTime) {
-        this.name = name;
+    public User() {
+    }
+
+    public User(String username, String password, LocalDateTime localDateTime) {
         this.username = username;
         this.password = password;
         this.localDateTime = localDateTime;
@@ -56,16 +56,6 @@ public class User implements UserDetails {
         List<GrantedAuthority> auths = new ArrayList<>();
         auths.add(new SimpleGrantedAuthority("ROLE_USER"));
         return auths;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
     }
 
     @Override

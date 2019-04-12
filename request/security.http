@@ -1,0 +1,37 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+#添加用户
+###
+POST http://{{doo_host}}/user/add
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "username": "janloong",
+  "password": "doo"
+}
+
+###
+POST http://{{doo_host}}/user/add
+Content-Type: application/x-www-form-urlencoded
+
+username=janloong&password=doo
+
+###
+GET http://{{doo_host}}/user/1
+Cache-Control: no-cache
+Accept: application/json
+
+###查询所有的用户
+GET http://{{doo_host}}/user
+Cache-Control: no-cache
+Accept: application/json
+
+###
+

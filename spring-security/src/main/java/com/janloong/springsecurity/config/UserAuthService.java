@@ -10,10 +10,16 @@
 package com.janloong.springsecurity.config;
 
 
+import com.janloong.springsecurity.entity.User;
+import com.janloong.springsecurity.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -22,10 +28,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserAuthService implements UserDetailsService {
 
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-
-        return null;
+        User user = new User(s, null, null);
+        Example<User> of = Example.of(user);
+        Optional<User> one = userRepository.findOne(of);
+        if (one.isEmpty()) {
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+        return one.get();
     }
 }
