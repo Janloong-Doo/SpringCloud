@@ -100,7 +100,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <type>pom</type>
+            <!--<type>pom</type>-->
         </dependency>
     </dependencies>
 

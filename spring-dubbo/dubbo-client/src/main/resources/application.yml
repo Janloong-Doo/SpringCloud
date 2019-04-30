@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: dubbo-client
+server:
+  port: 8091
+
+dubbo:
+  consumer:
+    registry: zookeeper://localhost:2181
