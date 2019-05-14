@@ -1,3 +1,4 @@
+
 -- 获取本周其实数据
 select DATEADD(week,DATEDIFF(week,0,getdate()),0)
 -- 获取上周其实数据

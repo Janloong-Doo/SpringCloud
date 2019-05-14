@@ -10,8 +10,6 @@
 package com.janloong.demoall;
 
 
-import java.util.Comparator;
-
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-02-28 14:33
@@ -100,11 +98,17 @@ public class Test {
         //System.out.println(format);
         ////System.out.println(bigDecimal);
 
-        Comparator<Integer> tComparator = (x, y) -> (x + y) * y;
-        int compare = tComparator.compare(1, 2);
-        System.out.println(compare);
+        //Comparator<Integer> tComparator = (x, y) -> (x + y) * y;
+        //int compare = tComparator.compare(1, 2);
+        //System.out.println(compare);
+        //
+        //System.out.println();
 
-        System.out.println();
 
+        //int minute = LocalTime.now().getMinute();
+        int minute = 2;
+        int i = Math.floorMod(minute, 5);
+        System.out.println("取模为：：");
+        System.out.println(i);
     }
 }

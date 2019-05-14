@@ -3,37 +3,44 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>admin-client</artifactId>
+    <artifactId>admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>admin-client</name>
+    <name>admin-server</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
         <groupId>com.janloong</groupId>
         <artifactId>cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-boot-admin.version>2.0.3</spring-boot-admin.version>
+        <java.version>11</java.version>
+        <spring-boot-admin.version>2.1.3</spring-boot-admin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 
@@ -43,6 +50,14 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
                 <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -75,6 +90,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
+
         <repository>
             <id>sonatype-nexus-snapshots</id>
             <name>Sonatype Nexus Snapshots</name>
@@ -86,8 +103,13 @@
                 <enabled>false</enabled>
             </releases>
         </repository>
-    </repositories>
 
+    </repositories>
+    <!--<snapshotRepository>-->
+    <!--<id>sonatype-nexus-snapshots</id>-->
+    <!--<name>Sonatype Nexus Snapshots</name>-->
+    <!--<url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+    <!--</snapshotRepository>-->
     <pluginRepositories>
         <pluginRepository>
             <id>spring-snapshots</id>
