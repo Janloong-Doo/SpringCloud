@@ -12,21 +12,21 @@
     <description>spring cloud 个人学习项目</description>
 
     <modules>
-        <module>eureka-server</module>
-        <module>eureka-provide</module>
-        <module>eureka-feign</module>
-        <module>eureka-ribbon</module>
-        <module>config-client</module>
-        <module>config-server</module>
-        <module>admin-server</module>
-        <module>admin-client</module>
-        <module>zuul</module>
-        <module>spring-data-jpa</module>
-        <module>auth2-center</module>
-        <module>user</module>
-        <module>gateway</module>
+        <module>spring-cloud/eureka-server</module>
+        <module>spring-cloud/eureka-provide</module>
+        <module>spring-cloud/eureka-feign</module>
+        <module>spring-cloud/eureka-ribbon</module>
+        <module>spring-cloud/config-client</module>
+        <module>spring-cloud/config-server</module>
+        <module>spring-cloud/admin-server</module>
+        <module>spring-cloud/admin-client</module>
+        <module>spring-cloud/zuul</module>
+        <module>spring-cloud/auth2-center</module>
+        <module>spring-cloud/user</module>
+        <module>spring-cloud/gateway</module>
         <!--spring cloud Finchley版本后，zipkin可以直接使用官方提供的可执行jar包，无需再开发-->
-        <!--<module>zipkin-server</module>-->
+        <!--<module>spring-cloud/zipkin-server</module>-->
+        <module>spring-demo/spring-data-jpa</module>
     </modules>
 
     <developers>
