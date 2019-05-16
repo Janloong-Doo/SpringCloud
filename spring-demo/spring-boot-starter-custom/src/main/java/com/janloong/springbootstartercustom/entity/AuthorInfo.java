@@ -19,9 +19,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "author")
 public class AuthorInfo {
 
-    private static final String NAME = "unknown";
-    private static final String DOMAIN = "unknown";
-    private static final String DESCRIPTION = "unknown";
+    private static final String NAME = "janloongdoo";
+    private static final String DOMAIN = "janloongdoo.com";
+    private static final String DESCRIPTION = "BiabiaL";
     private String name;
     private String domain;
     private String description;
