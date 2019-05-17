@@ -20,11 +20,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AuthorInfo {
 
     private static final String NAME = "janloongdoo";
-    private static final String DOMAIN = "janloongdoo.com";
-    private static final String DESCRIPTION = "BiabiaL";
-    private String name;
-    private String domain;
-    private String description;
+    private static final String DOMAIN = "https://github.com/Janloong-Doo";
+    private static final String DESCRIPTION = "You have to work very hard to look effortless.";
+    private String name = NAME;
+    private String domain = DOMAIN;
+    private String description = DESCRIPTION;
 
     public String getName() {
         return name;
