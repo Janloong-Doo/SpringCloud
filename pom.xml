@@ -12,6 +12,7 @@
     <description>spring cloud 个人学习项目</description>
 
     <modules>
+        <!--=======spring-cloud=======-->
         <module>spring-cloud/eureka-server</module>
         <module>spring-cloud/eureka-provide</module>
         <module>spring-cloud/eureka-feign</module>
@@ -26,13 +27,22 @@
         <module>spring-cloud/gateway</module>
         <!--spring cloud Finchley版本后，zipkin可以直接使用官方提供的可执行jar包，无需再开发-->
         <!--<module>spring-cloud/zipkin-server</module>-->
+        <!--=======spring-demo=======-->
+        <module>spring-demo/demo-test</module>
+        <module>spring-demo/spring-boot-starter-custom</module>
         <module>spring-demo/spring-data-jpa</module>
+        <module>spring-demo/spring-security</module>
+        <!--=======spring-dubbo=======-->
+        <module>spring-dubbo/dubbo-client</module>
+        <module>spring-dubbo/dubbo-server</module>
     </modules>
 
     <developers>
         <developer>
             <name>Janloong Doo</name>
             <email>janloongdoo@gmail.com</email>
+            <url>https://github.com/Janloong-Doo</url>
+            <timezone>+8</timezone>
         </developer>
     </developers>
     <!--spring boot 基础依赖-->
