@@ -1,0 +1,9 @@
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Copyright (c) 2019  All Rights Reserved.
+# ProjectName: SpringCloud
+# FileName: spring.handlers
+# Author: janloongdoo@gmail.com
+# Date: 19-5-17 \u4E0B\u53485:30
+# LastModify: 19-5-17 \u4E0B\u53485:30
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+provides:spring-context,spring-boot
