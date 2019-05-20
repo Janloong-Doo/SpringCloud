@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>spider</title>
+</head>
+<body>
+<div>
+    <form th:id="spider-form" th:method="post" th:action="@{/spiderUrl}">
+        <input type="text" name="url"/>
+        <input type="submit" th:value="爬取"/>
+    </form>
+</div>
+<div>
+    <span th:text="${callUrl}"></span>
+</div>
+</body>
+</html>

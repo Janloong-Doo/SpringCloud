@@ -11,6 +11,7 @@ package com.janloong.springbootstartercustom.entity;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,6 +24,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConditionalOnWebApplication
+@ConditionalOnClass(AuthorInfoProvider.class)
 @EnableConfigurationProperties(AuthorInfo.class)
 public class AuthorInfoAutoConfiguration {
     @Autowired

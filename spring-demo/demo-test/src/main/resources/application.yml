@@ -2,3 +2,6 @@
 #  name: janloong
 #  domain: janloong
 #  description: this is janloong
+logging:
+  level:
+    com.janloong: debug

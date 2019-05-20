@@ -35,9 +35,11 @@
         <module>spring-demo/demo-test</module>
         <module>spring-demo/spring-boot-starter-custom</module>
         <module>spring-demo/spring-data-jpa</module>
+        <module>spring-demo/spring-mongodb-demo</module>
         <module>spring-demo/spring-parent-demo</module>
         <module>spring-demo/spring-redis-demo</module>
         <module>spring-demo/spring-security</module>
+        <module>spring-demo/webcrawler</module>
         <!--=======spring-dubbo=======-->
         <module>spring-dubbo/dubbo-client</module>
         <module>spring-dubbo/dubbo-server</module>

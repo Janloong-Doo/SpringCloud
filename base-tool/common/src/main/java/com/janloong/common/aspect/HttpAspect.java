@@ -9,6 +9,7 @@
 
 package com.janloong.common.aspect;
 
+import com.janloong.common.entity.provider.JsonResultProvider;
 import com.janloong.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -17,7 +18,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -40,16 +41,21 @@ import java.util.Objects;
 @Slf4j
 public class HttpAspect {
 
-    @Value("${doo.jsonAble}")
-    private Boolean jsonAble;
-    @Value("${doo.jsonFile}")
-    private String jsonFile;
+    @Autowired
+    private JsonResultProvider provider;
+
+    //@Value("${doo.jsonAble}")
+    private Boolean jsonAble = false;
+    //@Value("${doo.jsonFile}")
+    private String jsonFile = "G://test";
 
     @AfterReturning(
             returning = "object",
             pointcut = "log()"
     )
     public void afterReturn(JoinPoint joinPoint, Object object) {
+        jsonAble = provider.getJsonResult().isJsonAble();
+        jsonFile = provider.getJsonResult().getJsonFilePath();
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
