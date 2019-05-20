@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: Customer.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-25 下午3:09
- : LastModify: 19-3-25 下午3:09
+ : Date: 19-5-20 下午2:12
+ : LastModify: 19-3-25 下午4:14
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.entity;
+package com.janloong.springredisdemo.entity;
 
 
 import org.springframework.data.annotation.Id;

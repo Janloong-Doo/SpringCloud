@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: RedisUtil.java
  : Author: janloongdoo@gmail.com
- : Date: 19-1-9 上午11:20
- : LastModify: 18-10-12 上午10:50
+ : Date: 19-5-20 下午1:59
+ : LastModify: 19-3-1 下午4:52
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.redis;
+package com.janloong.springredisdemo.redis;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

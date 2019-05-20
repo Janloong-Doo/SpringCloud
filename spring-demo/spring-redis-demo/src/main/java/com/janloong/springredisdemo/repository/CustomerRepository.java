@@ -3,14 +3,14 @@
  : ProjectName: SpringCloud
  : FileName: CustomerRepository.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-25 下午3:15
- : LastModify: 19-3-25 下午3:15
+ : Date: 19-5-20 下午2:12
+ : LastModify: 19-3-25 下午3:27
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.repository;
+package com.janloong.springredisdemo.repository;
 
 
-import com.janloong.demoall.entity.Customer;
+import com.janloong.springredisdemo.entity.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -3,13 +3,13 @@
  : ProjectName: SpringCloud
  : FileName: UserDaoImpl.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-7 上午10:06
- : LastModify: 19-2-28 下午4:22
+ : Date: 19-5-20 下午2:23
+ : LastModify: 19-3-27 下午4:14
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.impl;
+package com.janloong.springmongodbdemo.impl;
 
-import com.janloong.demoall.entity.UserEntity;
+import com.janloong.springmongodbdemo.entity.UserEntity;
 import com.mongodb.client.result.UpdateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: RedisMessageListener.java
  : Author: janloongdoo@gmail.com
- : Date: 19-1-9 上午11:45
- : LastModify: 18-10-12 上午10:50
+ : Date: 19-5-20 下午1:59
+ : LastModify: 19-1-9 上午11:46
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.redis;
+package com.janloong.springredisdemo.redis;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ public class RedisMessageListener implements MessageListener {
     public void onMessage(Message message, byte[] pattern) {
         byte[] channel = message.getChannel();
         byte[] body = message.getBody();
-        System.out.println("新消息: " + new String(channel) + " = " + new String(channel) + " = " + new String(channel));
+        System.out.println("新消息: " + new String(channel) + " = " + new String(body) + " = ");
 
     }
 }

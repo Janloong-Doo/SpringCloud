@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: Transaction.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-25 下午3:11
- : LastModify: 19-3-25 下午3:11
+ : Date: 19-5-20 下午3:57
+ : LastModify: 19-5-20 下午2:24
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.entity;
+package com.janloong.springredisdemo.entity;
 
 
 import org.springframework.data.annotation.Id;
@@ -79,5 +79,5 @@ public class Transaction {
     public void setToAccountId(Long toAccountId) {
         this.toAccountId = toAccountId;
     }
-    
+
 }

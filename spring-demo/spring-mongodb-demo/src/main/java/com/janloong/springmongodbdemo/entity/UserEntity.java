@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: UserEntity.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-7 上午10:07
- : LastModify: 19-2-28 下午4:22
+ : Date: 19-5-20 下午2:23
+ : LastModify: 19-3-7 上午10:07
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.entity;
+package com.janloong.springmongodbdemo.entity;
 
 import java.io.Serializable;
 

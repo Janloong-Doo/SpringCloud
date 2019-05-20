@@ -3,18 +3,18 @@
  : ProjectName: SpringCloud
  : FileName: RedisDemoController.java
  : Author: janloongdoo@gmail.com
- : Date: 19-1-9 下午1:47
- : LastModify: 19-1-9 下午1:47
+ : Date: 19-5-20 下午1:59
+ : LastModify: 19-3-25 下午4:39
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.controller;
+package com.janloong.springredisdemo.controller;
 
 
-import com.janloong.base.utils.WebApiResponse;
-import com.janloong.demoall.entity.Account;
-import com.janloong.demoall.entity.Customer;
-import com.janloong.demoall.redis.RedisUtil;
-import com.janloong.demoall.repository.CustomerRepository;
+import com.janloong.common.utils.WebApiResponse;
+import com.janloong.springredisdemo.entity.Account;
+import com.janloong.springredisdemo.entity.Customer;
+import com.janloong.springredisdemo.redis.RedisUtil;
+import com.janloong.springredisdemo.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

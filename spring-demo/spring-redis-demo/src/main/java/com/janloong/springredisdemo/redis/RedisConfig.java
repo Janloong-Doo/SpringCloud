@@ -3,11 +3,11 @@
  : ProjectName: SpringCloud
  : FileName: RedisConfig.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-25 下午3:08
+ : Date: 19-5-20 下午1:59
  : LastModify: 19-3-25 下午3:08
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.redis;
+package com.janloong.springredisdemo.redis;
 
 
 import org.springframework.context.annotation.Bean;
@@ -35,4 +35,6 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory());
         return template;
     }
+
+    
 }

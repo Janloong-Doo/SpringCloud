@@ -3,16 +3,16 @@
  : ProjectName: SpringCloud
  : FileName: MongodbController.java
  : Author: janloongdoo@gmail.com
- : Date: 19-3-7 上午10:12
- : LastModify: 19-3-7 上午10:12
+ : Date: 19-5-20 下午2:23
+ : LastModify: 19-3-12 下午3:11
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.demoall.controller;
+package com.janloong.springmongodbdemo.controller;
 
 
-import com.janloong.base.utils.WebApiResponse;
-import com.janloong.demoall.entity.UserEntity;
-import com.janloong.demoall.impl.UserDao;
+import com.janloong.common.utils.WebApiResponse;
+import com.janloong.springmongodbdemo.entity.UserEntity;
+import com.janloong.springmongodbdemo.impl.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
