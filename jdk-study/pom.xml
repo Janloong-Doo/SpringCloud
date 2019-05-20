@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  : Copyright (c) 2019  All Rights Reserved.
+  : ProjectName: SpringCloud
+  : FileName: pom.xml
+  : Author: janloongdoo@gmail.com
+  : Date: 19-5-20 下午5:40
+  : LastModify: 18-12-5 上午11:27
+  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.janloong</groupId>
+    <artifactId>jdk-study</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+</project>
