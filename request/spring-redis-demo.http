@@ -1,3 +1,5 @@
+###  spring-redie-demo 对应的httpRequest
+
 ### String
 #获取key对应的value
 GET http://localhost:6666/redis/get?key=a
@@ -45,13 +47,5 @@ GET http://localhost:6666/redis/readCustomer
 ###
 GET http://localhost:6666/redis/saveCustomer
 
-# ---------------redisRepo end-------------------
-
-# ---------------mongodb start-------------------
-###
-
-GET http://localhost:6666/mongodb/save?id=1003&userName=doo3&passWord=123
 
 
-###
-# ---------------mongodb end-------------------

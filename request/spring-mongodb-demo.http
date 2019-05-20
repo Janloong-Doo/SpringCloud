@@ -1,0 +1,9 @@
+### spirng-mongodb-demo 对应的httpRequest
+###
+
+GET http://localhost:6667/mongodb/save?id=1004&userName=doo3&passWord=123
+
+###
+GET http://localhost:6667/mongodb/query?name=doo3
+
+###

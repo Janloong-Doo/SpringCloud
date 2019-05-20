@@ -73,5 +73,5 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
     一、可复制other文件夹下的workspace.xml 至 .idea下覆盖相应文件
     二、复制workspace.xml中configuration节点所有内容 至 相应文件的相应节点下
     
-![](./other/1.png)
+![](../other/1.png)
 
