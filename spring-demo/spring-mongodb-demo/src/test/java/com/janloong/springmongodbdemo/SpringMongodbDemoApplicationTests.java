@@ -1,4 +1,4 @@
-package com.janloong.common;
+package com.janloong.springmongodbdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CommonApplicationTests {
+public class SpringMongodbDemoApplicationTests {
 
     @Test
     public void contextLoads() {

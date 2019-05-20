@@ -3,7 +3,7 @@
  : ProjectName: SpringCloud
  : FileName: ResultEnum.java
  : Author: janloongdoo@gmail.com
- : Date: 19-5-17 下午5:34
+ : Date: 19-5-20 上午11:37
  : LastModify: 18-12-5 下午5:56
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
