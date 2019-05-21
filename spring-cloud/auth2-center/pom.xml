@@ -12,9 +12,8 @@
 
     <parent>
         <groupId>com.janloong</groupId>
-        <artifactId>cloud</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
+        <artifactId>cloud-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
     </parent>
 
     <properties>
@@ -81,8 +80,8 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-zipkin</artifactId>-->
+        <!--<groupId>org.springframework.cloud</groupId>-->
+        <!--<artifactId>spring-cloud-starter-zipkin</artifactId>-->
         <!--</dependency>-->
 
         <dependency>

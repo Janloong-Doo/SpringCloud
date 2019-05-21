@@ -5,3 +5,8 @@
 logging:
   level:
     com.janloong: debug
+    web: debug
+doo:
+  json:
+    able: false
+    filePath: D://test

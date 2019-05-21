@@ -16,7 +16,7 @@ public class JsonResult {
     public static final String JSONFILEPATH = "D://";
     public static final Boolean JSONABLE = false;
 
-    private String jsonFilePath = JSONFILEPATH;
-    private boolean jsonAble = JSONABLE;
+    private String filePath = JSONFILEPATH;
+    private boolean able = JSONABLE;
 
 }

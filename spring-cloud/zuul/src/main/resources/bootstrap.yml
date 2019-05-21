@@ -28,7 +28,8 @@ eureka:
   #    instance-id: ${janloong.eureka.ip}:${server.port}
   client:
     service-url:
-      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
+#      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
+      defaultZone: http://localhost:8762/eureka
     #服务消费者 发现服务
     fetch-registry: true
     #服务消费者 刷新服务清单的缓存时间 默认为30秒

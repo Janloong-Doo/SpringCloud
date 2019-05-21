@@ -10,7 +10,6 @@
 package com.janloong.springmongodbdemo.controller;
 
 
-import com.janloong.common.utils.WebApiResponse;
 import com.janloong.springmongodbdemo.entity.UserEntity;
 import com.janloong.springmongodbdemo.impl.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,9 @@ public class MongodbController {
      * @date 2019/3/7 10:12
      **/
     @RequestMapping("/save")
-    public WebApiResponse save(UserEntity userEntity) {
+    public ResultResponse save(UserEntity userEntity) {
         userDao.saveUser(userEntity);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -43,8 +42,8 @@ public class MongodbController {
      * @date 2019/3/7 10:14
      **/
     @RequestMapping("/query")
-    public WebApiResponse query(String name) {
+    public ResultResponse query(String name) {
         UserEntity userByUserName = userDao.findUserByUserName(name);
-        return WebApiResponse.success(userByUserName);
+        return ResultResponse.success(userByUserName);
     }
 }

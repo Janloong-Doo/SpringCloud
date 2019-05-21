@@ -23,6 +23,6 @@ public class RunnerTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("runner 开始运行了 doo");
+        System.out.println("spring项目成功启动");
     }
 }

@@ -10,7 +10,6 @@
 package com.janloong.springredisdemo.controller;
 
 
-import com.janloong.common.utils.WebApiResponse;
 import com.janloong.springredisdemo.entity.Account;
 import com.janloong.springredisdemo.entity.Customer;
 import com.janloong.springredisdemo.redis.RedisUtil;
@@ -44,9 +43,9 @@ public class RedisDemoController {
      * @date 2019/1/9 13:47
      **/
     @RequestMapping("/get")
-    public WebApiResponse get(String key) {
+    public ResultResponse get(String key) {
         Object o = redisUtil.get(key);
-        return WebApiResponse.success(o);
+        return ResultResponse.success(o);
     }
 
     /**
@@ -54,10 +53,10 @@ public class RedisDemoController {
      * @date 2019/1/9 13:59
      **/
     @RequestMapping("/set")
-    public WebApiResponse set(String key, String value, long time) {
+    public ResultResponse set(String key, String value, long time) {
         log.info("time:" + time);
         boolean set = redisUtil.set(key, value, time);
-        return WebApiResponse.success(set);
+        return ResultResponse.success(set);
     }
 
     /**
@@ -65,9 +64,9 @@ public class RedisDemoController {
      * @date 2019/1/9 14:53
      **/
     @RequestMapping("/del")
-    public WebApiResponse del(String... keys) {
+    public ResultResponse del(String... keys) {
         redisUtil.del(keys);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -75,9 +74,9 @@ public class RedisDemoController {
      * @date 2019/1/9 16:39
      **/
     @RequestMapping("/incr")
-    public WebApiResponse incr(String key, long delta) {
+    public ResultResponse incr(String key, long delta) {
         long incr = redisUtil.incr(key, delta);
-        return WebApiResponse.success(incr);
+        return ResultResponse.success(incr);
     }
 
     /**
@@ -85,9 +84,9 @@ public class RedisDemoController {
      * @date 2019/1/9 16:39
      **/
     @RequestMapping("/decr")
-    public WebApiResponse decr(String key, long delta) {
+    public ResultResponse decr(String key, long delta) {
         long decr = redisUtil.decr(key, delta);
-        return WebApiResponse.success(decr);
+        return ResultResponse.success(decr);
     }
     //==================================================
 
@@ -96,9 +95,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:06
      **/
     @RequestMapping("/hget")
-    public WebApiResponse hget(String key, String item) {
+    public ResultResponse hget(String key, String item) {
         Object hget = redisUtil.hget(key, item);
-        return WebApiResponse.success(hget);
+        return ResultResponse.success(hget);
     }
 
     /**
@@ -106,9 +105,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:13
      **/
     @RequestMapping("/hset")
-    public WebApiResponse hset(String key, String item, String value, @RequestParam(defaultValue = "0") long time) {
+    public ResultResponse hset(String key, String item, String value, @RequestParam(defaultValue = "0") long time) {
         boolean hset = redisUtil.hset(key, item, value, time);
-        return WebApiResponse.success(hset);
+        return ResultResponse.success(hset);
     }
 
     /**
@@ -116,9 +115,9 @@ public class RedisDemoController {
      * @date 2019/1/9 17:25
      **/
     @RequestMapping("/hdel")
-    public WebApiResponse hdel(String key, String... item) {
+    public ResultResponse hdel(String key, String... item) {
         redisUtil.hdel(key, item);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -126,9 +125,9 @@ public class RedisDemoController {
      * @date 2019/1/9 17:50
      **/
     @RequestMapping("/hHasKey")
-    public WebApiResponse hHasKey(String key, String item) {
+    public ResultResponse hHasKey(String key, String item) {
         redisUtil.hHasKey(key, item);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -138,9 +137,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:51
      **/
     @RequestMapping("/hmget")
-    public WebApiResponse hmget(String key) {
+    public ResultResponse hmget(String key) {
         Map<Object, Object> hmget = redisUtil.hmget(key);
-        return WebApiResponse.success(hmget);
+        return ResultResponse.success(hmget);
     }
 
     /**
@@ -148,7 +147,7 @@ public class RedisDemoController {
      * @date 2019/1/9 15:53
      **/
     @RequestMapping("/hmset")
-    public WebApiResponse hmset(String key, long time, String[] item, String[] value) {
+    public ResultResponse hmset(String key, long time, String[] item, String[] value) {
         HashMap<String, Object> map = new HashMap<>();
         List<String> item1 = List.of(item);
         List<String> value1 = List.of(value);
@@ -158,7 +157,7 @@ public class RedisDemoController {
             i.getAndSet(i.get() + 1);
         });
         redisUtil.hmset(key, map, time);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -166,9 +165,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:13
      **/
     @RequestMapping("/hgetall")
-    public WebApiResponse hgetall(String key) {
+    public ResultResponse hgetall(String key) {
         Map<Object, Object> hmget = redisUtil.hmget(key);
-        return WebApiResponse.success(hmget);
+        return ResultResponse.success(hmget);
     }
 
 
@@ -180,12 +179,12 @@ public class RedisDemoController {
      * @date 2019/3/25 15:17
      **/
     @RequestMapping("/readCustomer")
-    public WebApiResponse readCustomer(String name) {
+    public ResultResponse readCustomer(String name) {
         Iterable<Customer> all = customerRepository.findAll();
         List<Object> objects = new LinkedList<>();
         all.forEach(customer -> objects.add(customer));
 
-        return WebApiResponse.success(objects);
+        return ResultResponse.success(objects);
     }
 
     /**
@@ -193,13 +192,13 @@ public class RedisDemoController {
      * @date 2019/3/25 15:2544
      **/
     @RequestMapping("/saveCustomer")
-    public WebApiResponse saveCustomer(String name) {
+    public ResultResponse saveCustomer(String name) {
         Customer janloong = new Customer(102L, "10002", "janloongdoo");
         janloong.addAccount(new Account(201L, "20002", 2000));
         janloong.addAccount(new Account(202L, "20003", 3000));
         janloong.addAccount(new Account(203L, "20004", 4000));
         customerRepository.save(janloong);
-        return WebApiResponse.success(null);
+        return ResultResponse.success(null);
     }
 
     /**
@@ -207,7 +206,7 @@ public class RedisDemoController {
      * @date 2019/3/25 16:22
      **/
     @RequestMapping("/readAccount")
-    public WebApiResponse readAccount(@RequestParam String name) {
-        return WebApiResponse.success(null);
+    public ResultResponse readAccount(@RequestParam String name) {
+        return ResultResponse.success(null);
     }
 }

@@ -9,7 +9,8 @@
 
 package com.janloong.common.exception;
 
-import com.janloong.common.utils.WebApiResponse;
+import com.janloong.common.enums.ResultEnum;
+import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,19 +32,19 @@ public class ExceptionHandle {
 
     @ExceptionHandler(value = {RuntimeException.class, Exception.class})
     @ResponseBody
-    public WebApiResponse handle(Exception e) {
+    public ResponseResult handle(Exception e) {
         if (e instanceof BusinessException) {
             BusinessException bussinesException = (BusinessException) e;
             if (bussinesException.isSuccess()) {
                 log.info("[业务正常] [{} - {}]", bussinesException.getCode(), bussinesException.getMsg());
-                return WebApiResponse.success(bussinesException.getCode() + " - " + bussinesException.getMsg());
+                return ResponseResult.success(bussinesException.getCode(), bussinesException.getMsg(), null);
             } else {
                 log.error("[业务异常] [{} - {}]", bussinesException.getCode(), bussinesException.getMsg());
-                return WebApiResponse.erro(bussinesException.getCode() + " - " + bussinesException.getMsg());
+                return ResponseResult.error(bussinesException.getCode(), bussinesException.getMsg());
             }
         } else {
             log.error("[系统异常]: {}", e);
-            return WebApiResponse.erro("未知系统错误 : " + e);
+            return ResponseResult.error(ResultEnum.ERROR.getCode(), e.getMessage());
         }
     }
 }

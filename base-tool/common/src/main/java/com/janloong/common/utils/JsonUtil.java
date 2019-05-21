@@ -32,9 +32,9 @@ public class JsonUtil {
 
     public static void writeToFIle(String fileName, Object object) {
 
-        WebApiResponse response = (WebApiResponse) object;
+        ResponseResult response = (ResponseResult) object;
         if (!response.isSuccess()) {
-            throw new BusinessException(ResultEnum.未知错误);
+            throw new BusinessException(ResultEnum.ERROR);
         }
         String s1 = JSON.toJSONString(response);
         Object data = response.getData();
@@ -53,7 +53,7 @@ public class JsonUtil {
                 fileWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                throw new BusinessException(ResultEnum.文件写入失败);
+                throw new BusinessException(ResultEnum.FILE_WRITE_ERROR);
             }
 
         } else if (data instanceof Map) {

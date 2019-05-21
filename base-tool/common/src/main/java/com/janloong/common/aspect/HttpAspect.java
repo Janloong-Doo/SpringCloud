@@ -44,7 +44,7 @@ public class HttpAspect {
     @Autowired
     private JsonResultProvider provider;
 
-    //@Value("${doo.jsonAble}")
+    //@Value("${doo.able}")
     private Boolean jsonAble = false;
     //@Value("${doo.jsonFile}")
     private String jsonFile = "G://test";
@@ -54,8 +54,8 @@ public class HttpAspect {
             pointcut = "log()"
     )
     public void afterReturn(JoinPoint joinPoint, Object object) {
-        jsonAble = provider.getJsonResult().isJsonAble();
-        jsonFile = provider.getJsonResult().getJsonFilePath();
+        jsonAble = provider.getJsonResult().isAble();
+        jsonFile = provider.getJsonResult().getFilePath();
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
@@ -65,7 +65,7 @@ public class HttpAspect {
         log.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
                 + "object:" + object + "\n"
         );
-        log.info("jsonAble: " + jsonAble);
+        log.info("able: " + jsonAble);
         if (jsonAble) {
             String name = methodName;
             String s = Arrays.toString(args);

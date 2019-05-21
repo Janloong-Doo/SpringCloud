@@ -40,7 +40,7 @@ import java.util.Objects;
 @Slf4j
 public class HttpAspect {
 
-    @Value("${doo.jsonAble}")
+    @Value("${doo.able}")
     private Boolean jsonAble;
     @Value("${doo.jsonFile}")
     private String jsonFile;
@@ -59,7 +59,7 @@ public class HttpAspect {
         log.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
                 + "object:" + object + "\n"
         );
-        log.info("jsonAble: " + jsonAble);
+        log.info("able: " + jsonAble);
         if (jsonAble) {
             String name = methodName;
             String s = Arrays.toString(args);

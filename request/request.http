@@ -1,6 +1,0 @@
-### String
-#获取key对应的value
-GET http://localhost:6666/redis/get?key=a
-Accept: */*
-Cache-Control: no-cache
-

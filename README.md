@@ -38,4 +38,11 @@
 - [spring-dubbo](./spring-dubbo): dubbo的demo
   - [dubbo-client](./spring-dubbo/dubbo-client): dubbo客户端
   - [dubbo-server](./spring-dubbo/dubbo-server): dubbo服务端
-- [jdk-study](./jdk-study): dubbo的demo
+- [jdk-study](./jdk-study): jdk学习
+- [build-config](./build-config): 多环境变量管理
+  - [dev](./build-config/dev): dev环境 
+  - [prod](./build-config/prod): prod环境
+- [request](./request): HttpRequest请求合集 
+  - [cloud](./request/cloud): springcloud请求
+  - [spring-demo](./request/spring-demo): springdemo请求
+

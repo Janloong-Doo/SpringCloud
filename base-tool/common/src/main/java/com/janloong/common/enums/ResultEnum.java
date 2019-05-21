@@ -18,43 +18,52 @@ package com.janloong.common.enums;
 public enum ResultEnum {
 
     //基础码
-    参数错误(10001),
-    id为空(10002),
-    无相关数据(10003)
+    PARAM_ERROR(10001, "参数错误"),
+    EMPTY_ID(10002, "id为空"),
+    EMPTY_DATA(10003, "无相关数据")
 
     //系统类
-    ,成功(0)
-    ,未知错误(-1)
-    ,更新失败(10010)
-    ,对象转换错误(10011)
-    ,版本名称不合法(10012)
-    ,文件不能为空(10013)
-    ,远程调用失败(10014)
-    ,提供远程服务失败(10015)
-    ,文件解压失败(10016)
-    ,文件写入失败(10017)
+    , SUCCESS(0, "成功")
+    , ERROR(-1, "未知错误")
+    , UPDATE_ERROR(10010, "更新失败")
+    , BEAN_ERROR(10011, "对象转换错误")
+    , VERSION_ERROR(10012, "版本错误")
+    , EMPTY_FILE(10013, "文件不能为空")
+    , REMOTE_ERROR(10014, "远程调用失败")
+    , REMOTE_PROVIDER_ERROR(10015, "提供远程服务失败")
+    , FILE_UNZIP_ERROR(10016, "文件解压失败")
+    , FILE_WRITE_ERROR(10017, "文件写入失败")
 
 
     //用户中心
-    ,手机号已经注册(30001)
-    ,账号或密码错误(30002)
-    ,用户不存在(30003)
-    ,没有操作权限(30004)
-    ,管理员已经注册(30005)
+    , EXITED_TEL(30001, "手机号已经注册")
+    , ACCOUNT_ERROR(30002, "账号或密码错误")
+    , EMPTY_USER(30003, "用户不存在")
+    , EMPTY_OPERATION(30004, "没有操作权限")
+    , ADMIN_EXITED(30005, "管理员已经注册")
 
     //应用
-    ,应用类型错误(40001)
-    ;
+    , APP_TYPE_ERROR(40001, "应用类型错误");
 
 
     private Integer code;
+    private String msg;
 
     ResultEnum(Integer code) {
         this.code = code;
     }
 
+    ResultEnum(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public Integer getCode() {
         return code;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 
 }

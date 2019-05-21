@@ -62,9 +62,9 @@ Author : **[Janloong Do_O](https://blog.csdn.net/du807110586)** | **<a href ="ma
 
 |功能|url|
 |:---|:---|
-|sba| http://localhost:8889/admin |
-|rabbitmq| http://localhost:15672 |
-|zipkin| http://localhost:9411 |
+|sba| [http://localhost:8889/admin](http://localhost:8889/admin) |
+|rabbitmq| [http://localhost:15672](http://localhost:15672) |
+|zipkin| [http://localhost:9411](http://localhost:15672) |
 
 ## Tips:
 > 为方便测试，快速建立如下效果
