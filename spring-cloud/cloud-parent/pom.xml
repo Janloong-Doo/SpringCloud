@@ -38,13 +38,37 @@
     <properties>
         <java.version>11</java.version>
         <springboot.version>${project.parent.version}</springboot.version>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+<!--        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>-->
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <resource.delimiter>@</resource.delimiter>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.targetEncoding>UTF-8</project.build.targetEncoding>
+        <basedir>../../</basedir>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+                <activeByDefault>true</activeByDefault>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>home</id>
+            <properties>
+                <env>home</env>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -135,6 +159,9 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <filters>
+            <filter>../../build-config/${env}/common.properties</filter>
+        </filters>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,36 @@
+spring:
+  zipkin:
+    sender:
+      type: web
+    service:
+      name: ${spring.application.name}
+    message-timeout: 5
+  sleuth:
+    sampler:
+      probability: 0.5f
+  cloud:
+    config:
+      label: master
+      profile: test
+      #   uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
+      discovery:
+        enabled: true
+        serviceId: config-server
+      name: ${spring.application.name},common
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
+eureka:
+  instance:
+    #    preferIpAddress: true
+    #      instance-id: ${janloong.eureka.ip}:${server.port}
+    #    instance-id: 127.0.0.1:8762
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka

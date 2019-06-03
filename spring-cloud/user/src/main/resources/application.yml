@@ -1,39 +1,10 @@
 server:
   port: 8083
 spring:
+  profiles:
+    active: dev
   application:
     name: usercenter
-#  zipkin:
-#    baseUrl: http://192.168.211.135:9411
-#    sender:
-#      type: rabbit
-#  profiles:
-#    active: dev
-#  cloud:
-#    config:
-#      label: master
-#      profile: test
-#      #   uri: http://localhost:8888/   # 加入eureka服务后可以直接配置服务名
-#      discovery:
-#        enabled: true
-#        serviceId: config-server
-#      name: ${spring.application.name},common
-#  rabbitmq:
-#    port: ${janloong.rabbitmq.port}
-#    host: ${janloong.rabbitmq.ip}
-#    username: ${janloong.rabbitmq.username}
-#    password: ${janloong.rabbitmq.password}
-#  zipkin:
-#    base-url: http://${janloong.zipkin.ip}:${janloongdoo.zipkin.port}
-#eureka:
-#  instance:
-#    preferIpAddress: true
-#    #      instance-id: ${janloong.eureka.ip}:${server.port}
-#    instance-id: 127.0.0.1:8761
-#  client:
-#    service-url:
-#      #      defaultZone: http://${janloong.eureka.ip}:${janloong.eureka.port}/eureka,${janloong.eureka.other-urls}
-#      defaultZone: http://127.0.0.1:8761/eureka
 info: #定义各种额外的详情给服务端显示
   app:
     name: "@project.name@" #从pom.xml中获取
