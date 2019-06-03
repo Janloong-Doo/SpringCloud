@@ -24,12 +24,27 @@ public class StreamApiTest {
             return x * x;
         }).forEach(System.out::println); //逐条打印
 
+        boolean b = list.stream().noneMatch(integer -> integer > 8);
+        System.out.println("没有一个大于8的值: " + b);
+        boolean b1 = list.stream().allMatch(integer -> integer < 9);
+        System.out.println("全部都小于9: " + b1);
+        boolean b2 = list.stream().anyMatch(integer -> integer > 8);
+        System.out.println("至少有一个大于8的值: " + b2);
+        Integer integer1 = list.stream().reduce((integer, integer2) -> integer + integer2).get();
+        System.out.println("所有值进行求和运算: " + integer1);
+        //初始值为1的累加器
+        Integer reduce = list.stream().reduce(1, (i1, i2) -> i1 + i2);
+        System.out.println("初始值为1,co所有值进行求和运算: " + reduce);
+        Integer integer = list.stream().max(Integer::compareTo).get();
+        System.out.println("最大值为: " + integer);
+
         System.out.println("------------------华丽的分割线-----------------");
 
         //测试二
         class NaturalSupplier implements Supplier<Long> {
             long value = 0;
 
+            @Override
             public Long get() {
                 this.value = this.value + 1;
                 return this.value;
@@ -39,6 +54,8 @@ public class StreamApiTest {
         natural.map((x) -> {
             return x * x;
         }).limit(10).forEach(System.out::println);
+        //无限执行
+        //}).forEach(System.out::println);
 
         System.out.println("------------------华丽的分割线-----------------");
 
