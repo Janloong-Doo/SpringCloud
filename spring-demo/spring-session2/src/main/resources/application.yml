@@ -1,0 +1,14 @@
+logging:
+  level:
+    com.janloong: debug
+    web: debug
+doo:
+  json:
+    able: false
+    filePath: D://test
+server:
+  port: 8082
+spring:
+  redis:
+    host: localhost
+    port: 6379

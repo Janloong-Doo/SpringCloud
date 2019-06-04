@@ -1,4 +1,13 @@
-package com.janloong.javabase;
+/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ : Copyright (c) 2019  All Rights Reserved.
+ : ProjectName: SpringCloud
+ : FileName: sortString.java
+ : Author: janloongdoo@gmail.com
+ : Date: 19-6-4 下午2:35
+ : LastModify: 18-12-5 上午11:27
+ :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+package com.janloong.javabase.streamapi;
 
 import java.util.*;
 import java.util.stream.Stream;

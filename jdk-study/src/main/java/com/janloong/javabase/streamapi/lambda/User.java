@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  */
 public class User {
     private String name;
-    private String age;
+    private Integer age;
     private List<String> book = new ArrayList<>();
 
     //消费函数接口
@@ -52,11 +52,11 @@ public class User {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
