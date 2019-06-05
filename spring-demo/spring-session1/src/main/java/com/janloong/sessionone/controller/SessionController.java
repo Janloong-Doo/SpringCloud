@@ -31,6 +31,7 @@ public class SessionController {
     @RequestMapping("/set")
     public ResponseResult set(HttpSession httpSession, @RequestParam(defaultValue = "ses") String key, @RequestParam(defaultValue = "doo") String name) {
         httpSession.setAttribute(key, name);
-        return ResponseResult.success("设置成功: " + key + "-" + name);
+        String id = httpSession.getId();
+        return ResponseResult.success("session-" + id + "-设置成功: " + key + "-" + name);
     }
 }

@@ -31,6 +31,8 @@ public class SessionControlelr {
     @RequestMapping("/get")
     public ResponseResult get(HttpSession httpSession, @RequestParam(defaultValue = "ses") String key) {
         Object ses = httpSession.getAttribute(key);
+        System.out.println(ses);
+        System.out.println(httpSession.getId());
         return ResponseResult.success(ses);
     }
 }
