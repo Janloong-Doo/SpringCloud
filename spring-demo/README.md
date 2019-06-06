@@ -6,7 +6,12 @@
 | bean名称 | 描述 | 
 |:---:|:---:| 
 | ApplicationRunner | 随springboot启动的runner类 |
-| | |
+
+## 基础bean的概念
+
+| bean名称 |类型 |描述 | 
+|:---:|:---:| :---:|
+| BeanFactory|接口|用于访问spring bean容器的根接口|
 
 
 ## 注解
