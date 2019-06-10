@@ -1,0 +1,4 @@
+logging:
+  level:
+    com.janloong: debug
+    web: debug

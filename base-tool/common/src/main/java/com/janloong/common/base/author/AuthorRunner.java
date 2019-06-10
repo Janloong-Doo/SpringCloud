@@ -1,28 +1,35 @@
 /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  : Copyright (c) 2019  All Rights Reserved.
  : ProjectName: SpringCloud
- : FileName: RunnerTest.java
+ : FileName: AuthorRunner.java
  : Author: janloongdoo@gmail.com
- : Date: 19-5-17 下午5:37
- : LastModify: 19-5-16 下午4:28
+ : Date: 19-6-10 下午3:51
+ : LastModify: 19-6-10 下午3:51
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.common;
+package com.janloong.common.base.author;
 
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-16 16:21
+ * @date 2019-06-10 15:51
  */
 @Component
-public class RunnerTest implements ApplicationRunner {
+@Slf4j
+public class AuthorRunner implements ApplicationRunner {
+
+    @Autowired
+    private AuthorInfoProvider authorInfo;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("spring项目成功启动");
+        AuthorInfo author = authorInfo.getAuthrorInfo();
+        log.info("\n:: {} ::\n:: {} ::\n:: {} ::", author.getName(), author.getDomain(), author.getDescription());
     }
 }
