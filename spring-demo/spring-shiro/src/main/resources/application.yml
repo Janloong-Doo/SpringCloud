@@ -1,0 +1,18 @@
+logging:
+  level:
+    com.janloong: debug
+    web: debug
+#shiro配置
+shiro:
+  loginUrl: /login
+  successUrl: /index
+  sessionManager:
+    # 将sessionId放入cookie中
+    sessionIdCookieEnabled: true
+    # 是否将sessionId放入Url地址栏中
+    sessionIdUrlRewritingEnabled: true
+  # 访问未授权页面时跳转页面
+  unauthorizedUrl: /unatuhor
+  web:
+    # 开启shiro
+    enabled: true
