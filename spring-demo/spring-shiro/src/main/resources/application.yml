@@ -12,7 +12,7 @@ shiro:
     # 是否将sessionId放入Url地址栏中
     sessionIdUrlRewritingEnabled: true
   # 访问未授权页面时跳转页面
-  unauthorizedUrl: /unatuhor
+  unauthorizedUrl: /unauth
   web:
     # 开启shiro
     enabled: true

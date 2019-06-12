@@ -20,7 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2019-06-11 11:30
  */
 @SpringBootApplication
-@ComponentScan("com.janloong.common")
+@ComponentScan("com.janloong")
 public class ShiroApplication {
 
     public static void main(String[] args) {

@@ -47,10 +47,10 @@ public class CustomRealm extends AuthorizingRealm {
         //return new SimpleAuthenticationInfo(user, password, getName());
         //String username = (String) token.getPrincipal();
         String username = upToken.getUsername();
-        if (!"javaboy".equals(username)) {
+        if (!"janloong".equals(username)) {
             throw new UnknownAccountException("账户不存在!");
         }
-        return new SimpleAuthenticationInfo(username, "123", getName());
+        return new SimpleAuthenticationInfo(username, "doo", getName());
     }
 
     /**
