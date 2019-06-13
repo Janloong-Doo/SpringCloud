@@ -10,8 +10,7 @@
 package com.janloong.shiro;
 
 
-import com.janloong.common.base.JanloongBanner;
-import org.springframework.boot.SpringApplication;
+import com.janloong.common.JanloongApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -24,8 +23,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class ShiroApplication {
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(ShiroApplication.class);
-        springApplication.setBanner(new JanloongBanner());
-        springApplication.run(args);
+        JanloongApplication.start(args, ShiroApplication.class);
     }
 }

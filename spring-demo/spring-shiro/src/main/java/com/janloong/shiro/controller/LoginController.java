@@ -10,8 +10,10 @@
 package com.janloong.shiro.controller;
 
 
+import com.janloong.common.enums.ResultEnum;
 import com.janloong.common.utils.ResponseResult;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,11 +34,24 @@ public class LoginController {
     @RequestMapping("/login")
     public ResponseResult login(@RequestParam String username, @RequestParam String password) {
         Subject subject = SecurityUtils.getSubject();
-        subject.login(new UsernamePasswordToken(username, password));
+        try {
+            subject.login(new UsernamePasswordToken(username, password));
+        } catch (AuthenticationException e) {
+            System.out.println("cuowu");
+            return ResponseResult.error(ResultEnum.ACCOUNT_ERROR.getCode(), e.getMessage());
+        }
         System.out.println("登录成功");
         return ResponseResult.success("返回登录成功");
     }
 
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/6/13 16:57
+     **/
+    @RequestMapping("/loginUrl")
+    public ResponseResult loginUrl() {
+        return ResponseResult.success("loginUrl");
+    }
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>

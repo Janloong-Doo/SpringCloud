@@ -9,6 +9,7 @@
 
 package com.janloong.shiro.config;
 
+import com.janloong.shiro.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -39,18 +40,25 @@ public class CustomRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-        //String username = upToken.getUsername();
-        //String password = "";
-        //if (upToken.getPassword() != null) {
-        //    password = new String(upToken.getPassword());
-        //}
-        //return new SimpleAuthenticationInfo(user, password, getName());
-        //String username = (String) token.getPrincipal();
+        //根据用户名密码进行认证信息
         String username = upToken.getUsername();
-        if (!"janloong".equals(username)) {
-            throw new UnknownAccountException("账户不存在!");
+        String password = "";
+        if (upToken.getPassword() != null) {
+            password = new String(upToken.getPassword());
         }
-        return new SimpleAuthenticationInfo(username, "doo", getName());
+        //校验用户名密码
+        User user = new User();
+        user.setUsername("janloong");
+        user.setPassword("doo");
+        user.setUserId("001");
+        user.setRole("role");
+        user.setPermission("permission");
+        if (!user.getUsername().equals(username)) {
+            throw new UnknownAccountException("账户不存在");
+        } else if (!user.getPassword().equals(password)) {
+            throw new AccountException("密码错误");
+        }
+        return new SimpleAuthenticationInfo(user, password, getName());
     }
 
     /**

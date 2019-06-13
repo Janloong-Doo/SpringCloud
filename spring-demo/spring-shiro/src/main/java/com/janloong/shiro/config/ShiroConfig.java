@@ -35,11 +35,17 @@ public class ShiroConfig {
         return manager;
     }
 
+    /**
+     * 自定义过滤规则
+     */
     @Bean
     ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition definition = new DefaultShiroFilterChainDefinition();
-        definition.addPathDefinition("/login", "anon");
-        definition.addPathDefinition("/**", "authc");
+        //放行规则   loginAuth达到同样效果处理
+        //definition.addPathDefinition("/login", "anon");
+        //definition.addPathDefinition("/loginUrl", "anon");
+        //认证规则
+        //definition.addPathDefinition("/**", "authc");
         return definition;
     }
 

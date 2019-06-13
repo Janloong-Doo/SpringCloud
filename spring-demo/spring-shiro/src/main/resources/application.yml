@@ -4,7 +4,7 @@ logging:
     web: debug
 #shiro配置
 shiro:
-  loginUrl: /login
+  loginUrl: /loginUrl
   successUrl: /index
   sessionManager:
     # 将sessionId放入cookie中
@@ -16,3 +16,5 @@ shiro:
   web:
     # 开启shiro
     enabled: true
+#server:
+#  port: 8079

@@ -10,8 +10,7 @@
 package com.janloong.basestudy;
 
 
-import com.janloong.common.base.JanloongBanner;
-import org.springframework.boot.SpringApplication;
+import com.janloong.common.JanloongApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -23,8 +22,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(value = "com.janloong")
 public class BaseStudyApplication {
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(BaseStudyApplication.class);
-        springApplication.setBanner(new JanloongBanner());
-        springApplication.run(args);
+        JanloongApplication.start(args, BaseStudyApplication.class);
     }
 }

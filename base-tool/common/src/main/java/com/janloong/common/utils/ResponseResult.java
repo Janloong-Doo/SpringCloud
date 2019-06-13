@@ -12,6 +12,7 @@ package com.janloong.common.utils;
 
 import lombok.*;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
 /**
@@ -27,13 +28,16 @@ public class ResponseResult implements Serializable {
     private static final Integer CODE = 0;
     private static final String MSG = "成功";
 
+    @Getter
     private Integer code = CODE;
+    @Getter
     private String msg = MSG;
 
     @Getter
     @Setter
     private Object data;
 
+    @Transient
     public boolean isSuccess() {
         return code == 0;
     }
