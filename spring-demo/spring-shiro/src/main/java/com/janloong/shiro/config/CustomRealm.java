@@ -9,11 +9,13 @@
 
 package com.janloong.shiro.config;
 
+import com.google.common.collect.Sets;
 import com.janloong.shiro.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -31,7 +33,12 @@ public class CustomRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-        return null;
+        //配置角色、权限信息  配合 @RequiresPermissions() @RequiresRoles() 等使用
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.setRoles(Sets.newHashSet(user.getRole()));
+        simpleAuthorizationInfo.setStringPermissions(Sets.newHashSet(user.getPermission()));
+        return simpleAuthorizationInfo;
     }
 
     /**
