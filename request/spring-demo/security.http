@@ -10,18 +10,20 @@
 POST http://{{doo_host}}/user/add
 Accept: */*
 Cache-Control: no-cache
-Content-Type: application/json
+Content-Type: application/json;charset=UTF-8
 
 {
-  "username": "janloong",
-  "password": "doo"
+  "username" : "doo",
+  "password" : "doo",
+  "roleId" : "role1"
 }
+
 
 ###
 POST http://{{doo_host}}/user/add
 Content-Type: application/x-www-form-urlencoded
 
-username=janloong&password=doo
+username=doo&password=doo&roleId=role1
 
 ###
 GET http://{{doo_host}}/user/1

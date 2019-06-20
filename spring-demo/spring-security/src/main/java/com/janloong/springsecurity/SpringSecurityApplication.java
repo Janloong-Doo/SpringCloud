@@ -1,15 +1,34 @@
 package com.janloong.springsecurity;
 
-import org.springframework.boot.SpringApplication;
+import com.janloong.common.JanloongApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
 @EnableJpaAuditing
+@ComponentScan("com.janloong")
 public class SpringSecurityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecurityApplication.class, args);
+        JanloongApplication.start(args, SpringSecurityApplication.class);
     }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return new CorsFilter(source);
+    }
+
 
 }

@@ -64,10 +64,10 @@ public class AuthTokenFilter extends ZuulFilter {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             ctx.setResponseBody("token null");
-            //ctx.setResponseBody(WebApiResponse.erro("token null").toString());
+            //ctx.setResponseBody(ResponseResult.erro("token null").toString());
             return null;
         } else {
-            //WebApiResponse validate = authCenterFeign.validateToken(token1);
+            //ResponseResult validate = authCenterFeign.validateToken(token1);
             //boolean success = validate.isSuccess();
             //LinkedHashMap data = null;
             //boolean aBoolean = false;
@@ -84,7 +84,7 @@ public class AuthTokenFilter extends ZuulFilter {
             //    System.out.println("token校验错误");
             //    ctx.setSendZuulResponse(false);
             //    ctx.setResponseStatusCode(401);
-            //    //ctx.setResponseBody(WebApiResponse.erro("token error").toString());
+            //    //ctx.setResponseBody(ResponseResult.erro("token error").toString());
             //    ctx.setResponseBody("token无效");
                 return null;
             //}

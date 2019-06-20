@@ -10,14 +10,13 @@
 package com.janloong.springsecurity.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
-import javax.annotation.Resource;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -26,20 +25,21 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Resource
+    @Autowired
     private UserAuthService userAuthService;
-    //@Override
-    //protected UserDetailsService userDetailsService() {
-    //    //return super.userDetailsService();
-    //    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-    //    manager.createUser(User.withDefaultPasswordEncoder().username("doo").password("doo").roles("USER").build());
-    //    return manager;
-    //}
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //super.configure(auth);
-        auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance()).withUser("doo").password("doo").roles("USER");
+        //配置密码加密类型
+        //DelegatingPasswordEncoder encoder = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        //encoder.setDefaultPasswordEncoderForMatches(NoOpPasswordEncoder.getInstance());
+        auth
+                .userDetailsService(userAuthService)
+                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+        //创建内容中的临时用户
+        //auth.inMemoryAuthentication()
+        //.passwordEncoder(NoOpPasswordEncoder.getInstance());
+        //.withUser("doo").password("doo").roles("USER");
     }
 
     @Override
@@ -53,13 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .formLogin()
                 //.loginProcessingUrl("doo")
-                .loginPage("/doo")
-                .loginProcessingUrl("dooLogin")
+                //.loginPage("/doo")
+                //.loginProcessingUrl("dooLogin")
+                //.successForwardUrl("/index")
                 .and()
                 .authorizeRequests()
                 .antMatchers(
                         //"/login/**"
                         "/doo"
+                        , "/user/add"
                         , "/dooLogin"
                         , "/static/**"
                         //, "/**"
@@ -76,13 +78,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         //, "/oauth/confirm_access"
                 )
                 .permitAll()
+
                 .anyRequest()
                 .authenticated()
-
-        //.failureForwardUrl("/doo.html?error")
-        //.permitAll()
-        //.and()
-        //.logout().logoutUrl("/logout").logoutSuccessUrl("/")
+                //.failureForwardUrl("/doo.html?error")
+                //.permitAll()
+                .and()
+                .logout().logoutUrl("/logout")
+        //.logoutSuccessUrl("/logout")
         ;
     }
 }

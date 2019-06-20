@@ -10,7 +10,7 @@
 package com.janloong.springsecurity.service;
 
 
-import com.janloong.springsecurity.common.config.BaseService;
+import com.janloong.common.config.BaseService;
 import com.janloong.springsecurity.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

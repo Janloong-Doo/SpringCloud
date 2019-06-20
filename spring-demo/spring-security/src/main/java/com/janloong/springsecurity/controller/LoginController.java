@@ -10,9 +10,10 @@
 package com.janloong.springsecurity.controller;
 
 
-import com.janloong.springsecurity.common.utils.WebApiResponse;
+import com.janloong.common.utils.ResponseResult;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
@@ -21,7 +22,6 @@ import java.util.Map;
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-03-29 17:15
  */
-//@RestController
 @Controller
 public class LoginController {
 
@@ -30,7 +30,7 @@ public class LoginController {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/4/8 13:38
      **/
-    @RequestMapping("/doo")
+    @GetMapping("/doo")
     public String doo(String msg) {
         return "/doo";
     }
@@ -39,11 +39,11 @@ public class LoginController {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/3/29 17:36
      **/
-    @RequestMapping("/dooLogin")
+    @PostMapping("/dooLogin")
     @ResponseBody
-    public WebApiResponse dooLogin(String username, String password) {
+    public ResponseResult dooLogin(String username, String password) {
         Map<String, String> map = Map.of(username, password);
-        return WebApiResponse.success(map);
+        return ResponseResult.success(map);
     }
 
 }

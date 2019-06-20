@@ -11,18 +11,10 @@ package com.janloong.springsecurity.entity;
 
 
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -30,51 +22,32 @@ import java.util.List;
  */
 @Data
 @Entity
-public class User implements UserDetails {
+public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
-    private LocalDateTime localDateTime;
+    @Column(name = "role_id")
+    private String roleId;
 
-    public User() {
-    }
+    @Column(name = "locked")
+    private Boolean locked;
 
-    public User(String username, String password, LocalDateTime localDateTime) {
-        this.username = username;
-        this.password = password;
-        this.localDateTime = localDateTime;
-    }
+    @Column(name = "expire")
+    private Boolean expire;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> auths = new ArrayList<>();
-        auths.add(new SimpleGrantedAuthority("ROLE_USER"));
-        return auths;
-    }
+    @Column(name = "create_time")
+    private LocalDateTime createTime;
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
+    @Column(name = "updateTime")
+    private LocalDateTime updateTime;
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }

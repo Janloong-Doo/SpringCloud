@@ -20,7 +20,7 @@ public class LocatDateTest {
         LocalDateTime localDateTime = LocalDateTime.now();
         localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         System.out.println(localDateTime);
-        //System.out.println(localDateTime.);
+        //System.out.println(createTime.);
         String startTime = "2018-07-12 17:20:58";
         System.out.println(LocalDateTime.parse(startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         System.out.println("========");

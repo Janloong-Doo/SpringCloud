@@ -40,7 +40,7 @@
         <module>spring-demo/spring-parent-demo</module>
         <module>spring-demo/spring-redis-demo</module>
         <module>spring-demo/spring-security</module>
-        <module>spring-demo/webcrawler</module>
+<!--        <module>spring-demo/webcrawler</module>-->
         <!--=======spring-dubbo=======-->
         <module>spring-dubbo/dubbo-client</module>
         <module>spring-dubbo/dubbo-server</module>

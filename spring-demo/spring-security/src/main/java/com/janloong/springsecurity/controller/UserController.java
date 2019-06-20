@@ -10,13 +10,13 @@
 package com.janloong.springsecurity.controller;
 
 
-import com.janloong.springsecurity.common.config.BaseController;
-import com.janloong.springsecurity.common.utils.WebApiResponse;
+import com.janloong.common.config.BaseController;
+import com.janloong.common.utils.ResponseResult;
 import com.janloong.springsecurity.entity.User;
 import com.janloong.springsecurity.service.UserService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -32,9 +32,9 @@ public class UserController extends BaseController<UserService> {
      * @date 2019/4/12 11:36
      **/
     @RequestMapping("/{id}")
-    public WebApiResponse getOne(@PathVariable Long id) {
+    public ResponseResult getOne(@PathVariable Long id) {
         User one = this.getService().getRepository().getOne(id);
-        return WebApiResponse.success(one);
+        return ResponseResult.success(one);
     }
 
     /**
@@ -42,9 +42,9 @@ public class UserController extends BaseController<UserService> {
      * @date 2019/4/12 11:58
      **/
     @GetMapping()
-    public WebApiResponse getAll() {
+    public ResponseResult getAll() {
         List<User> all = this.getService().getRepository().findAll();
-        return WebApiResponse.success(all);
+        return ResponseResult.success(all);
     }
 
     /**
@@ -52,12 +52,16 @@ public class UserController extends BaseController<UserService> {
      * @date 2019/4/12 11:38
      **/
     @PostMapping("/add")
-    public WebApiResponse add(@RequestParam String username, @RequestParam String password) {
+    public ResponseResult add(@RequestParam String username, @RequestParam String password, String roleId) {
         System.out.println(username);
         System.out.println(password);
-        User user = new User(username, password, LocalDateTime.now());
+        User user = new User();
+        user.setUsername(username);
+        String encode = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(password);
+        user.setPassword(encode);
+        user.setRoleId(roleId);
         System.out.println(user);
         User save = this.getService().getRepository().save(user);
-        return WebApiResponse.success(save);
+        return ResponseResult.success(save);
     }
 }
