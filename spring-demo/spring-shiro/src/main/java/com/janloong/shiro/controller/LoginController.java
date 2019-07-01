@@ -16,6 +16,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,9 +67,8 @@ public class LoginController {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/6/12 9:21
      **/
-    @RequestMapping("/doo")
-    public ResponseResult doo(@RequestParam String name) {
-
-        return ResponseResult.success(null);
+    @PostMapping("/doo")
+    public ResponseResult doo(String name) {
+        return ResponseResult.success(name);
     }
 }

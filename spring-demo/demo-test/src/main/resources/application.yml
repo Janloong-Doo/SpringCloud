@@ -6,7 +6,10 @@ logging:
   level:
     com.janloong: debug
     web: debug
-doo:
-  json:
-    able: false
-    filePath: D://test
+server:
+  port: 8088
+  ssl:
+    key-store: classpath:keystore.p12
+    key-alias: doo
+    key-store-password: rzt123
+    key-store-type: jks

@@ -33,11 +33,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.janloong</groupId>
-            <artifactId>spring-boot-starter-custom</artifactId>
-            <version>1.0.0.RELEASE</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.janloong</groupId>-->
+<!--            <artifactId>spring-boot-starter-custom</artifactId>-->
+<!--            <version>1.0.0.RELEASE</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.janloong</groupId>
             <artifactId>common</artifactId>

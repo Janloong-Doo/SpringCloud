@@ -11,7 +11,10 @@ package com.janloong.demotest.controller;
 
 
 import com.janloong.common.utils.ResponseResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -26,10 +29,11 @@ public class HeadController {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/5/22 14:14
      **/
-    @GetMapping(value = "/head")
-    public ResponseResult head(@RequestParam String name) {
-
-        return ResponseResult.success(null);
+    @RequestMapping(value = "/head")
+    public ResponseResult head(@RequestParam String name, @RequestParam String age) {
+        //接收application/json   request payload
+        //public ResponseResult head(@RequestBody String name) {
+        return ResponseResult.success(name + "-" + age);
     }
 
     /**

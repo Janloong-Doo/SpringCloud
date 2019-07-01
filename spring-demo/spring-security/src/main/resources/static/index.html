@@ -8,12 +8,25 @@
   :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>首页</title>
 </head>
 <body>
-
+<div>
+  <a>登陆成功</a>
+  <br>
+  <button id="logout" th:onclick="logout()">注销</button>
+</div>
 </body>
+<script>
+
+  $("#logout").onclick(logout())
+
+  function logout() {
+    alert("点击");
+    console.log("点击了")
+  }
+</script>
 </html>
