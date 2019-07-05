@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-05-22 14:12
@@ -33,6 +35,7 @@ public class HeadController {
     public ResponseResult head(@RequestParam String name, @RequestParam String age) {
         //接收application/json   request payload
         //public ResponseResult head(@RequestBody String name) {
+        ConcurrentHashMap<Object, Object> map = new ConcurrentHashMap<>();
         return ResponseResult.success(name + "-" + age);
     }
 

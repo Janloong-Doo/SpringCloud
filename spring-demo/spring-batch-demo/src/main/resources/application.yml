@@ -1,0 +1,6 @@
+logging:
+  level:
+    com.janloong: debug
+    web: debug
+server:
+  port: 8089
