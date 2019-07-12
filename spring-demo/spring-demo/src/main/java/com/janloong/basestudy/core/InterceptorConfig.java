@@ -23,7 +23,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //登录拦截
-        registry.addInterceptor(new CustomHandlerIntecptor());
+        //registry.addInterceptor(new CustomHandlerIntecptor());
     }
 
     @Override

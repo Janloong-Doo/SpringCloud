@@ -36,13 +36,15 @@ public class CustomHandlerIntecptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("预处理");
+        //
+        //String dealAble = request.getParameter("dealAble");
+        //System.out.println(dealAble);
+        //boolean aBoolean = Boolean.parseBoolean(dealAble);
+        //System.out.println(aBoolean);
+        //return aBoolean;
 
-        String dealAble = request.getParameter("dealAble");
-        System.out.println(dealAble);
-        boolean aBoolean = Boolean.parseBoolean(dealAble);
-        System.out.println(aBoolean);
-        return aBoolean;
-        //return false;
+
+        return false;
     }
 
     /**

@@ -27,6 +27,7 @@ public class HomeController {
      **/
     @RequestMapping("/home")
     public ResponseResult home(Boolean dealAble) {
+        System.out.println("业务处理");
         return ResponseResult.success("SUCCESS:" + dealAble);
     }
 
@@ -40,4 +41,13 @@ public class HomeController {
         return "succ";
     }
 
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/7/12 9:18
+     **/
+    @RequestMapping("/sign")
+    public ResponseResult sign(String name, String address) {
+        System.out.println(name + "==" + address);
+        return ResponseResult.success(name + "=================" + address);
+    }
 }
