@@ -9,7 +9,6 @@
 
 package com.janloong.basestudy.core;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,13 +16,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 
-@Configuration
+//@Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //登录拦截
-        //registry.addInterceptor(new CustomHandlerIntecptor());
+        registry.addInterceptor(new CustomHandlerIntecptor());
     }
 
     @Override

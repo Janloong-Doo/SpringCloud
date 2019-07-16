@@ -15,7 +15,6 @@ import com.janloong.basestudy.utils.SignUtil;
 import com.janloong.common.enums.ResultEnum;
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,7 @@ import java.util.SortedMap;
  * @date 2019-07-11 17:20
  */
 @Slf4j
-@Component
+//@Component
 public class SignFilter implements Filter {
     static final String FAVICON = "/favicon.ico";
 
