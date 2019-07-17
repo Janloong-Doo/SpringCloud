@@ -11,6 +11,7 @@ package com.janloong.basestudy.core;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,11 +37,22 @@ public class CustomHandlerIntecptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("预处理");
+
+        sessionDeal(request, response);
+
         String dealAble = request.getParameter("dealAble");
-        System.out.println(dealAble);
-        boolean aBoolean = Boolean.parseBoolean(dealAble);
-        System.out.println(aBoolean);
+        log.info(dealAble);
+        boolean aBoolean = true;
+        if (!StringUtils.isEmpty(dealAble)) {
+            aBoolean = Boolean.parseBoolean(dealAble);
+        }
+        log.info(aBoolean + "");
         return aBoolean;
+    }
+
+    private void sessionDeal(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getSession().getId();
+        log.info("SessionId: " + id);
     }
 
     /**
