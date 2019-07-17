@@ -11,11 +11,15 @@ package com.janloong.springsecurity.controller;
 
 
 import com.janloong.common.utils.ResponseResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -23,6 +27,7 @@ import java.util.Map;
  * @date 2019-03-29 17:15
  */
 @Controller
+@Slf4j
 public class LoginController {
 
 
@@ -31,8 +36,13 @@ public class LoginController {
      * @date 2019/4/8 13:38
      **/
     @GetMapping("/doo")
-    public String doo(String msg) {
-        return "/doo";
+    public void doo(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            response.sendRedirect("http://localhost:8889/spring");
+        } catch (IOException e) {
+            log.error("请求转发错误: {}", e.getMessage());
+        }
+
     }
 
     /**
