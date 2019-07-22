@@ -15,6 +15,9 @@ import com.janloong.basestudy.utils.SignUtil;
 import com.janloong.common.enums.ResultEnum;
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.ehcache.CacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +32,12 @@ import java.util.SortedMap;
  * @date 2019-07-11 17:20
  */
 @Slf4j
-//@Component
+@Component
 public class SignFilter implements Filter {
+
+    @Autowired
+    CacheManager cacheManager;
+
     static final String FAVICON = "/favicon.ico";
 
     @Override
@@ -53,26 +60,25 @@ public class SignFilter implements Filter {
         } else {
             //获取全部参数(包括URL和body上的)
             SortedMap<String, String> allParams = SignUtil.getAllParams(requestWrapper);
+            boolean repeatAble = SignUtil.verifyNonce(allParams, cacheManager);
             //对参数进行签名验证
             boolean isSigned = SignUtil.verifySign(allParams);
-            if (isSigned) {
-                log.info("签名通过");
-                chain.doFilter(requestWrapper, response);
-            } else {
-                log.info("参数校验出错");
+            if (!isSigned || repeatAble) {
+                log.info("参数校验出错:\n sign:" + isSigned + "- repeat:" + repeatAble);
                 //校验失败返回前端
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json; charset=utf-8");
+                response.setStatus(400);
                 PrintWriter out = response.getWriter();
-                //JSONObject resParam = new JSONObject();
-                //resParam.put("msg", "参数校验出错");
-                //resParam.put("success", "false");
-                //out.append(resParam.toJSONString());
-                ResponseResult error = ResponseResult.error(ResultEnum.PARAM_ERROR.getCode(), ResultEnum.PARAM_ERROR.getMsg());
+                ResponseResult error = ResponseResult.error(ResultEnum.REQUEST_ERROR.getCode(), ResultEnum.REQUEST_ERROR.getMsg());
                 out.append(JSONObject.toJSONString(error));
+            } else {
+                log.info("签名通过");
+                chain.doFilter(requestWrapper, response);
             }
         }
     }
+
 
     @Override
     public void destroy() {

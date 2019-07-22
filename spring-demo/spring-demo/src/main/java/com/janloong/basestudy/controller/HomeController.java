@@ -11,6 +11,9 @@ package com.janloong.basestudy.controller;
 
 
 import com.janloong.common.utils.ResponseResult;
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HomeController {
+
+    @Autowired
+    CacheManager cacheManager;
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -49,5 +55,27 @@ public class HomeController {
     public ResponseResult sign(String name, String address) {
         System.out.println(name + "==" + address);
         return ResponseResult.success(name + "=================" + address);
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/7/22 10:36
+     **/
+    @RequestMapping("/setcache")
+    public ResponseResult setcache(String name) {
+        Cache<String, String> defaultCache = cacheManager.getCache("defaultCache", String.class, String.class);
+        defaultCache.put(name, "doo");
+        return ResponseResult.success(null);
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/7/22 11:37
+     **/
+    @RequestMapping("/getcache")
+    public ResponseResult getcache(String name) {
+        Cache<String, String> defaultCache = cacheManager.getCache("defaultCache", String.class, String.class);
+        boolean b = defaultCache.containsKey(name);
+        return ResponseResult.success(b);
     }
 }

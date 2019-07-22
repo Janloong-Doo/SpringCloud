@@ -20,7 +20,8 @@ public enum ResultEnum {
     //基础码
     PARAM_ERROR(10001, "参数错误"),
     EMPTY_ID(10002, "id为空"),
-    EMPTY_DATA(10003, "无相关数据")
+    EMPTY_DATA(10003, "无相关数据"),
+    REQUEST_ERROR(10004, "请求不合法")
 
     //系统类
     , SUCCESS(0, "成功")

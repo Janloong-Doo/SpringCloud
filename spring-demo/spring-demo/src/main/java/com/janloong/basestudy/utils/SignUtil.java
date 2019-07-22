@@ -3,6 +3,8 @@ package com.janloong.basestudy.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.StringUtils;
 
@@ -14,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
@@ -55,6 +58,7 @@ public class SignUtil {
         //String s = DigestUtils.md5DigestAsHex(paramsJsonStr.getBytes()).toUpperCase();
         //String m = s + "janloong";
         //return DigestUtils.md5DigestAsHex(m.getBytes()).toUpperCase();
+        log.info("signParam:\n" + paramsJsonStr);
         String encodeStr = null;
         try {
             MessageDigest instance = MessageDigest.getInstance("SHA-256");
@@ -154,4 +158,28 @@ public class SignUtil {
         return result;
     }
 
+    public static boolean verifyNonce(SortedMap<String, String> allParams, CacheManager cacheManager) {
+        boolean a = false;
+        String nonce = allParams.get("nonce");
+        String timestamp = allParams.get("timestamp");
+        Cache<String, String> defaultCache = cacheManager.getCache("defaultCache", String.class, String.class);
+        boolean b = defaultCache.containsKey(nonce);
+        System.out.println("timestamp:" + timestamp);
+        Instant parse = Instant.ofEpochMilli(Long.parseLong(timestamp)).plusSeconds(60L);
+        Instant now = Instant.now();
+
+        log.info("随机数信息：\n"
+                + "nonce:" + nonce
+                + "\ntimestamp:" + timestamp
+                + "\nb:" + b
+                + "\ns:" + parse.isBefore(now)
+                + "\nold:" + parse.toString()
+                + "\nnow:" + now.toString()
+        );
+        if (parse.isBefore(now) || b) {
+            return true;
+        }
+        defaultCache.put(nonce, "doo");
+        return a;
+    }
 }
