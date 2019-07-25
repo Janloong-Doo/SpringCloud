@@ -28,7 +28,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-debug: true
+#debug: true
 logging:
   level:
     com.janloong: DEBUG

@@ -12,6 +12,10 @@ package com.janloong.springsecurity.controller;
 
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,18 +35,31 @@ import java.util.Map;
 public class LoginController {
 
 
+    private RequestCache requestCache = new HttpSessionRequestCache();
+
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/4/8 13:38
      **/
     @GetMapping("/doo")
-    public void doo(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            response.sendRedirect("http://localhost:8889/spring");
-        } catch (IOException e) {
-            log.error("请求转发错误: {}", e.getMessage());
-        }
-
+    @ResponseBody
+    public String doo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //try {
+        //    //response.sendRedirect("http://localhost:8889/spring");
+            response.sendRedirect("http://192.168.236.1:8889/#/spring");
+        //} catch (IOException e) {
+        //    log.error("请求转发错误: {}", e.getMessage());
+        //}
+        //SavedRequest savedRequest = requestCache.getRequest(request, response);
+        //if (savedRequest != null) {
+        //    String targetUrl = savedRequest.getRedirectUrl();
+        //    //if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
+        //    redirectStrategy.sendRedirect(request, response, "http://192.168.236.1:8889/spring");
+        //    //}
+        //}
+        return "访问的资源需要身份认证！";
     }
 
     /**

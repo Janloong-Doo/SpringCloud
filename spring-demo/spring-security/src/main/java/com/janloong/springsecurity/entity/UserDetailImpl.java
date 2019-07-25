@@ -10,6 +10,7 @@
 package com.janloong.springsecurity.entity;
 
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-06-20 11:32
  */
+@Data
 public class UserDetailImpl implements UserDetails {
 
     private User user;

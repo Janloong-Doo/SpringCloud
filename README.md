@@ -1,6 +1,6 @@
 # Code Study
 
-> 代码学习记录
+> 代码、框架等学习记录,整体为n=1+1+1+...的过程,非1+1+1+...=n的过程。
 
 ## 模块列表
 
@@ -33,7 +33,7 @@
   - [spring-parent-demo](./spring-demo/spring-parent-demo): 自定义parent
     POM依赖
   - [spring-redis-demo](./spring-demo/spring-redis-demo): redis的使用
-  - [spring-security](./spring-demo/spring-security): spring
+  - [spring-security](./spring-demo/spring-security): spring security单集成demo
   - [webcrawler](./spring-demo/webcrawler): webmagic爬虫demo
 - [spring-dubbo](./spring-dubbo): dubbo的demo
   - [dubbo-client](./spring-dubbo/dubbo-client): dubbo客户端
