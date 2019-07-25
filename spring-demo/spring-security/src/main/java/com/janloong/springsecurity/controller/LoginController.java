@@ -48,7 +48,7 @@ public class LoginController {
     public String doo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //try {
         //    //response.sendRedirect("http://localhost:8889/spring");
-            response.sendRedirect("http://192.168.236.1:8889/#/spring");
+            response.sendRedirect("http://192.168.211.1:8889/#/spring");
         //} catch (IOException e) {
         //    log.error("请求转发错误: {}", e.getMessage());
         //}

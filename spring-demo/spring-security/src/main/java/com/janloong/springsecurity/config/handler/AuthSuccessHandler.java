@@ -45,14 +45,16 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
-        log.info(savedRequest.getRedirectUrl());
-
         UserDetailImpl userDetails = (UserDetailImpl) authentication.getPrincipal();
         log.info("用戶: " + userDetails.getUsername() + " 登录");
-        String targetUrl = savedRequest.getRedirectUrl();
-        if (!StringUtils.isEmpty(targetUrl)) {
-            redirectStrategy.sendRedirect(request, response, targetUrl);
+
+        SavedRequest savedRequest = requestCache.getRequest(request, response);
+        if (savedRequest != null) {
+            String targetUrl = savedRequest.getRedirectUrl();
+            log.info(savedRequest.getRedirectUrl());
+            if (!StringUtils.isEmpty(targetUrl)) {
+                redirectStrategy.sendRedirect(request, response, targetUrl);
+            }
         } else {
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(JSONObject.toJSONString(ResponseResult.success()));
