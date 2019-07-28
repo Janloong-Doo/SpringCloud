@@ -15,3 +15,11 @@ GET http://localhost:8080/getcache?name=a2
 
 ###
 GET http://localhost:8080/sign?name=doo&address=beijing
+
+###
+POST http://localhost:8082/actuator/shutdown
+
+###
+GET http://localhost:8082/wait
+
+###

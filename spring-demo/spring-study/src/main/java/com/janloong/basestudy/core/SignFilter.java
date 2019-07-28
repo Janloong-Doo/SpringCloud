@@ -17,7 +17,6 @@ import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.ehcache.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,7 @@ import java.util.SortedMap;
  * @date 2019-07-11 17:20
  */
 @Slf4j
-@Component
+//@Component
 public class SignFilter implements Filter {
 
     @Autowired
