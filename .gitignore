@@ -25,3 +25,6 @@
 /.nb-gradle/
 **/.mvn
 ### **/test
+/spring-demo/webcrawler/target/classes/application.yml
+/spring-demo/webcrawler/target/classes/templates/html/index.html
+/spring-demo/webcrawler/target/classes/templates/html/spiderResult.html
