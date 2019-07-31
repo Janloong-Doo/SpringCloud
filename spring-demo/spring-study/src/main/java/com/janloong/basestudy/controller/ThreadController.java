@@ -3,15 +3,13 @@
  : ProjectName: SpringCloud
  : FileName: ThreadController.java
  : Author: janloongdoo@gmail.com
- : Date: 2019/7/30 上午10:45
- : LastModify: 2019/7/30 上午10:45
+ : Date: 2019/7/31 下午5:04
+ : LastModify: 2019/7/31 下午5:04
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 package com.janloong.basestudy.controller;
 
 
-import com.janloong.basestudy.config.localsync.Resubmit;
-import com.janloong.basestudy.config.redissync.CacheLock;
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-07-30 10:45
+ * @date 2019-07-31 17:04
  */
 @RestController
 @RequestMapping("thread")
@@ -28,26 +26,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class ThreadController {
 
     /**
-     * 本地锁测试
-     *
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
-     * @date 2019/7/30 11:55
+     * @date 2019/7/31 17:22
      **/
-    @RequestMapping("/repeat")
-    @Resubmit
-    public ResponseResult repeat(String name, String address) {
-        log.info(name + "-" + address);
-        return ResponseResult.success(null);
-    }
+    @RequestMapping("/exec")
+    public ResponseResult exec(@RequestParam String name) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                log.info("任务执行开始");
+            }
+        };
 
-    /**
-     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
-     * @date 2019/7/30 16:34
-     **/
-    @CacheLock(prefix = "doo")
-    @RequestMapping("/repeat2")
-    public ResponseResult repeat2(@RequestParam("tt") String tt) {
-        log.info(tt);
-        return ResponseResult.success(tt);
+        //FutureTask<Runnable> runnableFutureTask = new FutureTask<Runnable>(runnable,);
+        return ResponseResult.success(null);
     }
 }

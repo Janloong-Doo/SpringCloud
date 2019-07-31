@@ -69,12 +69,16 @@ public class RedisLockHelper {
      */
     public boolean lock(String lockKey, final String uuid, long timeout, final TimeUnit unit) {
         final long milliseconds = Expiration.from(timeout, unit).getExpirationTimeInMilliseconds();
+        //操作key是否成功，即key不存在时代表上锁成功
         boolean success = stringRedisTemplate.opsForValue().setIfAbsent(lockKey, (System.currentTimeMillis() + milliseconds) + DELIMITER + uuid);
         if (success) {
+            //上锁成功后要对key做过期处理，防止系统崩溃后造成锁无法释放
             stringRedisTemplate.expire(lockKey, timeout, TimeUnit.SECONDS);
         } else {
+            //修改值失败后获取旧的上锁key对应的value，并设置新的key对应的value为当前时间基础上对应的时间戳和新的uuid
             String oldVal = stringRedisTemplate.opsForValue().getAndSet(lockKey, (System.currentTimeMillis() + milliseconds) + DELIMITER + uuid);
             final String[] oldValues = oldVal.split(Pattern.quote(DELIMITER));
+            //判断旧值的应过期时间是否已过期，若过期则应该代表上锁成功，否则即为上锁失败。
             if (Long.parseLong(oldValues[0]) + 1 <= System.currentTimeMillis()) {
                 return true;
             }
