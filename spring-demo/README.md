@@ -24,3 +24,7 @@
 |ConditionalOnNotWebApplication| 不是web应用|
 |ConditionalOnClass| 当注解在方法上，某个class位于类路径上，才会实例化一个Bean|
 |ConditionalOnClass| 当注解于类上, 某个class位于类路径上，否则不解析该注解修饰的配置类|
+
+## thread
+
+[ExecutorCompletionService参考](https://cloud.tencent.com/developer/article/1444259)

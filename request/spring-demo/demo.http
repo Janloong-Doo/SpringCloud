@@ -18,9 +18,15 @@ GET http://localhost:8080/sign?name=doo&address=beijing
 
 
 ###
-GET http://localhost:8082/thread/repeat?name=doo&address=bj
+GET http://localhost:8082/lock/repeat?name=doo&address=bj
 
 ###
-GET http://localhost:8082/thread/repeat2?tt=janloong
+GET http://localhost:8082/lock/repeat2?tt=janloong
+
+###
+GET http://localhost:8082/thread/exec?name=doo
+
+###
+GET http://localhost:8082/thread/execTask?name=doo
 
 ###
