@@ -30,3 +30,6 @@ GET http://localhost:8082/thread/exec?name=doo
 GET http://localhost:8082/thread/execTask?name=doo
 
 ###
+GET http://localhost:8082/thread/latch
+
+###

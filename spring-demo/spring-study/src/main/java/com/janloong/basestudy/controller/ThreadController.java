@@ -11,6 +11,7 @@ package com.janloong.basestudy.controller;
 
 
 import com.janloong.basestudy.config.thread.CompletionServiceTask;
+import com.janloong.basestudy.config.thread.CountDownLatchDemo;
 import com.janloong.basestudy.config.thread.CustomFutureTask;
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,8 @@ public class ThreadController {
     private CustomFutureTask task;
     @Autowired
     private CompletionServiceTask serviceTask;
+    @Autowired
+    private CountDownLatchDemo latchDemo;
 
 
     /**
@@ -55,6 +58,16 @@ public class ThreadController {
     @RequestMapping("/execTask")
     public ResponseResult execTask(String name) {
         serviceTask.getAggregatedTest(name);
+        return ResponseResult.success(null);
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/8/13 13:23
+     **/
+    @RequestMapping("/latch")
+    public ResponseResult latch() {
+        latchDemo.start();
         return ResponseResult.success(null);
     }
 }
