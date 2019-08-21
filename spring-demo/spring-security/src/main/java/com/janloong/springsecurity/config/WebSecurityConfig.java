@@ -12,6 +12,7 @@ package com.janloong.springsecurity.config;
 
 import com.janloong.springsecurity.config.handler.AuthFailureHandler;
 import com.janloong.springsecurity.config.handler.AuthSuccessHandler;
+import com.janloong.springsecurity.config.handler.CustomLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -36,6 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthSuccessHandler authSuccessHandler;
     @Autowired
     private AuthFailureHandler authFailureHandler;
+    @Autowired
+    private CustomLogoutSuccessHandler logoutSuccessHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -63,7 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .configurationSource(getUrlBasedCorsConfigurationSource())
                 .and().csrf().disable()
                 .formLogin()
-                .loginPage("/doo")
+                //.loginPage("/doo")
                 .loginProcessingUrl("/login")
                 //.failureUrl("/sign/error")
                 //.failureUrl("http://192.168.236.1:8889/#/study")
@@ -88,6 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .logout()
+                .logoutSuccessHandler(logoutSuccessHandler)
                 .logoutUrl("/logout")
         //.logoutSuccessUrl("/logout")
         ;

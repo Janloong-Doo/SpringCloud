@@ -14,6 +14,9 @@ import com.janloong.common.config.BaseController;
 import com.janloong.common.utils.ResponseResult;
 import com.janloong.springsecurity.entity.User;
 import com.janloong.springsecurity.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +26,23 @@ import java.util.List;
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-04-12 10:55
  */
+@Slf4j
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController<UserService> {
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2019/8/21 14:44
+     **/
+    @GetMapping("auth")
+    public ResponseResult info(Authentication authentication) {
+        if (authentication instanceof UsernamePasswordAuthenticationToken) {
+            UsernamePasswordAuthenticationToken userInfo = (UsernamePasswordAuthenticationToken) authentication;
+            return ResponseResult.success(userInfo.toString());
+        }
+        log.info("获取用户认证信息");
+        return ResponseResult.success(authentication.getName());
+    }
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
