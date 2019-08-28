@@ -10,6 +10,7 @@
 package com.janloong.springredisdemo.controller;
 
 
+import com.janloong.common.utils.ResponseResult;
 import com.janloong.springredisdemo.entity.Account;
 import com.janloong.springredisdemo.entity.Customer;
 import com.janloong.springredisdemo.redis.RedisUtil;
@@ -43,9 +44,9 @@ public class RedisDemoController {
      * @date 2019/1/9 13:47
      **/
     @RequestMapping("/get")
-    public ResultResponse get(String key) {
+    public ResponseResult get(String key) {
         Object o = redisUtil.get(key);
-        return ResultResponse.success(o);
+        return ResponseResult.success(o);
     }
 
     /**
@@ -53,10 +54,10 @@ public class RedisDemoController {
      * @date 2019/1/9 13:59
      **/
     @RequestMapping("/set")
-    public ResultResponse set(String key, String value, long time) {
+    public ResponseResult set(String key, String value, long time) {
         log.info("time:" + time);
         boolean set = redisUtil.set(key, value, time);
-        return ResultResponse.success(set);
+        return ResponseResult.success(set);
     }
 
     /**
@@ -64,9 +65,9 @@ public class RedisDemoController {
      * @date 2019/1/9 14:53
      **/
     @RequestMapping("/del")
-    public ResultResponse del(String... keys) {
+    public ResponseResult del(String... keys) {
         redisUtil.del(keys);
-        return ResultResponse.success(null);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -74,9 +75,9 @@ public class RedisDemoController {
      * @date 2019/1/9 16:39
      **/
     @RequestMapping("/incr")
-    public ResultResponse incr(String key, long delta) {
+    public ResponseResult incr(String key, long delta) {
         long incr = redisUtil.incr(key, delta);
-        return ResultResponse.success(incr);
+        return ResponseResult.success(incr);
     }
 
     /**
@@ -84,9 +85,9 @@ public class RedisDemoController {
      * @date 2019/1/9 16:39
      **/
     @RequestMapping("/decr")
-    public ResultResponse decr(String key, long delta) {
+    public ResponseResult decr(String key, long delta) {
         long decr = redisUtil.decr(key, delta);
-        return ResultResponse.success(decr);
+        return ResponseResult.success(decr);
     }
     //==================================================
 
@@ -95,9 +96,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:06
      **/
     @RequestMapping("/hget")
-    public ResultResponse hget(String key, String item) {
+    public ResponseResult hget(String key, String item) {
         Object hget = redisUtil.hget(key, item);
-        return ResultResponse.success(hget);
+        return ResponseResult.success(hget);
     }
 
     /**
@@ -105,9 +106,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:13
      **/
     @RequestMapping("/hset")
-    public ResultResponse hset(String key, String item, String value, @RequestParam(defaultValue = "0") long time) {
+    public ResponseResult hset(String key, String item, String value, @RequestParam(defaultValue = "0") long time) {
         boolean hset = redisUtil.hset(key, item, value, time);
-        return ResultResponse.success(hset);
+        return ResponseResult.success(hset);
     }
 
     /**
@@ -115,9 +116,9 @@ public class RedisDemoController {
      * @date 2019/1/9 17:25
      **/
     @RequestMapping("/hdel")
-    public ResultResponse hdel(String key, String... item) {
+    public ResponseResult hdel(String key, String... item) {
         redisUtil.hdel(key, item);
-        return ResultResponse.success(null);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -125,9 +126,9 @@ public class RedisDemoController {
      * @date 2019/1/9 17:50
      **/
     @RequestMapping("/hHasKey")
-    public ResultResponse hHasKey(String key, String item) {
+    public ResponseResult hHasKey(String key, String item) {
         redisUtil.hHasKey(key, item);
-        return ResultResponse.success(null);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -137,9 +138,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:51
      **/
     @RequestMapping("/hmget")
-    public ResultResponse hmget(String key) {
+    public ResponseResult hmget(String key) {
         Map<Object, Object> hmget = redisUtil.hmget(key);
-        return ResultResponse.success(hmget);
+        return ResponseResult.success(hmget);
     }
 
     /**
@@ -147,7 +148,7 @@ public class RedisDemoController {
      * @date 2019/1/9 15:53
      **/
     @RequestMapping("/hmset")
-    public ResultResponse hmset(String key, long time, String[] item, String[] value) {
+    public ResponseResult hmset(String key, long time, String[] item, String[] value) {
         HashMap<String, Object> map = new HashMap<>();
         List<String> item1 = List.of(item);
         List<String> value1 = List.of(value);
@@ -157,7 +158,7 @@ public class RedisDemoController {
             i.getAndSet(i.get() + 1);
         });
         redisUtil.hmset(key, map, time);
-        return ResultResponse.success(null);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -165,9 +166,9 @@ public class RedisDemoController {
      * @date 2019/1/9 15:13
      **/
     @RequestMapping("/hgetall")
-    public ResultResponse hgetall(String key) {
+    public ResponseResult hgetall(String key) {
         Map<Object, Object> hmget = redisUtil.hmget(key);
-        return ResultResponse.success(hmget);
+        return ResponseResult.success(hmget);
     }
 
 
@@ -179,12 +180,12 @@ public class RedisDemoController {
      * @date 2019/3/25 15:17
      **/
     @RequestMapping("/readCustomer")
-    public ResultResponse readCustomer(String name) {
+    public ResponseResult readCustomer(String name) {
         Iterable<Customer> all = customerRepository.findAll();
         List<Object> objects = new LinkedList<>();
         all.forEach(customer -> objects.add(customer));
 
-        return ResultResponse.success(objects);
+        return ResponseResult.success(objects);
     }
 
     /**
@@ -192,13 +193,13 @@ public class RedisDemoController {
      * @date 2019/3/25 15:2544
      **/
     @RequestMapping("/saveCustomer")
-    public ResultResponse saveCustomer(String name) {
+    public ResponseResult saveCustomer(String name) {
         Customer janloong = new Customer(102L, "10002", "janloongdoo");
         janloong.addAccount(new Account(201L, "20002", 2000));
         janloong.addAccount(new Account(202L, "20003", 3000));
         janloong.addAccount(new Account(203L, "20004", 4000));
         customerRepository.save(janloong);
-        return ResultResponse.success(null);
+        return ResponseResult.success(null);
     }
 
     /**
@@ -206,7 +207,7 @@ public class RedisDemoController {
      * @date 2019/3/25 16:22
      **/
     @RequestMapping("/readAccount")
-    public ResultResponse readAccount(@RequestParam String name) {
-        return ResultResponse.success(null);
+    public ResponseResult readAccount(@RequestParam String name) {
+        return ResponseResult.success(null);
     }
 }
