@@ -7,7 +7,7 @@
 
 #添加用户
 ###
-POST http://{{doo_host}}/user/add
+POST http://{{doo_host}}:{{doo_port}}/user/add
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json;charset=UTF-8
@@ -15,15 +15,15 @@ Content-Type: application/json;charset=UTF-8
 {
   "username" : "doo",
   "password" : "doo",
-  "roleId" : "role1"
+  "roleId" : "program"
 }
 
 
 ###
-POST http://{{doo_host}}/user/add
+POST http://{{doo_host}}:{{doo_port}}/user/add
 Content-Type: application/x-www-form-urlencoded
 
-username=doo&password=doo&roleId=role1
+username=doo&password=doo&roleId=programer
 
 ###
 GET http://{{doo_host}}/user/1

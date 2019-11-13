@@ -25,7 +25,7 @@ import java.util.Map;
 public class WordTest {
 
     public static void main(String[] args) throws Exception {
-        String templatePath = "D:/123.doc";
+        String templatePath = "D:\\work/cache/123.doc";
         Map<String, Object> map_data = new HashMap<>();
         map_data.put("project_id", "2019.21");
         //map_data.put("project_name", "ZJIC");
@@ -47,7 +47,7 @@ public class WordTest {
         //    temp.put("sample_depth", "sample_depth");
         //    list_data.add(temp);
         //}
-        File file = new File("D:\\test.doc");
+        File file = new File("D:\\work/cache/test.doc");
         FileOutputStream out = new FileOutputStream(file);
         Export2GeotechnicalLayeringTable(map_data, list_data, templatePath, out);
     }
@@ -64,7 +64,7 @@ public class WordTest {
             //document = new HWPFDocument(poifsFileSystem);
             document = new HWPFDocument(in);
             Range range = document.getRange();
-            range.replaceText("${project_id}", map_data.get("project_id").toString());  //
+            range.replaceText("${USERNAME}", map_data.get("project_id").toString());  //
             //range.replaceText("${project_name}", map_data.get("project_name").toString());  //
             //range.replaceText("${depth}", map_data.get("depth").toString());  //
             //range.replaceText("${hole_id}", map_data.get("hole_id").toString());  //
