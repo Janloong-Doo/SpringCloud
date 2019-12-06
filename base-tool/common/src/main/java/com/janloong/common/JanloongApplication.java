@@ -14,6 +14,7 @@ import com.janloong.common.base.JanloongBanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.ansi.AnsiColor;
 import org.springframework.boot.ansi.AnsiOutput;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -28,6 +29,7 @@ public class JanloongApplication {
         Instant now = Instant.now();
         SpringApplication springApplication = new SpringApplication(primarySources);
         springApplication.setBanner(new JanloongBanner());
+        springApplication.addListeners(new ApplicationPidFileWriter());
         springApplication.run(args);
         System.out.println(AnsiOutput.toString(AnsiColor.RED, ":: Application started by Janloong_Doo  共" + Duration.between(now, Instant.now()).getSeconds() + "秒 :: "));
     }
