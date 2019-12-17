@@ -28,6 +28,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -57,7 +58,10 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
             }
         } else {
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(JSONObject.toJSONString(ResponseResult.success()));
+            PrintWriter writer = response.getWriter();
+            writer.write(JSONObject.toJSONString(ResponseResult.success()));
+            writer.flush();
+            writer.close();
         }
     }
 }
