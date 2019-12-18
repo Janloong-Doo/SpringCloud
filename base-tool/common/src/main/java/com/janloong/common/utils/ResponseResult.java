@@ -32,12 +32,14 @@ public class ResponseResult implements Serializable {
     private Integer code = CODE;
     @Getter
     private String msg = MSG;
+    @Getter
+    private Boolean success = true;
 
     @Getter
     @Setter
     private Object data;
 
-    @Transient
+    //@Transient
     public boolean isSuccess() {
         return code == 0;
     }
@@ -47,23 +49,27 @@ public class ResponseResult implements Serializable {
     }
 
     public static ResponseResult success(Object data) {
-        return new ResponseResult(CODE, MSG, data);
+        return new ResponseResult(CODE, MSG, true, data);
     }
 
     public static ResponseResult success(String msg, Object data) {
-        return new ResponseResult(CODE, msg, data);
+        return new ResponseResult(CODE, msg, true, data);
     }
 
     public static ResponseResult success(Integer code, String msg, Object data) {
-        return new ResponseResult(code, msg, data);
+        return new ResponseResult(code, msg, true, data);
+    }
+
+    public static ResponseResult success(Integer code, String msg, Boolean success, Object data) {
+        return new ResponseResult(code, msg, success, data);
     }
 
     public static ResponseResult error(Integer code, String msg) {
-        return new ResponseResult(code, msg, null);
+        return new ResponseResult(code, msg, false, null);
     }
 
     static ResponseResult error(Integer code, String msg, Object data) {
-        return new ResponseResult(code, msg, data);
+        return new ResponseResult(code, msg, false, data);
     }
 
 

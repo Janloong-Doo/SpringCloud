@@ -43,6 +43,7 @@ public enum ResultEnum {
     , EMPTY_USER(30003, "用户不存在")
     , EMPTY_OPERATION(30004, "没有操作权限")
     , ADMIN_EXITED(30005, "管理员已经注册")
+    , ACCOUNT_NOLOGIN(30006, "用户未登录或身份已过期")
 
     //应用
     , APP_TYPE_ERROR(40001, "应用类型错误");

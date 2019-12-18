@@ -13,15 +13,22 @@ package com.janloong.springsecurity.config;
 import com.janloong.springsecurity.config.handler.AuthFailureHandler;
 import com.janloong.springsecurity.config.handler.AuthSuccessHandler;
 import com.janloong.springsecurity.config.handler.CustomLogoutSuccessHandler;
+import com.janloong.springsecurity.config.validatecode.SecurityProperties;
+import com.janloong.springsecurity.config.validatecode.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.ServletException;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -38,6 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthFailureHandler authFailureHandler;
     @Autowired
     private CustomLogoutSuccessHandler logoutSuccessHandler;
+    @Autowired
+    private SecurityProperties securityProperties;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -64,6 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors()
                 .configurationSource(getUrlBasedCorsConfigurationSource())
                 .and().csrf().disable()
+                //在登录认证前增加过滤器
+                .addFilterBefore(getValidateCodeFillter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 //.loginPage("/doo")
                 .loginProcessingUrl("/login")
@@ -81,6 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/login"
                         , "/doo"
+                        , "/validate/imageCode"
                         , "/user/add"
                         //, "/dooLogin"
                         , "/h2-console"
@@ -92,6 +104,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .logoutUrl("/logout")
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(getAuthenticationEntryPoint())//重写认证异常的登录页重定向
         //.logoutSuccessUrl("/logout")
         ;
     }
@@ -106,4 +121,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }
+
+    /**
+     * 需要时禁止跳转登录页 返回json
+     */
+    @Bean
+    public AuthenticationEntryPoint getAuthenticationEntryPoint() {
+        //return new CustomLoginUrlAuthenticationEntryPoint(loginForm.getLoginPageUrl());
+        return new CustomLoginUrlAuthenticationEntryPoint("/spring/login");
+    }
+
+    public ValidateCodeFilter getValidateCodeFillter() throws ServletException {
+        /**
+         * 创建 验证码 过滤器 ，并将该过滤器的Handler 设置成自定义登录失败处理器
+         */
+        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
+        validateCodeFilter.setFailureHandler(authFailureHandler);
+        //将 securityproperties 设置进去
+        validateCodeFilter.setSecurityProperties(securityProperties);
+        //调用 装配 需要图片验证码的 url 的初始化方法
+        validateCodeFilter.afterPropertiesSet();
+        return validateCodeFilter;
+    }
+
 }

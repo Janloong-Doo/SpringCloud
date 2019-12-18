@@ -15,7 +15,7 @@ import com.janloong.springmongodbdemo.impl.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.janloong.common.utils.ResponseResult;
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-03-07 10:12

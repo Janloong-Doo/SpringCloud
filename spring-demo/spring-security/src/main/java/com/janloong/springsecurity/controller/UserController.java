@@ -10,17 +10,24 @@
 package com.janloong.springsecurity.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.alibaba.fastjson.serializer.SerializeFilter;
+import com.alibaba.fastjson.support.spring.PropertyPreFilters;
 import com.janloong.common.config.BaseController;
 import com.janloong.common.utils.ResponseResult;
 import com.janloong.springsecurity.entity.User;
+import com.janloong.springsecurity.entity.UserDetailImpl;
 import com.janloong.springsecurity.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -38,7 +45,11 @@ public class UserController extends BaseController<UserService> {
     public ResponseResult info(Authentication authentication) {
         if (authentication instanceof UsernamePasswordAuthenticationToken) {
             UsernamePasswordAuthenticationToken userInfo = (UsernamePasswordAuthenticationToken) authentication;
-            return ResponseResult.success(userInfo.toString());
+            UserDetailImpl principal = (UserDetailImpl) userInfo.getPrincipal();
+            User user =  principal.getUser();
+            User user1 = new User();
+            BeanUtils.copyProperties(user,user1,"password");
+            return ResponseResult.success(user1);
         }
         log.info("获取用户认证信息");
         return ResponseResult.success(authentication.getName());

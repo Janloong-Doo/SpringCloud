@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 /**
- * 取消未登录返回页面
+ * 重写未登录的页面跳转,使返回json
  *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019/12/17 18:18
@@ -29,7 +30,8 @@ public class CustomLoginUrlAuthenticationEntryPoint extends LoginUrlAuthenticati
         //super.commence(request, response, authException);
         response.setContentType("application/json;charset=utf-8");
         PrintWriter writer = response.getWriter();
-        writer.write(JSONObject.toJSONString(ResponseResult.error(ResultEnum.ACCOUNT_ERROR.getCode(), ResultEnum.ACCOUNT_ERROR.getMsg())));
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        writer.write(JSONObject.toJSONString(ResponseResult.error(ResultEnum.ACCOUNT_NOLOGIN.getCode(), ResultEnum.ACCOUNT_NOLOGIN.getMsg())));
         writer.flush();
         writer.close();
     }

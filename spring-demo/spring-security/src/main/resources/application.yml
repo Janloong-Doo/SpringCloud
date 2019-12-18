@@ -36,3 +36,8 @@ spring:
 logging:
   level:
     com.janloong: DEBUG
+doo:
+  security:
+    code:
+      image:
+        url: '/login'
