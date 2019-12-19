@@ -2,6 +2,7 @@ package com.janloong.springsecurity.controller;
 
 import com.janloong.springsecurity.config.validatecode.ImageCode;
 import com.janloong.springsecurity.config.validatecode.ValidateCodeGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.session.Session;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
@@ -14,15 +15,18 @@ import org.springframework.web.context.request.ServletWebRequest;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * 获取图片验证码
+ *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019/12/18 16:43
  **/
 @RestController
 @RequestMapping("validate")
+@Slf4j
 public class ValidateCodeController {
 
     public static final String SESSION_KEY = "SESSION_KEY_IMAGE_CODE";
@@ -36,10 +40,13 @@ public class ValidateCodeController {
 
     @GetMapping("/imageCode")
     public void createCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        String id = session.getId();
+        log.error("sessionId:  " + id);
         ImageCode imageCode = imageCodeGenerator.createCode(new ServletWebRequest(request));
         //将随机数 放到Session中
-        sessionStrategy.setAttribute(new ServletWebRequest(request),SESSION_KEY,imageCode);
+        sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY, imageCode);
         //写给response 响应
-        ImageIO.write(imageCode.getImage(),"JPEG",response.getOutputStream());
+        ImageIO.write(imageCode.getImage(), "JPEG", response.getOutputStream());
     }
 }

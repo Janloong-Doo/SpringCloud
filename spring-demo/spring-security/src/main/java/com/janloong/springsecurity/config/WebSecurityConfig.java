@@ -22,10 +22,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.ServletException;
@@ -70,6 +72,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
+        //http.sessionManagement().enableSessionUrlRewriting(true);
+        //http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
         http.cors()
                 .configurationSource(getUrlBasedCorsConfigurationSource())
                 .and().csrf().disable()
@@ -87,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //此方法跨域想过未生效
-                //.requestMatchers(CorsUtils::isCorsRequest).permitAll()
+                .requestMatchers(CorsUtils::isCorsRequest).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(
                         "/login"

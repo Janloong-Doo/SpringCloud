@@ -54,9 +54,11 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
         String sRand = "";
         for (int i = 0; i < length; i++) {
             String rand = String.valueOf(random.nextInt(10));
-            sRand += rand;
+            //sRand += rand;
+            sRand += '1';
             g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
-            g.drawString(rand, 13 * i + 6, 16);
+            //g.drawString(rand, 13 * i + 6, 16);
+            g.drawString("1", 13 * i + 6, 16);
         }
 
         g.dispose();

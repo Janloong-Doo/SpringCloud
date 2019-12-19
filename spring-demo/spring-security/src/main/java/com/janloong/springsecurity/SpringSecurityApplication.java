@@ -3,6 +3,7 @@ package com.janloong.springsecurity;
 import com.janloong.common.JanloongApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.cors.CorsConfiguration;
@@ -18,7 +19,7 @@ public class SpringSecurityApplication {
         JanloongApplication.start(args, SpringSecurityApplication.class);
     }
 
-    //@Bean
+    @Bean
     //public CorsFilter corsFilter() {
     public FilterRegistrationBean corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -27,6 +28,7 @@ public class SpringSecurityApplication {
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", corsConfiguration);
         CorsFilter corsFilter = new CorsFilter(source);
         FilterRegistrationBean bean = new FilterRegistrationBean(corsFilter);

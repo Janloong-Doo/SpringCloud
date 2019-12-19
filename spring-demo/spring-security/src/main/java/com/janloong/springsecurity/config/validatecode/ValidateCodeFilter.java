@@ -20,6 +20,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,7 +30,7 @@ import java.util.Set;
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019/12/18 15:44
  **/
-@Component
+//@Component
 @Slf4j
 public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean {
 
@@ -80,6 +81,10 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+        HttpSession session = httpServletRequest.getSession();
+        String id = session.getId();
+        log.error("sessionId:  " + id);
+
         boolean action = false;
         for (String url : urls) {
             //如果请求的url 和 配置中的url 相匹配
@@ -99,7 +104,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
                 failureHandler.onAuthenticationFailure(httpServletRequest, httpServletResponse, exception);
                 return;
             }
-
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
         } else {
             //不做任何处理，调用后面的 过滤器
             filterChain.doFilter(httpServletRequest, httpServletResponse);
@@ -107,6 +112,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     }
 
     private void validate(ServletWebRequest request) throws ServletRequestBindingException {
+
+
         //从session中取出 验证码
         ImageCode codeInSession = (ImageCode) sessionStrategy.getAttribute(request, ValidateCodeController.SESSION_KEY);
         //从request 请求中 取出 验证码
