@@ -14,6 +14,7 @@ import com.janloong.springsecurity.entity.User;
 import com.janloong.springsecurity.entity.UserDetailImpl;
 import com.janloong.springsecurity.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,7 +47,9 @@ public class UserAuthService implements UserDetailsService {
             log.info("error");
             throw new UsernameNotFoundException("用户名不存在");
         }
-        UserDetailImpl userDetail = new UserDetailImpl(one.get());
+        User user1 = one.get();
+        UserDetailImpl userDetail = new UserDetailImpl();
+        BeanUtils.copyProperties(user1, userDetail);
         log.info("userdetail:\n" + userDetail.toString());
         return userDetail;
     }

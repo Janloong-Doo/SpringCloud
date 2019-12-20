@@ -18,6 +18,7 @@ import com.janloong.springsecurity.config.validatecode.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -74,7 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //super.configure(http);
         //http.sessionManagement().enableSessionUrlRewriting(true);
         //http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
-        http.cors()
+        http
+                .cors()
                 .configurationSource(getUrlBasedCorsConfigurationSource())
                 .and().csrf().disable()
                 //在登录认证前增加过滤器
@@ -91,10 +93,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //此方法跨域想过未生效
-                .requestMatchers(CorsUtils::isCorsRequest).permitAll()
+                //.requestMatchers(CorsUtils::isCorsRequest).permitAll()
+                //.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(
                         "/login"
+                        ,"/oauth/**"
+                        ,"/oauth/token"
                         , "/doo"
                         , "/validate/imageCode"
                         , "/user/add"
@@ -133,6 +138,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationEntryPoint getAuthenticationEntryPoint() {
         //return new CustomLoginUrlAuthenticationEntryPoint(loginForm.getLoginPageUrl());
         return new CustomLoginUrlAuthenticationEntryPoint("/spring/login");
+    }
+
+    @Bean
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 
     public ValidateCodeFilter getValidateCodeFillter() throws ServletException {

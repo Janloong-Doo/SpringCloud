@@ -46,9 +46,10 @@ public class UserController extends BaseController<UserService> {
         if (authentication instanceof UsernamePasswordAuthenticationToken) {
             UsernamePasswordAuthenticationToken userInfo = (UsernamePasswordAuthenticationToken) authentication;
             UserDetailImpl principal = (UserDetailImpl) userInfo.getPrincipal();
-            User user =  principal.getUser();
-            User user1 = new User();
-            BeanUtils.copyProperties(user,user1,"password");
+            //User user =  principal.getUser();
+            //User user1 = new User();
+            UserDetailImpl user1 = new UserDetailImpl();
+            BeanUtils.copyProperties(principal,user1,"password");
             return ResponseResult.success(user1);
         }
         log.info("获取用户认证信息");

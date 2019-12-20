@@ -24,13 +24,13 @@ import java.util.List;
  * @date 2019-06-20 11:32
  */
 @Data
-public class UserDetailImpl implements UserDetails {
+public class UserDetailImpl extends User implements UserDetails {
 
-    private User user;
+    //private User user;
 
-    public UserDetailImpl(User user) {
-        this.user = user;
-    }
+    //public UserDetailImpl(User user) {
+    //    this.user = user;
+    //}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,24 +39,16 @@ public class UserDetailImpl implements UserDetails {
         return auths;
     }
 
-    @Override
-    public String getPassword() {
-        return user.getPassword();
-    }
-
-    @Override
-    public String getUsername() {
-        return user.getUsername();
-    }
 
     @Override
     public boolean isAccountNonExpired() {
-        return !user.getExpire();
+        //return !user.getExpire();
+        return !super.getExpire();
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return !user.getLocked();
+        return !super.getLocked();
     }
 
     @Override

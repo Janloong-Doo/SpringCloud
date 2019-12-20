@@ -11,10 +11,16 @@ package com.janloong.springsecurity.entity;
 
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -35,7 +41,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "role_id")
+    @Column(name = "roleId")
     private String roleId;
 
     @Column(name = "locked")
@@ -44,7 +50,7 @@ public class User implements Serializable {
     @Column(name = "expire")
     private Boolean expire;
 
-    @Column(name = "create_time")
+    @Column(name = "createTime")
     private LocalDateTime createTime;
 
     @Column(name = "updateTime")
