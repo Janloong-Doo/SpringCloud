@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -63,22 +64,25 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        //BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        //String secret = bCryptPasswordEncoder.encode("secret");
         // 使用特定的方式存储client detail
         //clients.withClientDetails(clientDetails())
-        //clients.jdbc(dataSource)
+        clients.jdbc(dataSource)
         // 使用内存存储clientId,secret
-        clients.inMemory()
-        //client1   密码模式
-        .withClient("doo-pass")
-        .resourceIds("doo-pass")
-        .secret("secret")
-        .authorizedGrantTypes("password", "refresh_token")
-        //.authorizedGrantTypes("password", "authorization_code", "refresh_token")
-        .scopes("bar", "read", "write")
-        .accessTokenValiditySeconds(3600) // 1 hour
-        .refreshTokenValiditySeconds(2592000) // 30 days
-        //.redirectUris("127.0.0.1")
-        .additionalInformation("janloong001")
+        //clients.inMemory()
+        ////client1   密码模式
+        //.withClient("doo-pass")
+        //.resourceIds("doo-pass")
+        ////.secret(secret)
+        //.secret("secret")
+        //.authorizedGrantTypes("password", "refresh_token")
+        ////.authorizedGrantTypes("password", "authorization_code", "refresh_token")
+        //.scopes("bar", "read", "write")
+        //.accessTokenValiditySeconds(3600) // 1 hour
+        //.refreshTokenValiditySeconds(2592000) // 30 days
+        ////.redirectUris("127.0.0.1")
+        //.additionalInformation("janloong001")
         ////client2  客户端模式
         //.and()
         //.withClient("doo-credentials")
@@ -148,10 +152,10 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
         //配置AuthorizationServer安全认证的相关信息，
         //创建ClientCredentialsTokenEndpointFilter核心过滤器
         security
-                //.tokenKeyAccess("permitAll()")
-                .tokenKeyAccess("isAuthenticated()")
-                .checkTokenAccess("isAuthenticated()")
-                //.checkTokenAccess("permitAll()")
+                .tokenKeyAccess("permitAll()")
+                //.tokenKeyAccess("isAuthenticated()")
+                //.checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
 
         corsConfig(security);

@@ -98,8 +98,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers(
                         "/login"
-                        ,"/oauth/**"
-                        ,"/oauth/token"
+                        , "/oauth/**"
+                        , "/oauth/token"
                         , "/doo"
                         , "/validate/imageCode"
                         , "/user/add"
@@ -144,6 +144,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     public ValidateCodeFilter getValidateCodeFillter() throws ServletException {
