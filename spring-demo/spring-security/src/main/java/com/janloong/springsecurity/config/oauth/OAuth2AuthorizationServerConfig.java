@@ -14,12 +14,15 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
+import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -55,7 +58,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     //注入userDetailsService，开启refresh_token需要用到
     @Autowired
     private UserAuthService userAuthService;
-
+    //@Autowired
+    //private DefaultWebResponseExceptionTranslator webResponseExceptionTranslator;
     /**
      * 配置OAuth2的客户端相关信息
      *
@@ -63,6 +67,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * @throws Exception
      */
     @Override
+
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         //BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         //String secret = bCryptPasswordEncoder.encode("secret");
@@ -148,7 +153,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)
      */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    //public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         //配置AuthorizationServer安全认证的相关信息，
         //创建ClientCredentialsTokenEndpointFilter核心过滤器
         security
@@ -167,6 +173,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(customerEnhancer(), accessTokenConverter()));
         endpoints.tokenEnhancer(tokenEnhancerChain);
     }
+
     /**
      * 配置oauth2服务跨域
      */
@@ -209,7 +216,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      */
     @Bean
     public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
+        //return new JdbcTokenStore(dataSource);
+        return new JwtTokenStore(accessTokenConverter());
     }
 
 
@@ -225,7 +233,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
 
     @Bean
-    public TokenEnhancer accessTokenConverter() {
+    //public TokenEnhancer accessTokenConverter() {
+    public JwtAccessTokenConverter accessTokenConverter() {
         final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         //KeyStoreKeyFactory keyStoreKeyFactory =
         //        new KeyStoreKeyFactory(new ClassPathResource("mytest.jks"), "mypass".toCharArray());

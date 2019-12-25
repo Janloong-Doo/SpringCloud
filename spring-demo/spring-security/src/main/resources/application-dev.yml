@@ -1,20 +1,14 @@
 server:
   port: 9001
 spring:
-  profiles:
-#    active: dev
-    active: home
   application:
     name: spring-security
   datasource:
 #    url:  "jdbc:mysql://127.0.0.1:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
-#    url:  "jdbc:mysql://192.168.211.129:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
+    url:  "jdbc:mysql://192.168.211.129:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true"
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: root
-    url:  "jdbc:mysql://47.99.123.251:3306/spring-sec?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true"
-    username: config.file= classpath:../../../../../../auth.yml
-    password: config.file= classpath:../../../../../../auth.yml
+    username: root
+    password: root
 #  thymeleaf:
 #    check-template-location: true
 #    check-template: true

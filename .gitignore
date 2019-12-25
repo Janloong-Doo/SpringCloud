@@ -31,3 +31,5 @@
 /jdk-study/target/classes/com/janloong/javabase/initing/utils/Animal.class
 */target
 **/jdk/jdk13
+/auth.yml
+/spring-demo/spring-security/src/main/resources/application-home.yml
