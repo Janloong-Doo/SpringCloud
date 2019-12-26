@@ -25,6 +25,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -58,7 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //encoder.setDefaultPasswordEncoderForMatches(NoOpPasswordEncoder.getInstance());
         auth
                 .userDetailsService(userAuthService)
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+                //.passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
+                .passwordEncoder(getPasswordEncoder());
         //创建内容中的临时用户
         //auth.inMemoryAuthentication()
         //.passwordEncoder(NoOpPasswordEncoder.getInstance());
@@ -129,6 +131,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         corsConfiguration.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
+    }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     /**

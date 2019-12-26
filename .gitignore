@@ -33,3 +33,4 @@
 **/jdk/jdk13
 /auth.yml
 /spring-demo/spring-security/src/main/resources/application-home.yml
+/application.pid
