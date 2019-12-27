@@ -32,7 +32,12 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-debug: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+#debug: true
 logging:
   level:
     com.janloong: DEBUG

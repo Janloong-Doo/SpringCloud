@@ -80,7 +80,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors()
                 .configurationSource(getUrlBasedCorsConfigurationSource())
-                .and().csrf().disable()
+                .and()
+                .csrf().disable()
                 //在登录认证前增加过滤器
                 .addFilterBefore(getValidateCodeFillter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
@@ -104,6 +105,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         , "/oauth/token"
                         , "/doo"
                         , "/validate/imageCode"
+                        , "/user"
                         , "/user/add"
                         //, "/dooLogin"
                         , "/h2-console"
@@ -127,7 +129,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         final CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedOrigin("http://localhost:8889");
         corsConfiguration.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;

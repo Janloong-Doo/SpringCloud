@@ -70,6 +70,7 @@ public class UserController extends BaseController<UserService> {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2019/4/12 11:58
      **/
+    //@CrossOrigin(origins = {"http://localhost:8888","http://localhost:9001"},allowCredentials = "true")
     @GetMapping()
     public ResponseResult getAll() {
         List<User> all = this.getService().getRepository().findAll();

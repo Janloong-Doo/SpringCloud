@@ -4,6 +4,10 @@ import com.janloong.springsecurity.config.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +27,10 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.JdkSerializationStrategy;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStoreSerializationStrategy;
+import org.springframework.security.oauth2.provider.token.store.redis.StandardStringSerializationStrategy;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -60,6 +68,12 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     private UserAuthService userAuthService;
     //@Autowired
     //private DefaultWebResponseExceptionTranslator webResponseExceptionTranslator;
+    @Autowired
+    private RedisConnectionFactory redisConnectionFactory;
+
+    @Autowired
+    RedisTemplate redisTemplate;
+
     /**
      * 配置OAuth2的客户端相关信息
      *
@@ -178,23 +192,18 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      * 配置oauth2服务跨域
      */
     private void corsConfig(AuthorizationServerSecurityConfigurer security) {
-        CorsConfigurationSource source = new CorsConfigurationSource() {
-            @Override
-            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-                CorsConfiguration corsConfiguration = new CorsConfiguration();
-                corsConfiguration.addAllowedHeader("*");
-                corsConfiguration.addAllowedOrigin(request.getHeader(HttpHeaders.ORIGIN));
-                corsConfiguration.addAllowedMethod("*");
-                corsConfiguration.setAllowCredentials(true);
-                corsConfiguration.setMaxAge(3600L);
-                return corsConfiguration;
-            }
+        CorsConfigurationSource source = request -> {
+            CorsConfiguration corsConfiguration = new CorsConfiguration();
+            corsConfiguration.addAllowedHeader("*");
+            corsConfiguration.addAllowedOrigin("http://localhost:8889");
+            //corsConfiguration.addAllowedOrigin(request.getHeader(HttpHeaders.ORIGIN));
+            corsConfiguration.addAllowedMethod("*");
+            corsConfiguration.setAllowCredentials(true);
+            corsConfiguration.setMaxAge(3600L);
+            return corsConfiguration;
         };
 
-        security.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("permitAll()")
-                .allowFormAuthenticationForClients()
-                .addTokenEndpointAuthenticationFilter(new CorsFilter(source));
+        security.addTokenEndpointAuthenticationFilter(new CorsFilter(source));
     }
 
 
@@ -217,7 +226,20 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Bean
     public TokenStore tokenStore() {
         //return new JdbcTokenStore(dataSource);
-        return new JwtTokenStore(accessTokenConverter());
+        //return new JwtTokenStore(accessTokenConverter());
+        return redisTokenStore();
+    }
+
+    public TokenStore redisTokenStore() {
+        //redisTemplate.setEnableDefaultSerializer(false);
+        //RedisSerializer defaultSerializer = redisTemplate.getDefaultSerializer();
+        //Jackson2JsonRedisSerializer
+        //redisTemplate.setHashValueSerializer(Jackson2JsonRedisSerializer);
+
+        RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+        //new StandardStringSerializationStrategy();
+        //redisTokenStore.setSerializationStrategy();
+        return redisTokenStore;
     }
 
 

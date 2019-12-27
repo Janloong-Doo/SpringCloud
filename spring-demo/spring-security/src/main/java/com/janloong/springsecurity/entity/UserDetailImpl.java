@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -24,8 +25,8 @@ import java.util.List;
  * @date 2019-06-20 11:32
  */
 @Data
-public class UserDetailImpl extends User implements UserDetails {
-
+public class UserDetailImpl extends User implements UserDetails, Serializable {
+    private static final long serialVersionUID = 1L;
     //private User user;
 
     //public UserDetailImpl(User user) {
