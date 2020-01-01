@@ -1,0 +1,22 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: doo-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.137.1:8848
+      #        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 192.168.137.1:8848
+        #        server-addr: 127.0.0.1:8848
+        namespace: b172d901-cfe8-4a26-936a-f87c70bf9480
+        file-extension: yaml
+        group: DOO_GROUP
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'

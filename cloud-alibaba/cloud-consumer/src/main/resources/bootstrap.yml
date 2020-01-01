@@ -1,0 +1,15 @@
+server:
+  port: 8501
+spring:
+  application:
+    name: doo-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+#        namespace: 9867d6cd-0897-41ce-9281-ff01782f5c78
+        prefix: ${spring.application.name}
+        group: DEFAULT_GROUP

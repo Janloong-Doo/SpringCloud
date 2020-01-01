@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * token生成类
  * 自定义CustomerAccessTokenConverter 这个类的作用主要用于AccessToken的转换，
  * 默认使用DefaultAccessTokenConverter 这个装换器
  * DefaultAccessTokenConverter有个UserAuthenticationConverter，这个转换器作用是把用户的信息放入token中，

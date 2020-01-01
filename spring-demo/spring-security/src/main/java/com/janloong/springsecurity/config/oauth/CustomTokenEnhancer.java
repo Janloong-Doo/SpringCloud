@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 /**
- * token生成携带的信息
+ * token扩展类 增加token生成携带的信息
  */
 public class CustomTokenEnhancer implements TokenEnhancer {
 

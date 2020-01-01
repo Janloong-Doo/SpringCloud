@@ -1,6 +1,7 @@
 package com.janloong.springsecurity.config.oauth;
 
 import com.janloong.springsecurity.config.UserAuthService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +54,7 @@ import java.util.concurrent.TimeUnit;
  */
 @EnableAuthorizationServer
 @Configuration
-public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter implements InitializingBean {
 
     @Autowired
     private DataSource dataSource;
@@ -74,6 +75,9 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Autowired
     RedisTemplate redisTemplate;
 
+    @Autowired
+    CustomSerializationStrategy customSerializationStrategy;
+
     /**
      * 配置OAuth2的客户端相关信息
      *
@@ -83,6 +87,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Override
 
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        System.out.println("配置客户端端点");
         //BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         //String secret = bCryptPasswordEncoder.encode("secret");
         // 使用特定的方式存储client detail
@@ -137,6 +142,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        System.out.println("授权服务端点配置");
+
         //指定认证管理器
         endpoints
                 .authenticationManager(authenticationManager)
@@ -169,6 +176,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Override
     //public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
     public void configure(AuthorizationServerSecurityConfigurer security) {
+        System.out.println("授权服务安全配置");
+
         //配置AuthorizationServer安全认证的相关信息，
         //创建ClientCredentialsTokenEndpointFilter核心过滤器
         security
@@ -238,7 +247,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
         RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
         //new StandardStringSerializationStrategy();
-        //redisTokenStore.setSerializationStrategy();
+        redisTokenStore.setSerializationStrategy(customSerializationStrategy);
         return redisTokenStore;
     }
 
@@ -271,4 +280,9 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
         return converter;
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("属性初始化完成");
+
+    }
 }

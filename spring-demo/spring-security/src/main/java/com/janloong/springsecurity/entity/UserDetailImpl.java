@@ -11,9 +11,13 @@ package com.janloong.springsecurity.entity;
 
 
 import lombok.Data;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.provider.token.store.redis.JdkSerializationStrategy;
 
 import java.io.Serializable;
 import java.util.ArrayList;

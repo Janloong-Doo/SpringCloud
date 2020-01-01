@@ -1,0 +1,10 @@
+server:
+  port: 8501
+spring:
+  profiles:
+    active: prod
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

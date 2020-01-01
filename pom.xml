@@ -13,8 +13,8 @@
 
     <modules>
         <!--=======spring-cloud=======-->
-        <module>base-tool/base-parent</module>
-        <module>base-tool/common</module>
+<!--        <module>base-tool/base-parent</module>-->
+<!--        <module>base-tool/common</module>-->
         <!--=======spring-cloud=======-->
 <!--        <module>spring-cloud/eureka-server</module>-->
 <!--        <module>spring-cloud/eureka-provide</module>-->
@@ -33,19 +33,19 @@
         <!--<module>spring-cloud/zipkin-server</module>-->
         <!--=======spring-cloud=======-->
         <!--=======spring-demo=======-->
-        <module>spring-demo/demo-test</module>
-        <module>spring-demo/spring-boot-starter-custom</module>
-        <module>spring-demo/spring-data-jpa</module>
-        <module>spring-demo/spring-mongodb-demo</module>
-        <module>spring-demo/spring-parent-demo</module>
-        <module>spring-demo/spring-redis-demo</module>
-        <module>spring-demo/spring-security</module>
+<!--        <module>spring-demo/demo-test</module>-->
+<!--        <module>spring-demo/spring-boot-starter-custom</module>-->
+<!--        <module>spring-demo/spring-data-jpa</module>-->
+<!--        <module>spring-demo/spring-mongodb-demo</module>-->
+<!--        <module>spring-demo/spring-parent-demo</module>-->
+<!--        <module>spring-demo/spring-redis-demo</module>-->
+<!--        <module>spring-demo/spring-security</module>-->
 <!--        <module>spring-demo/webcrawler</module>-->
         <!--=======spring-dubbo=======-->
-        <module>spring-dubbo/dubbo-client</module>
-        <module>spring-dubbo/dubbo-server</module>
+<!--        <module>spring-dubbo/dubbo-client</module>-->
+<!--        <module>spring-dubbo/dubbo-server</module>-->
         <!--=======jdk-study=======-->
-        <module>jdk-study</module>
+<!--        <module>jdk-study</module>-->
     </modules>
 
     <developers>
