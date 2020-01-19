@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      default-filters:
+      - PrefixPath: /httpbin #默认接受一个全局的配置
+      - StripPrefix: 1  #默认去掉url上的一个访问路径
+      routes:
+      - id: consumer  # id唯一 若不自定义自动生成uuid
+        uri: http://localhost:8501
+        fillters: #路由过滤器
+        - PrefixPath: /mypath  #所有的请求都加上前缀
+        - AddRequestHeader=X-Reques: -Foo, Bar #对于所有匹配的请求，将会给传给下游的请求添加一个请求头 X-Request-Foo:Bar
+        - name: Hystrix  #定义一个fallback用来处理断路器的异常事件
+            args:
+              name: fetchIngredients
+              fallbackUri: forward:/fallback
+        predicates:
+        - path: /test
+        - weigth: provide,90
+        - Header=X: Request-Id, \d+   #这个路由匹配“请求头包含X-Request-Id并且其值匹配正则表达式\d+”的任意请求
+        - Method: GET  # 匹配任意get请求
+        - Path: /foo/{segment},/bar/{segment} #匹配/foo/1,/foo/2类似的路径
+        - Query: foo, ba. #这个路由匹配“查询参数中包含foo，并且其参数值满足正则表达式ba.”的请求，比如：bar，baz
+        - RemoteAddr: 192.168.1.1/24 #这里路由匹配远程地址是这样的请求
+      - id: provide
+        uri: http://localhost:8500
+        predicates:
+        - path: /test
+
+#        - weigth: provide,10
+
+#配置参考 https://www.cnblogs.com/cjsblog/p/11099234.html
