@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#      default-filters:
+#      - StripPrefix: 1  #默认去掉url上的一个访问路径
+      routes:
+      - id: doo-consumer  # id唯一 若不自定义自动生成uuid
+        uri: lb://doo-consumer
+#        uri: http://localhost:8501
+        predicates:
+        - Path=/v1/**
+        filters: #路由过滤器
+        - StripPrefix=1
+      - id: provider1
+        uri: http://localhost:8500
+        predicates:
+        - Path=/provider/**
+#        - weigth: provide,10
+
+#配置参考 https://www.cnblogs.com/cjsblog/p/11099234.html

@@ -9,7 +9,15 @@ spring:
         server-addr: 127.0.0.1:8848
       config:
         server-addr: 127.0.0.1:8848
-        file-extension: yaml
+        file-extension: yml
 #        namespace: 9867d6cd-0897-41ce-9281-ff01782f5c78
         prefix: ${spring.application.name}
-        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: localhost:8510
+        port: 8719  #单独起一个httpserver负责与sentinel控制台做交互
+#        group: DEFAULT_GROUP
+#sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true

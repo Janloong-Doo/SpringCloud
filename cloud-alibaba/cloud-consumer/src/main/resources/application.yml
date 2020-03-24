@@ -3,6 +3,8 @@ server:
 spring:
   profiles:
     active: prod
+#  jackson:
+#    date-format: java.text.SimpleDateFormat
 management:
   endpoints:
     web:

@@ -13,12 +13,6 @@ Cache-Control: no-cache
 Content-Type: application/json;charset=UTF-8
 
 {
-  "name": "",
-  "address": "",
-  "age": 0
-}
-
-{
   "username" : "doo",
   "password" : "doo",
   "roleId" : "program"
@@ -45,6 +39,54 @@ Accept: application/json
 POST http://{{doo_host}}/login?username=doo&password=doo
 
 ###
-POST http://localhost:8500/provider/hello
+
+GET http://{{doo_host}}/schedule/taskList
+
+###
+GET http://{{doo_host}}/schedule/start?taskKey=scheduledTask02
+
+###
+GET http://{{doo_host}}/schedule/restart?taskKey=scheduledTask01
+
+###
+GET http://{{doo_host}}/redis/addKey
+
+###
+GET http://{{doo_host}}/quartz/update
+
+###
+POST http://{{doo_host}}/quartz/add
+Content-Type: application/x-www-form-urlencoded
+
+jobName=job3&jobGroup=group3&className=com.janloong.springsecurity.quartz.job.DooJob
+
+###
+GET http://{{doo_host}}/quartz/pause?jobName=job3&jobGroup=group3
+###
+GET http://{{doo_host}}/quartz/resume?jobName=job3&jobGroup=group3
+
+###
+GET http://{{doo_host}}/quartz/list?jobName=job1&jobGroup=group1
+
+###
+GET http://{{doo_host}}/quartz/list
+
+###
+GET http://{{doo_host}}/quartz/remove?jobName=job2&jobGroup=group2
+###
+#GET http://{{doo_host}}/localDateTime/test?startTime=2020-01-11 15:22:20
+POST http://{{doo_host}}/localDateTime/test
+Content-Type: application/json
+
+{
+  "as": "asd",
+  "startTime": "2019-12-13 00:00:00"
+}
+
+###
+GET http://{{doo_host}}/request/info
+
+### thread-test
+GET http://{{doo_host}}//thread/test
 
 ###
