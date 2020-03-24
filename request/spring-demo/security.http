@@ -13,6 +13,12 @@ Cache-Control: no-cache
 Content-Type: application/json;charset=UTF-8
 
 {
+  "name": "",
+  "address": "",
+  "age": 0
+}
+
+{
   "username" : "doo",
   "password" : "doo",
   "roleId" : "program"
@@ -37,5 +43,8 @@ Accept: application/json
 
 ###
 POST http://{{doo_host}}/login?username=doo&password=doo
+
+###
+POST http://localhost:8500/provider/hello
 
 ###

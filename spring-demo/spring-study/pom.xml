@@ -12,9 +12,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.janloong</groupId>
-        <artifactId>base-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>spring-study</artifactId>
     <version>1.0</version>
@@ -43,6 +44,7 @@
         <dependency>
             <groupId>com.janloong</groupId>
             <artifactId>common</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
