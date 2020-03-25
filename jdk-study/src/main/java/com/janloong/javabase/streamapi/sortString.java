@@ -9,6 +9,7 @@
 
 package com.janloong.javabase.streamapi;
 
+import java.util.*;
 import java.util.stream.Stream;
 
 /**

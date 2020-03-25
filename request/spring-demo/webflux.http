@@ -1,5 +1,14 @@
 ###
-GET http://localhost:8080/hello
+GET http://localhost:8080/home/hello
+
+###
+GET http://localhost:8080/home/async
+
+###
+GET http://localhost:8080/home/flux
+
+###
+GET http://localhost:8080/home/flux2
 
 ###
 
