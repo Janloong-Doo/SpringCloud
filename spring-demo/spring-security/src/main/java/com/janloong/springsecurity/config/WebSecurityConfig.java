@@ -113,6 +113,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         , "/user/add"
                         //, "/dooLogin"
                         , "/h2-console"
+                        , "/send/**"
                 )
                 .permitAll()
                 .anyRequest()

@@ -28,3 +28,10 @@
 ## thread
 
 [ExecutorCompletionService参考](https://cloud.tencent.com/developer/article/1444259)
+
+
+## yaml配置
+
+| 配置名称  |类型|描述|
+|---|---|---|
+|spring.main.allow-bean-definition-overriding |boolean|true时表示后发现的bean会覆盖之前名称相同的bean|
