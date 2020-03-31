@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MsgListener {
 
-    @RabbitListener()
+    @RabbitListener(queues = "doo-queue-1")
     public void listen(String content) {
-        System.out.println(content);
+        System.out.println("收到消息： " + content);
     }
 }

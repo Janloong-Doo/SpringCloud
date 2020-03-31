@@ -6,10 +6,14 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePropertiesBuilder;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -22,18 +26,20 @@ public class SendController {
     @Autowired
     private AmqpAdmin amqpAdmin;
     @Autowired
-    private AmqpTemplate amqpTemplate;
+    private RabbitTemplate rabbitTemplate;
+
+    private volatile CountDownLatch latch = new CountDownLatch(2);
 
     /**
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2020/3/30 0030 22:48
      **/
     @RequestMapping("/msg")
-    public ResponseResult msg(@RequestParam String name) {
+    public ResponseResult msg() throws InterruptedException {
         String s = "hello,Janloong! This is default msg!";
         Message message = new Message(s.getBytes(), MessagePropertiesBuilder.newInstance().build());
-        amqpTemplate.send(message);
-        amqpTemplate.send("doo-exchange","doo-key",message);
+        rabbitTemplate.send("doo-queue-1", message);
+        latch.await(10, TimeUnit.SECONDS);
         return ResponseResult.success("发送成功");
     }
 }
