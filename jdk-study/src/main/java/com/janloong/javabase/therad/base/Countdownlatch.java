@@ -6,7 +6,7 @@ package com.janloong.javabase.therad.base;
  * @date 2020-04-01 00:34
  */
 public class Countdownlatch {
-    
+
     public static void main(String[] args) {
 
     }

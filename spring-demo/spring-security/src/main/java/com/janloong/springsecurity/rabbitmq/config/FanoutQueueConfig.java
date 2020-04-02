@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
+ * 扇形交换类型会将消息发送给所有与它绑定的队列。类似于广播消息一样
+ *
  * <p>
  * 扇形交换类型无需配置bindingKey 配置也不起作用
  * </p>

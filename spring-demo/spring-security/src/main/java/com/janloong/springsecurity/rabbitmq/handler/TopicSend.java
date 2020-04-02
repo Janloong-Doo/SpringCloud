@@ -69,7 +69,10 @@ public class TopicSend implements MsgSendHandler {
             System.out.println("send start4- routingKey" + sendRoutingKey5);
             Map<String, String> map5 = Map.of("routingKey", sendRoutingKey5, "content", "hello,JanloongDoo. I'm from ");
             rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey5, map5);
+            Thread.sleep(2000);
             System.out.println("send over4");
+
+
             return null;
         } catch (InterruptedException e) {
             e.printStackTrace();
