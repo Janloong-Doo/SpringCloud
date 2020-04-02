@@ -2,8 +2,8 @@ package com.janloong.springsecurity.rabbitmq.controller;
 
 
 import com.janloong.common.utils.ResponseResult;
+import com.janloong.springsecurity.rabbitmq.handler.MsgSendHandlerFactory;
 import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePropertiesBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -25,8 +25,12 @@ public class SendController {
 
     @Autowired
     private AmqpAdmin amqpAdmin;
+
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private MsgSendHandlerFactory factory;
 
     private volatile CountDownLatch latch = new CountDownLatch(2);
 
@@ -41,5 +45,15 @@ public class SendController {
         rabbitTemplate.send("doo-queue-1", message);
         latch.await(10, TimeUnit.SECONDS);
         return ResponseResult.success("发送成功");
+    }
+
+    /**
+     * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+     * @date 2020/4/2 14:09
+     **/
+    @RequestMapping("/handlerSend")
+    public ResponseResult handlerSend(@RequestParam(defaultValue = "topic") String type) {
+        Object topic = factory.getMsgSendHandler(type).sendMsg(rabbitTemplate);
+        return ResponseResult.success(topic);
     }
 }
