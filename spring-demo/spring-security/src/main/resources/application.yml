@@ -44,8 +44,8 @@ spring:
     username: guest
     password: guest
     #    virtual-host: /
-#    template:
-#      mandatory: true
+    #    template:
+    #      mandatory: true
     #确认消息已发送到交换机(Exchange)
     publisher-confirm-type: correlated #必须配置这个才会确认回调
     #确认消息已发送到队列(Queue)
@@ -53,11 +53,12 @@ spring:
     listener:
       type: simple
       simple:
-#        acknowledge-mode: manual #手动确认
+        #        acknowledge-mode: manual #手动确认
         acknowledge-mode: auto #自动
+        #        acknowledge-mode: manual #手动
         prefetch: 1 #限制每次发送一条数据。
-        concurrency: 3 #同一个队列启动几个消费者
-        max-concurrency: 3 #启动消费者最大数量
+        concurrency: 1 #同一个队列启动几个消费者  ，并发消费数
+        max-concurrency: 3 #启动消费者最大数量，最大并发消费数
         #重试策略配置
         retry:
           enabled: false #是否支持重试

@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 /**
- *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @version V1.0
  * @date 2020-04-02 14:11
@@ -71,6 +70,13 @@ public class TopicSend implements MsgSendHandler {
             rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey5, map5);
             Thread.sleep(2000);
             System.out.println("send over4");
+
+            String sendRoutingKey6 = TopicQueueConfig.TOPIC_ROUTING_KEY4;
+            System.out.println("send start5- routingKey" + sendRoutingKey6);
+            Map<String, String> map6 = Map.of("routingKey", sendRoutingKey6, "content", "hello,JanloongDoo. I'm from ");
+            rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey6, map6);
+            Thread.sleep(2000);
+            System.out.println("send over5");
 
 
             return null;

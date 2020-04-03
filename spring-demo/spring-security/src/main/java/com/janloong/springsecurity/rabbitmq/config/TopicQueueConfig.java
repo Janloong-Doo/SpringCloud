@@ -20,12 +20,13 @@ public class TopicQueueConfig {
     public static final String TOPIC_QUEUE1 = "doo.topic.queue1";
     public static final String TOPIC_QUEUE2 = "doo.topic.queue2";
     public static final String TOPIC_QUEUE3 = "doo.topic.queue3";
+    public static final String TOPIC_QUEUE4 = "doo.topic.queue4";
     public static final String TOPIC_EXCHANGE = "doo.topic.exchange";
 
     public static final String TOPIC_ROUTING_KEY = "doo.topic.queue1";
     public static final String TOPIC_ROUTING_KEY2 = "doo.topic.*";
     public static final String TOPIC_ROUTING_KEY3 = "doo.#";
-
+    public static final String TOPIC_ROUTING_KEY4 = "single.topic.queue4";
 
 
     @Bean(name = "doo2")
