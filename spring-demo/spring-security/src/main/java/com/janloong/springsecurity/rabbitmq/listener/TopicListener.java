@@ -1,7 +1,7 @@
 package com.janloong.springsecurity.rabbitmq.listener;
 
 
-import com.janloong.springsecurity.rabbitmq.config.MqErrorhandler;
+import com.janloong.springsecurity.rabbitmq.config.MqProducerErrorHandler;
 import com.janloong.springsecurity.rabbitmq.config.TopicQueueConfig;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.ExchangeTypes;
@@ -38,7 +38,7 @@ import java.util.Random;
 public class TopicListener {
 
     @Autowired
-    private MqErrorhandler mqErrorhandler;
+    private MqProducerErrorHandler mqProducerErrorHandler;
 
     @RabbitListener(queues = TopicQueueConfig.TOPIC_QUEUE1)
     public void listen2(Map<String, Object> content) {
@@ -84,29 +84,39 @@ public class TopicListener {
             //, ackMode = "AUTO"
             //,concurrency = "4"
             //, concurrency = "2-5"
-            , errorHandler = MqErrorhandler.class
+            , errorHandler = "mqListenerErrorHandler"
     )
     //public void listen5(Map<String, Object> content, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
-    public void listen5(Message message, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
+    public void listen5(Message message, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) {
         if (true) {
             throw new ListenerExecutionFailedException("手动抛出监听异常", new Throwable("手动Throwable"), message);
         }
-        //System.out.println(content.get("content")
-        //        + "\nsendRoutingKey:" + content.get("routingKey")
-        //        + "\n reciveQueue:" + TopicQueueConfig.TOPIC_QUEUE4
-        //        + "\nwithKey:" + TopicQueueConfig.TOPIC_ROUTING_KEY4
-        //        + "\ndeliveryTag:" + deliveryTag
-        //        + "\n");
-        boolean b = new Random().nextBoolean();
-        System.out.println(b);
-        if (b) {
-            System.out.println("成功" + deliveryTag);
-            //消费成功时，信道返回consumer ack信息
-            channel.basicAck(deliveryTag, true);
-        } else {
-            System.out.println("失败：" + deliveryTag);
-            // 消费失败时，第三个参数true，表示这个消息会重新进入队列
-            channel.basicNack(deliveryTag, true, true);
+        try {
+            //System.out.println(content.get("content")
+            //        + "\nsendRoutingKey:" + content.get("routingKey")
+            //        + "\n reciveQueue:" + TopicQueueConfig.TOPIC_QUEUE4
+            //        + "\nwithKey:" + TopicQueueConfig.TOPIC_ROUTING_KEY4
+            //        + "\ndeliveryTag:" + deliveryTag
+            //        + "\n");
+            boolean b = new Random().nextBoolean();
+            System.out.println(b);
+            if (b) {
+                System.out.println("成功" + deliveryTag);
+                //消费成功时，信道返回consumer ack信息
+                channel.basicAck(deliveryTag, true);
+            } else {
+                System.out.println("失败：" + deliveryTag);
+                // 消费失败时，第三个参数true，表示这个消息会重新进入队列
+                channel.basicNack(deliveryTag, true, true);
+            }
+        } catch (IOException e) {
+            try {
+                // 处理失败,重新压入MQ
+                channel.basicRecover();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
         }
     }
 }

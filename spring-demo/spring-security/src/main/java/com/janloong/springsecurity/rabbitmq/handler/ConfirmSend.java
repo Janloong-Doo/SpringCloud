@@ -11,10 +11,13 @@
 package com.janloong.springsecurity.rabbitmq.handler;
 
 import com.janloong.springsecurity.rabbitmq.config.TopicQueueConfig;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
@@ -22,7 +25,8 @@ import java.util.Map;
  * @date 2020-04-02 14:11
  **/
 @Service
-public class ConfirmSend2 implements MsgSendHandler {
+@Slf4j
+public class ConfirmSend implements MsgSendHandler {
 
 
     @Override
@@ -45,14 +49,18 @@ public class ConfirmSend2 implements MsgSendHandler {
 
             String sendRoutingKey6 = TopicQueueConfig.TOPIC_ROUTING_KEY4;
             System.out.println("send start- routingKey" + sendRoutingKey6);
-            for (int i = 0; i < 20; i++) {
-                Map<String, String> map6 = Map.of("routingKey", sendRoutingKey6, "content", "hello,JanloongDoo. I'm from ");
-                rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey6, map6);
-
-            }
+            //for (int i = 0; i < 20; i++) {
+            CorrelationData correlationData = new CorrelationData("janloongdoo");
+            Map<String, String> map6 = Map.of("routingKey", sendRoutingKey6, "content", "hello,JanloongDoo. I'm from ");
+            rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey6, map6, correlationData);
+            CorrelationData.Confirm confirm = correlationData.getFuture().get(10, TimeUnit.SECONDS);
+            //先于全局confirm确认响应
+            System.out.println("Confirm  exchange received, ack = " + confirm.isAck());
+            //}
             System.out.println("send over");
             return null;
         } catch (Exception e) {
+
             e.printStackTrace();
         }
         return null;

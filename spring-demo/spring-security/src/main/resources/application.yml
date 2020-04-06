@@ -48,7 +48,7 @@ spring:
     #      mandatory: true
     #确认消息已发送到交换机(Exchange)
     publisher-confirm-type: correlated #必须配置这个才会确认回调
-    #确认消息已发送到队列(Queue)
+    #确认消息已发送到队列(Queue) 晚于上面
     publisher-returns: true
     listener:
       type: simple

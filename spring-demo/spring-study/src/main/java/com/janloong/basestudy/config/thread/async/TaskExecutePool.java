@@ -26,7 +26,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableAsync
 public class TaskExecutePool {
 
-
     //自定义线程池执行器
    @Bean("myTaskAsyncPool")
     public Executor myTaskAsyncPool() {

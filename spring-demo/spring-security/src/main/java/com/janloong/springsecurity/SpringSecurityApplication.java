@@ -12,7 +12,6 @@ import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableRabbit
 @ComponentScan("com.janloong")
 public class SpringSecurityApplication {
 

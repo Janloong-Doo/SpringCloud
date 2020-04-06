@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * @date 2020-04-03 17:14
  **/
 @Component("mqErrorhandler")
-public class MqErrorhandler extends ConditionalRejectingErrorHandler.DefaultExceptionStrategy {
+public class MqProducerErrorHandler extends ConditionalRejectingErrorHandler.DefaultExceptionStrategy {
 
     @Override
     public boolean isFatal(Throwable t) {
