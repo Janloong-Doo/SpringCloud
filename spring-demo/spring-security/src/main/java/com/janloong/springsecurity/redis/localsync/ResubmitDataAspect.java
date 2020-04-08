@@ -7,7 +7,7 @@
  : LastModify: 2019/7/30 上午11:36
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.basestudy.config.localsync;
+package com.janloong.springsecurity.redis.localsync;
 
 
 import com.janloong.common.enums.ResultEnum;
@@ -40,7 +40,7 @@ public class ResubmitDataAspect {
     private final static String DATA = "data";
     private final static Object PRESENT = new Object();
 
-    @Around("@annotation(com.janloong.basestudy.config.localsync.Resubmit)")
+    @Around("@annotation(com.janloong.springsecurity.redis.localsync.Resubmit)")
     public Object handleResubmit(ProceedingJoinPoint joinPoint) throws Throwable {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         //获取注解信息
@@ -50,7 +50,7 @@ public class ResubmitDataAspect {
         String key = "";
 
         List<Object> objects = Arrays.asList(pointArgs);
-        String collect = objects.stream().map(String::valueOf).collect(Collectors.joining());
+        String collect = objects.stream().map(String::valueOf).peek(System.out::print).collect(Collectors.joining());
         key = ResubmitLock.handleKey(collect);
         //获取第一个参数
         //Object firstParam = pointArgs[0];

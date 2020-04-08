@@ -1,31 +1,32 @@
 /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  : Copyright (c) 2019  All Rights Reserved.
  : ProjectName: SpringCloud
- : FileName: Resubmit.java
+ : FileName: CacheLock.java
  : Author: janloongdoo@gmail.com
- : Date: 2019/7/30 上午11:03
- : LastModify: 2019/7/30 上午11:03
+ : Date: 2019/7/30 下午3:00
+ : LastModify: 2019/7/30 下午3:00
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.basestudy.config.localsync;
+package com.janloong.springsecurity.redis.redissync;
 
 import java.lang.annotation.*;
+import java.util.concurrent.TimeUnit;
 
 /**
- * 防重复提交注解，对请求参数进行缓存匹配
  *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019/7/30 11:05
+ * @date 2019/7/30 15:01
  **/
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Resubmit {
+public @interface CacheLock {
 
-    /**
-     * 延时时间 在延时多久后可以再次提交
-     *
-     * @return Time unit is one second
-     */
-    int delaySeconds() default 20;
+    String prefix() default "repeatLock";
+
+    int expire() default 20;
+
+    TimeUnit timeUnit() default TimeUnit.SECONDS;
+
+    String delimiter() default ":";
 }

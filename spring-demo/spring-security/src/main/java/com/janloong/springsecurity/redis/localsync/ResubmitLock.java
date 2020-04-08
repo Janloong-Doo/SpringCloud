@@ -7,7 +7,7 @@
  : LastModify: 2019/7/30 上午11:06
  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
-package com.janloong.basestudy.config.localsync;
+package com.janloong.springsecurity.redis.localsync;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 重复提交锁
+ * 重复提交锁,锁是在本地使用并发map进行了上锁处理，可以改为redis使用redis锁进行操作
  *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
  * @date 2019-07-30 11:06
