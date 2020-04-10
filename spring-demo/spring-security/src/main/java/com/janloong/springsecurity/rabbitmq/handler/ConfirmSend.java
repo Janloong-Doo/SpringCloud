@@ -56,6 +56,7 @@ public class ConfirmSend implements MsgSendHandler {
             CorrelationData.Confirm confirm = correlationData.getFuture().get(10, TimeUnit.SECONDS);
             //先于全局confirm确认响应
             System.out.println("Confirm  exchange received, ack = " + confirm.isAck());
+            System.out.println("Confirm  exchange received, ack = " + confirm.isAck());
             //}
             System.out.println("send over");
             return null;

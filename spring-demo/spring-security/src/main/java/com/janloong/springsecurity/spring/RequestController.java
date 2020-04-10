@@ -22,7 +22,7 @@ import java.util.Arrays;
  * @version V1.0
  * @program: cloud
  * @package: com.janloong.springsecurity.spring
- * @author: <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+ * @author: <a href ="mailto: janloongdoo@gmail.com">Janloong</a`>
  * @create: 2020-01-12 09:45
  **/
 @RestController
