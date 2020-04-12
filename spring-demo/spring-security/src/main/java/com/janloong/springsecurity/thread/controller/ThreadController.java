@@ -155,6 +155,7 @@ public class ThreadController {
      **/
     @RequestMapping("/schedule")
     public ResponseResult schedule(String name) {
+       
         return ResponseResult.success(null);
     }
 }
