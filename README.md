@@ -1,3 +1,4 @@
+[toc]
 # Code Study
 
 > 代码、框架等学习记录,整体为n=1+1+1+...的过程,非1+1+1+...=n的过程。
@@ -7,7 +8,11 @@
 - [bast-tool](./base-tool): 基础框架包
   - [base-framework](/base-tool/base-framework): 
   - [base-parent](.//base-tool/base-parent): 基础自定义父依赖模块
-  - [common](./base-tool/common): 日常开发基础模块
+  - [common](./base-tool/common): 日常开发基础模块,预计提出作为 [spring-boot-starter-common](https://github.com/Janloong-Doo/spring-boot-starter-common) 单独维护
+- [cloud-alibaba](./cloud-alibaba): Spring Cloud Alibaba
+  - [cloud-consumer](./cloud-alibaba/cloud-consumer): 消费客户端
+  - [cloud-provider](./cloud-alibaba/cloud-provider): 服务提供者
+  - [cloud-gateway](./cloud-alibaba/cloud-gateway): 网关中心
 - [spring-cloud](./spring-cloud): springcloud模块
   - [admin-client](./spring-cloud/admin-client): admin监控客户端
   - [admin-server](./spring-cloud/admin-server): admin server端
@@ -33,7 +38,7 @@
   - [spring-parent-demo](./spring-demo/spring-parent-demo): 自定义parent
     POM依赖
   - [spring-redis-demo](./spring-demo/spring-redis-demo): redis的使用
-  - [spring-security](./spring-demo/spring-security): spring security单集成demo
+  - [spring-security](./spring-demo/spring-security): spring security集成oauth2+jwt 以及各个组件中间件demo
   - [webcrawler](./spring-demo/webcrawler): webmagic爬虫demo
 - [spring-dubbo](./spring-dubbo): dubbo的demo
   - [dubbo-client](./spring-dubbo/dubbo-client): dubbo客户端
@@ -46,3 +51,6 @@
   - [cloud](./request/cloud): springcloud请求
   - [spring-demo](./request/spring-demo): springdemo请求
 
+## 模块详情
+
+##
