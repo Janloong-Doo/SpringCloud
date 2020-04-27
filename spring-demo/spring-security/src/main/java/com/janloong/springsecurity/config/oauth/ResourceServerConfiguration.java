@@ -6,11 +6,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
+
 /**
  * 自定义资源服务器配置
- * <p>
- * Created by xw on 2017/3/19. 2017-03-19 8:09
- */
+ *
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2020/4/27 0027 22:14
+ **/
 @EnableResourceServer
 @Configuration
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {

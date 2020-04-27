@@ -8,7 +8,7 @@
 - [bast-tool](./base-tool): 基础框架包
   - [base-framework](/base-tool/base-framework): 
   - [base-parent](.//base-tool/base-parent): 基础自定义父依赖模块
-  - [common](./base-tool/common): 日常开发基础模块,预计提出作为 [spring-boot-starter-common](https://github.com/Janloong-Doo/spring-boot-starter-common) 单独维护
+  - [common](./base-tool/common): 日常开发基础模块,已提出作为 [spring-boot-starter-common](https://github.com/Janloong-Doo/spring-boot-starter-common) 单独维护
 - [cloud-alibaba](./cloud-alibaba): Spring Cloud Alibaba
   - [cloud-consumer](./cloud-alibaba/cloud-consumer): 消费客户端
   - [cloud-provider](./cloud-alibaba/cloud-provider): 服务提供者
@@ -38,7 +38,7 @@
   - [spring-parent-demo](./spring-demo/spring-parent-demo): 自定义parent
     POM依赖
   - [spring-redis-demo](./spring-demo/spring-redis-demo): redis的使用
-  - [spring-security](./spring-demo/spring-security): spring security集成oauth2+jwt 以及各个组件中间件demo
+  - [spring-security](#Spring-Security): spring security集成oauth2+jwt 以及各个组件中间件demo
   - [webcrawler](./spring-demo/webcrawler): webmagic爬虫demo
 - [spring-dubbo](./spring-dubbo): dubbo的demo
   - [dubbo-client](./spring-dubbo/dubbo-client): dubbo客户端
@@ -52,5 +52,30 @@
   - [spring-demo](./request/spring-demo): springdemo请求
 
 ## 模块详情
+> 模块中整合的详细内容
+
+### [Spring-Security](./spring-demo/spring-security)
+> 考虑到多应用模块的不便性，后续会将较多应用场景demo耦合在一个项目中
+
+1. security + oauth2 + jwt
+
+* 单服务下整合了授权服务中心和资源认证中心
+* 基于security + oauth2 的 账户密码登录认证模式 （可自定义隐式忽略clientId，Sercert,Grant_Type等参数）
+* 基于oauth2的token授权认证模式
+* 基于jwt的非对称加密token（微服务场景下的对称加密token）
+* 自定义登录成功，登录失败，注销成功处理器，
+
+2. Spring Data Jpa
+ 
+3. RabbitMq
+
+4. Quartz
+
+5. Redis
+
+6. Zookeeper
+
+7. Schedule
+ 
 
 ##
