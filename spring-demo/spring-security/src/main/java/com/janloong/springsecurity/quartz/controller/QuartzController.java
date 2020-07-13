@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The type Quartz controller.
  *
@@ -59,11 +62,23 @@ public class QuartzController {
     public ResponseResult add(@RequestParam String className
             , @RequestParam String jobName
             , @RequestParam String jobGroup
+            , @RequestParam String date
+            , @RequestParam String type
     ) {
         Class<? extends Job> aClass = null;
         try {
             aClass = (Class<? extends Job>) Class.forName(className);
-            quartzManager.addJob(aClass, jobName, jobGroup);
+            switch (type) {
+                case "1":
+                default:
+                    quartzManager.addJobWithCron(aClass, jobName, jobGroup);
+                    break;
+                case "2":
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("date", date);
+                    quartzManager.addJobWithSimple(aClass, jobName, jobGroup, map);
+                    break;
+            }
         } catch (ClassNotFoundException | SchedulerException e) {
             e.printStackTrace();
         }

@@ -10,7 +10,6 @@ import org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ErrorHandler;
 
 /**
@@ -18,7 +17,7 @@ import org.springframework.util.ErrorHandler;
  * @date 2020-04-03 00:16
  */
 @EnableRabbit
-@Configuration
+//@Configuration
 @Slf4j
 public class RabbitMqConfig {
 

@@ -52,6 +52,8 @@ public class ConfirmSend implements MsgSendHandler {
             //for (int i = 0; i < 20; i++) {
             CorrelationData correlationData = new CorrelationData("janloongdoo");
             Map<String, String> map6 = Map.of("routingKey", sendRoutingKey6, "content", "hello,JanloongDoo. I'm from ");
+
+            //消息属性设置  持久化消息   以下方式默认为持久化模式  messageporperties  MessageDeliveryMode.PERSISTENT
             rabbitTemplate.convertAndSend(TopicQueueConfig.TOPIC_EXCHANGE, sendRoutingKey6, map6, correlationData);
             CorrelationData.Confirm confirm = correlationData.getFuture().get(10, TimeUnit.SECONDS);
             //先于全局confirm确认响应

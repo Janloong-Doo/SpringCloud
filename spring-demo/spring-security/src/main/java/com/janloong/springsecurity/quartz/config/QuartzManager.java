@@ -18,6 +18,7 @@ import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -74,7 +75,7 @@ public class QuartzManager {
                 //即使没有Trigger关联时，也不需要删除该JobDetail
                 //.storeDurably()
                 .build();
-        //cron触发器构建
+        //1. cron触发器构建
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(DEFAULT_CRON);
         CronTrigger cronTrigger = TriggerBuilder.newTrigger()
                 //关联job, 不关联有什么影响
@@ -92,11 +93,11 @@ public class QuartzManager {
      * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
      * @date 2020 /1/19 11:46
      */
-    public void addJob(Class<? extends Job> clazz, String jobName, String jobGroup) throws SchedulerException {
-        addJob(clazz, jobName, jobGroup, new JobDataMap());
+    public void addJobWithCron(Class<? extends Job> clazz, String jobName, String jobGroup) throws SchedulerException {
+        addJobWithCron(clazz, jobName, jobGroup, new JobDataMap());
     }
 
-    public void addJob(Class<? extends Job> clazz, String jobName, String jobGroup, JobDataMap jobDataMap) throws SchedulerException {
+    public void addJobWithCron(Class<? extends Job> clazz, String jobName, String jobGroup, JobDataMap jobDataMap) throws SchedulerException {
         JobDetail jobDetail = JobBuilder
                 //自定义的业务类
                 .newJob(clazz)
@@ -109,7 +110,7 @@ public class QuartzManager {
                 //.storeDurably()
                 .build();
 
-        //cron触发器构建
+        //1. cron触发器构建
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(DEFAULT_CRON);
         CronTrigger cronTrigger = TriggerBuilder.newTrigger()
                 //关联job, 不关联有什么影响
@@ -117,7 +118,41 @@ public class QuartzManager {
                 .withIdentity(jobName, jobGroup)
                 .withSchedule(cronScheduleBuilder)
                 .build();
+        //2. calendar触发器构建
+        //CalendarIntervalScheduleBuilder calendarIntervalSchedule = CalendarIntervalScheduleBuilder.calendarIntervalSchedule();
+
+        //3. simple
+        //TriggerBuilder.newTrigger().startAt();
         scheduler.scheduleJob(jobDetail, cronTrigger);
+    }
+
+    public void addJobWithSimple(Class<? extends Job> clazz, String jobName, String jobGroup, Map<String, Object> map) throws SchedulerException {
+        JobDataMap jobDataMap = new JobDataMap();
+        jobDataMap.putAll(map);
+        JobDetail jobDetail = JobBuilder
+                //自定义的业务类
+                .newJob(clazz)
+                //对于该jobDetail的一个id
+                .withIdentity(jobName, jobGroup)
+                //每个JobDetail内都有一个Map，包含了关联到这个Job的数据，在Job类中可以通过context获取
+                //关联键值对
+                .usingJobData(jobDataMap)
+                //即使没有Trigger关联时，也不需要删除该JobDetail
+                //.storeDurably()
+                .build();
+        String dateS = String.valueOf(map.get("date"));
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date from = format.parse(dateS);
+            Trigger build = TriggerBuilder.newTrigger()
+                    .startAt(from)
+                    .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever())
+                    .build();
+
+            scheduler.scheduleJob(jobDetail, build);
+        } catch (Exception e) {
+            log.error("时间格式化错误:{}", e.getMessage());
+        }
     }
 
     /**

@@ -58,7 +58,8 @@ GET http://{{doo_host}}/quartz/update
 POST http://{{doo_host}}/quartz/add
 Content-Type: application/x-www-form-urlencoded
 
-jobName=job3&jobGroup=group3&className=com.janloong.springsecurity.quartz.job.DooJob
+#jobName=job3&jobGroup=group3&className=com.janloong.springsecurity.quartz.job.DooJob
+type=2&jobName=job_simple2&jobGroup=group3&className=com.janloong.springsecurity.quartz.job.DooJob&date=2020-07-14 17:45:00
 
 ###
 GET http://{{doo_host}}/quartz/pause?jobName=job3&jobGroup=group3

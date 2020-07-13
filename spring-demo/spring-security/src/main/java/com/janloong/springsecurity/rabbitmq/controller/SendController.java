@@ -3,7 +3,6 @@ package com.janloong.springsecurity.rabbitmq.controller;
 
 import com.janloong.common.utils.ResponseResult;
 import com.janloong.springsecurity.rabbitmq.handler.MsgSendHandlerFactory;
-import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePropertiesBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -23,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("send")
 public class SendController {
 
-    @Autowired
-    private AmqpAdmin amqpAdmin;
+    //@Autowired
+    //private AmqpAdmin amqpAdmin;
 
-    @Autowired
+    //@Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Autowired

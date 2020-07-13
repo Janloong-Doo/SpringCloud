@@ -1,6 +1,12 @@
 server:
-  port: 9001
+#  port: 9001
+  port: 9002
 spring:
+  autoconfigure:
+    exclude:
+      #rabbitmq
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+      - org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration
   profiles:
     #    active: dev
     active: home
