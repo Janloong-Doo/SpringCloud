@@ -1,0 +1,39 @@
+server:
+  port: 9003
+  servlet:
+    context-path: /springactiviti
+spring:
+  application:
+    name: springactiviti
+  profiles:
+    include: doo
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  #  datasource:
+  #    url: jdbc:mysql://192.168.211.129:3306/mini-hap?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  #    username: 1
+  #    password: 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  #activiti相关配置
+  activiti:
+    #1.fLase:就以值。 activiti在启动时，会对比数据库表中保存的版本，如果没有表或者版本不匹配，将抛占
+    #2. true: activiti会对数据库中所有表进行更新操作。如果表不存在，则自动创建
+    #3. create_ drop:在activiti 启动时创建表，在关闭时删除表(必须手动关闭引掌，才能删除表)
+    #4. drop-create:在activiti启动时删除原来的旧表， 然后在创建新表(不箱要手动关闭引学)
+    database-schema-update: true
+    #检测历史表是否存在
+    db-history-used: true
+    #记录历史等級可己置的历史级别有none, activity, audit, full
+    history-level: full
+    #校验疏程文件，默认校验resources 下的processes文件夹里的流程文件
+#    check-process-definitions: false
+    check-process-definitions: true
+    process-definition-location-prefix: classpath:/processes/
+

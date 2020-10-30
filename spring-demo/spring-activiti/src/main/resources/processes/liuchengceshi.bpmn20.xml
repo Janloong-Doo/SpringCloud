@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="liuchengceshi" name="liuchengceshi" isExecutable="true">
+    <startEvent id="sid-5e48ebe8-3de7-42d3-af9f-bd8af31b0df8"/>
+    <endEvent id="sid-0a0536bb-4f6c-489c-ad1f-2dbc56bfedd7"/>
+    <userTask id="shenqing001" name="学生请假申请"/>
+    <userTask id="shenpi001" name="老师请假审批"/>
+    <sequenceFlow id="sid-d3d5e735-d4f3-4d0b-a9f0-a852dcba3b2c" sourceRef="sid-5e48ebe8-3de7-42d3-af9f-bd8af31b0df8" targetRef="shenqing001"/>
+    <sequenceFlow id="sid-266417b5-2766-48d5-90b2-7663814e0001" sourceRef="shenqing001" targetRef="shenpi001"/>
+    <sequenceFlow id="sid-f3285070-8e4b-4bfa-b0e1-3b4352570f75" sourceRef="shenpi001" targetRef="sid-0a0536bb-4f6c-489c-ad1f-2dbc56bfedd7"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_liuchengceshi">
+    <bpmndi:BPMNPlane bpmnElement="liuchengceshi" id="BPMNPlane_liuchengceshi">
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-be76e322-4a82-4afc-b58a-9d2b13d44666" bpmnElement="sid-5e48ebe8-3de7-42d3-af9f-bd8af31b0df8">
+        <omgdc:Bounds x="271.0" y="147.0" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-c5487979-1c8f-4b1b-8cac-20e817175bd2" bpmnElement="sid-0a0536bb-4f6c-489c-ad1f-2dbc56bfedd7">
+        <omgdc:Bounds x="271.0" y="596.0" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-f8b545c2-9093-4996-b6dc-1f8211fd507d" bpmnElement="shenqing001">
+        <omgdc:Bounds x="246.09813" y="233.12613" width="100.0" height="80.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-81154f39-1650-4913-9990-a522f68bd46c" bpmnElement="shenpi001">
+        <omgdc:Bounds x="246.09811" y="396.12613" width="100.0" height="80.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-c856f621-dc0a-4e9d-8b46-a0abb14bf5ec" bpmnElement="sid-d3d5e735-d4f3-4d0b-a9f0-a852dcba3b2c">
+        <omgdi:waypoint x="293.5" y="177.0"/>
+        <omgdi:waypoint x="296.09814" y="233.12613"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-9265630d-59ed-4877-84c3-a98541c93a7b" bpmnElement="sid-266417b5-2766-48d5-90b2-7663814e0001">
+        <omgdi:waypoint x="296.09814" y="313.12613"/>
+        <omgdi:waypoint x="296.0981" y="396.12613"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-f903c5d4-cfca-453a-8d96-28ac5a111570" bpmnElement="sid-f3285070-8e4b-4bfa-b0e1-3b4352570f75">
+        <omgdi:waypoint x="296.0981" y="476.12613"/>
+        <omgdi:waypoint x="293.5" y="596.0"/>
+      </bpmdi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
