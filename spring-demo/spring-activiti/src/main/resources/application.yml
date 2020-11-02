@@ -37,3 +37,7 @@ spring:
     check-process-definitions: true
     process-definition-location-prefix: classpath:/processes/
 
+project:
+  manifest:
+    file:
+      path: classpath:/default-project.json
