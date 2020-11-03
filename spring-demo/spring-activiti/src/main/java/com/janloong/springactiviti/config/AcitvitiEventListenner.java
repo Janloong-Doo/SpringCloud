@@ -27,6 +27,12 @@ import org.springframework.context.annotation.Configuration;
 public class AcitvitiEventListenner {
 
 
+    /**
+     * 任务认领事件
+     *
+     * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+     * @since 2020/11/3 11:16
+     **/
     @Bean
     public TaskRuntimeEventListener<TaskAssignedEvent> taskAssignedListener() {
         return taskAssigned -> log.info(">>> Task Assigned: '"
@@ -34,6 +40,12 @@ public class AcitvitiEventListenner {
                 "' We can send a notification to the assginee: " + taskAssigned.getEntity().getAssignee());
     }
 
+    /**
+     * 任务完成事件
+     *
+     * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+     * @since 2020/11/3 11:16
+     **/
     @Bean
     public TaskRuntimeEventListener<TaskCompletedEvent> taskCompletedListener() {
         return taskCompleted -> log.info(">>> Task Completed: '"

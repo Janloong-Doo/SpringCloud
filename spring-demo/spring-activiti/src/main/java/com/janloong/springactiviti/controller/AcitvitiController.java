@@ -62,7 +62,7 @@ public class AcitvitiController {
         log.info("当前流程定义的数量：" + processDefinitionPage.getTotalItems());
         //获取流程信息
         for (ProcessDefinition processDefinition : processDefinitionPage.getContent()) {
-            log.info("流程定义信息" + processDefinition);
+            log.info("流程定义信息:\n" + processDefinition);
         }
     }
 
@@ -101,7 +101,7 @@ public class AcitvitiController {
                             .build());
 
             String s = JSONUtil.toJsonPrettyStr(variables);
-            log.info("获取到的流程实例信息为:{}\n获取到对应的参数为:{}", processInstance, s);
+            log.info("获取到的流程实例信息为:\n{}\n获取到对应的参数为:\n{}", processInstance, s);
         });
         return ResponseResult.success();
     }
