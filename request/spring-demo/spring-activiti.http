@@ -1,0 +1,39 @@
+###  获取流程定义信息
+GET http://localhost:9003/springactiviti/activiti/getProcessDefinition
+
+### 开启流程实例
+POST http://localhost:9003/springactiviti/activiti/startProcess
+Content-Type: application/json
+
+{
+  "id": "liuchengceshi",
+  "name": "name1",
+  "variable": {
+    "n1": "v1",
+    "n2": "v2"
+  }
+}
+
+###  获取流程实例信息及参数
+GET http://localhost:9003/springactiviti/activiti/getProcessInstanceVariable
+
+###  创建任务
+POST http://localhost:9003/springactiviti/activiti/createTask
+Content-Type: application/json
+
+{
+  "username": "u1",
+  "name": "First Team Task",
+  "description": "This is something really important",
+  "candidateGroup": "activitiTeam"
+}
+
+###  获取任务列表
+GET http://localhost:9003/springactiviti/activiti/getUserTask?username=u1
+
+###  领取任务
+GET http://localhost:9003/springactiviti/activiti/claimUserTask?username=u2&taskId=a7e19736-1cf0-11eb-b167-52e085a5b496
+
+###  完成任务
+GET http://localhost:9003/springactiviti/activiti/completeUserTask?username=u2&taskId=a7e19736-1cf0-11eb-b167-52e085a5b496
+

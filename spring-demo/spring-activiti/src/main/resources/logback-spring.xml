@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="project_name" value="spring-activiti" />
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/${project_name}-info.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/${project_name}-info-%d{yyyy-MM-dd}_%i.log</FileNamePattern>
+            <maxHistory>90</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>20MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/${project_name}-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>Error</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>logs/${project_name}-error-%d{yyyy-MM-dd}_%i.log</FileNamePattern>
+            <maxHistory>90</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>20MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+
+    <appender name="FILE_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/${project_name}-debug.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>debug</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<!--            <FileNamePattern>logs/app-rzt-debug-%d{yyyy-MM-dd}_%i.log</FileNamePattern>-->
+            <FileNamePattern>logs/${project_name}-debug-%d{yyyy-MM-dd}_%i.log</FileNamePattern>
+            <maxHistory>90</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>20MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+    <logger name="com.rzt" level="debug"/>
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_INFO"/>
+        <appender-ref ref="FILE_ERROR"/>
+        <appender-ref ref="FILE_DEBUG"/>
+    </root>
+</configuration>
