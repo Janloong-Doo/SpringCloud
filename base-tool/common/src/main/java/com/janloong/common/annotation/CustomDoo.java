@@ -16,8 +16,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018-11-05 11:10
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @since  2018-11-05 11:10
+ * @version 1.0.0
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

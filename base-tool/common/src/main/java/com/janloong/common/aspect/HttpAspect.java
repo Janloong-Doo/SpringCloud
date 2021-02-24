@@ -33,8 +33,9 @@ import java.util.Objects;
  * <p>
  * 对请求进行记录
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2017-12-28 16:20
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @since  2017-12-28 16:20
+ * @version 1.0.0
  **/
 @Aspect
 @Component

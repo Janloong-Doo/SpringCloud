@@ -12,8 +12,9 @@ package com.janloong.common.enums;
 /**
  * 处理结果类型管理
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018/5/15 10:39
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since  2018/5/15 10:39
  **/
 public enum ResultEnum {
 

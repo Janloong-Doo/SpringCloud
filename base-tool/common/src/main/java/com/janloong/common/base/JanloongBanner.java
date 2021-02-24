@@ -20,8 +20,9 @@ import org.springframework.core.env.Environment;
 import java.io.PrintStream;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-22 11:00
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2019-05-22 11:00
  */
 public class JanloongBanner implements Banner {
 

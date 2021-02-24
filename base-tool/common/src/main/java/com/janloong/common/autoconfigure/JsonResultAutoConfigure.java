@@ -13,8 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-21 00:18
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @since 2019-05-21 00:18
+ * @version 1.0.0
  */
 @Configuration
 @ConditionalOnWebApplication

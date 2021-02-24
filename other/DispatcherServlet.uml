@@ -14,8 +14,8 @@
     <node x="486.5" y="320.0">org.springframework.web.servlet.FrameworkServlet</node>
     <node x="473.0" y="555.0">org.springframework.web.context.request.AbstractRequestAttributes</node>
     <node x="477.0" y="635.0">org.springframework.web.context.request.ServletRequestAttributes</node>
-    <node x="108.0" y="635.0">org.springframework.security.web.header.HeaderWriterFilter.HeaderWriterRequest</node>
     <node x="296.0" y="0.0">java.io.Serializable</node>
+    <node x="108.0" y="635.0">org.springframework.security.web.header.HeaderWriterFilter.HeaderWriterRequest</node>
     <node x="0.0" y="555.0">javax.servlet.http.HttpServletRequest</node>
     <node x="482.5" y="400.0">org.springframework.web.servlet.DispatcherServlet</node>
     <node x="500.0" y="160.0">org.springframework.context.EnvironmentAware</node>
@@ -129,20 +129,20 @@
       <point x="0.0" y="-15.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="org.springframework.web.servlet.HttpServletBean" target="javax.servlet.http.HttpServlet">
-      <point x="-56.0" y="-15.0" />
-      <point x="280.0" y="220.0" />
-      <point x="200.0" y="220.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
     <edge source="org.springframework.web.servlet.FrameworkServlet" target="org.springframework.context.ApplicationContextAware">
       <point x="44.0" y="-15.0" />
       <point x="618.5" y="295.0" />
       <point x="844.1555555555556" y="295.0" />
       <point x="0.0" y="15.0" />
     </edge>
+    <edge source="org.springframework.web.servlet.HttpServletBean" target="javax.servlet.http.HttpServlet">
+      <point x="-56.0" y="-15.0" />
+      <point x="280.0" y="220.0" />
+      <point x="200.0" y="220.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="503.5" y="383.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="503.5" y="383.5" />
   <SelectedNodes>
     <node>org.springframework.web.servlet.DispatcherServlet</node>
   </SelectedNodes>

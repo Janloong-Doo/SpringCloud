@@ -19,8 +19,9 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018-11-05 11:13
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @since  2018-11-05 11:13
+ * @version 1.0.0
  */
 @Aspect
 @Component

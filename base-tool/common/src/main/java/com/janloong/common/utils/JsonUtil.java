@@ -23,8 +23,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018-11-26 16:13
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2018-11-26 16:13
  */
 @Slf4j
 public class JsonUtil {

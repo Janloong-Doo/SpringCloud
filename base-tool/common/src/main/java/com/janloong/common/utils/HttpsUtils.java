@@ -43,8 +43,9 @@ import java.util.Map;
 /**
  * des: https 请求工具类
  *
- * @author Janloong
- * @create 2017-12-19 11:26
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2017-12-19 11:26
  **/
 @Slf4j
 public class HttpsUtils {
@@ -72,7 +73,7 @@ public class HttpsUtils {
      * des: form 请求专用
      *
      * @author Janloong
-     * @create 2017-12-25 18:39
+     * @since  2017-12-25 18:39
      **/
     public static String postForm(String url, Map<String, Object> data) {
         return url.startsWith("https") ? httpsPostForm(url, data, true) : httpsPostForm(url, data, false);
