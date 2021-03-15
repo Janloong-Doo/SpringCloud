@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020  All Rights Reserved.
+  ~ ProjectName: cloud
+  ~ FileName: qingjiashenpi.bpmn20.xml
+  ~ Author: janloongdoo@gmail.com
+  ~ Website: www.janloong.com
+  ~ Date: 2020/11/4 上午11:08
+  ~ LastModify: 2020/11/4 上午11:08
+  -->
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="qingjiashenpi" name="qingjiashenpi" isExecutable="true">
+    <startEvent id="sid-acf76322-0a51-440a-9e6b-3886fe76f3ff"/>
+    <userTask id="qingjiashenqing" name="请假申请"/>
+    <sequenceFlow id="sid-59408a99-0974-4782-a606-04051b8e3f69" sourceRef="sid-acf76322-0a51-440a-9e6b-3886fe76f3ff" targetRef="qingjiashenqing"/>
+    <exclusiveGateway id="sid-2bdc8c34-3a7f-4677-a54e-ba9901fad45c"/>
+    <sequenceFlow id="sid-b274cfc6-8bda-4c6d-9577-ae21e704cc0e" sourceRef="qingjiashenqing" targetRef="sid-2bdc8c34-3a7f-4677-a54e-ba9901fad45c"/>
+    <userTask id="sid-07b6c5d6-b5bd-47d8-8ffc-4ec4598e05a7"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_qingjiashenpi">
+    <bpmndi:BPMNPlane bpmnElement="qingjiashenpi" id="BPMNPlane_qingjiashenpi">
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-9503ed86-4cf8-4b39-b460-66b5c718d64f" bpmnElement="sid-acf76322-0a51-440a-9e6b-3886fe76f3ff">
+        <omgdc:Bounds x="412.0" y="83.0" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-2c8ebc01-a8bf-4e2c-8ed5-9844910a1e32" bpmnElement="qingjiashenqing">
+        <omgdc:Bounds x="377.0" y="201.0" width="100.0" height="80.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-ebaaf365-7fb5-4b6c-a781-36f87dea55ff" bpmnElement="sid-59408a99-0974-4782-a606-04051b8e3f69">
+        <omgdi:waypoint x="427.0" y="113.0"/>
+        <omgdi:waypoint x="427.0" y="201.0"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-1bc449b0-347d-48f2-9fe5-da32f0597082" bpmnElement="sid-2bdc8c34-3a7f-4677-a54e-ba9901fad45c">
+        <omgdc:Bounds x="407.0" y="334.0" width="40.0" height="40.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-da09cb63-4347-4b57-92e4-98d519866d5b" bpmnElement="sid-b274cfc6-8bda-4c6d-9577-ae21e704cc0e">
+        <omgdi:waypoint x="427.0" y="281.0"/>
+        <omgdi:waypoint x="427.0" y="334.0"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-3ddd8c3a-66e4-4f97-b8fc-0ef3847cee9a" bpmnElement="sid-07b6c5d6-b5bd-47d8-8ffc-4ec4598e05a7">
+        <omgdc:Bounds x="272.0" y="455.0" width="100.0" height="80.0"/>
+      </bpmdi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
