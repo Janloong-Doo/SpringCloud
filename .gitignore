@@ -35,3 +35,5 @@
 /spring-demo/spring-security/src/main/resources/application-home.yml
 /application.pid
 **/target/**
+*.jar
+*.log
