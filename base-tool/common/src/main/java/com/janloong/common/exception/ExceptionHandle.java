@@ -9,6 +9,7 @@
 
 package com.janloong.common.exception;
 
+import com.janloong.common.entity.ErrorInfo;
 import com.janloong.common.enums.ResultEnum;
 import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
@@ -22,25 +23,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * <p>
  * controller层异常外抛处理类
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018/5/15 10:39
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2018/5/15 10:39
  **/
 @ControllerAdvice
 @Slf4j
 public class ExceptionHandle {
-
 
     @ExceptionHandler(value = {RuntimeException.class, Exception.class})
     @ResponseBody
     public ResponseResult handle(Exception e) {
         if (e instanceof BusinessException) {
             BusinessException bussinesException = (BusinessException) e;
-            if (bussinesException.isSuccess()) {
-                log.info("[业务正常] [{} - {}]", bussinesException.getCode(), bussinesException.getMsg());
-                return ResponseResult.success(bussinesException.getCode(), bussinesException.getMsg(), null);
+            ErrorInfo errorInfo = bussinesException.getErrorInfo();
+            if (errorInfo.isSuccess()) {
+                log.info("[业务正常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+                return ResponseResult.success(errorInfo.getCode(), errorInfo.getMsg(), null);
             } else {
-                log.error("[业务异常] [{} - {}]", bussinesException.getCode(), bussinesException.getMsg());
-                return ResponseResult.error(bussinesException.getCode(), bussinesException.getMsg());
+                log.error("[业务异常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+                return ResponseResult.error(errorInfo.getCode(), errorInfo.getMsg());
             }
         } else {
             log.error("[系统异常]: {}", e);

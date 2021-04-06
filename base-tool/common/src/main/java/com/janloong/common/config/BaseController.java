@@ -15,8 +15,9 @@ import javax.annotation.Resource;
 /**
  * 基础controller类
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018-03-20 15:16
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version V1.0
+ * @since 2018-03-20 15:16
  */
 public abstract class BaseController<Service> {
     private Service Service;

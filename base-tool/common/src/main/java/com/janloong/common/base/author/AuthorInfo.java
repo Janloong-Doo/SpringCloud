@@ -13,17 +13,22 @@ package com.janloong.common.base.author;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-15 11:55
- */
+ * 用户信息配置
+ *
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2019-05-15 11:55
+ **/
 @ConfigurationProperties(prefix = "author")
 public class AuthorInfo {
 
-    private static final String NAME = "Janloong_Doo";
+    private static final String NAME = "Janloong Doo";
     private static final String DOMAIN = "https://github.com/Janloong-Doo";
+    private static final String BLOG = "https://blog.janloong.com";
     private static final String DESCRIPTION = "You have to work very hard to look effortless.";
     private String name = NAME;
     private String domain = DOMAIN;
+    private String blog = BLOG;
     private String description = DESCRIPTION;
 
     public String getName() {
@@ -48,5 +53,13 @@ public class AuthorInfo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBlog() {
+        return blog;
+    }
+
+    public void setBlog(String blog) {
+        this.blog = blog;
     }
 }

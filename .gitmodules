@@ -1,0 +1,3 @@
+[submodule "base-tool/common"]
+	path = base-tool/common
+	url = git@github.com:Janloong-Doo/spring-boot-starter-common.git

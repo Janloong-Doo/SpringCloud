@@ -27,6 +27,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
+/**
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2020/4/27 15:43
+ **/
 public class HttpsClient {
 
 //public class HttpsClient extends DefaultHttpClient {

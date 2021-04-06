@@ -11,9 +11,12 @@ package com.janloong.common.base.author;
 
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-15 17:54
- */
+ * 用户信息提供器
+ *
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version V1.0
+ * @since 2019-05-15 17:54
+ **/
 public class AuthorInfoProvider {
 
     AuthorInfo authrorInfo;

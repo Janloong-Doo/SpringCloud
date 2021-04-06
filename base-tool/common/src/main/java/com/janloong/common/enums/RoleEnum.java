@@ -10,8 +10,9 @@
 package com.janloong.common.enums;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018/7/12 10:29
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2018/7/12 10:29
  **/
 public enum RoleEnum {
     超级管理员("SUPER_ADMIN"),
